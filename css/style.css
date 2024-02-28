@@ -19,3 +19,10 @@
     font-weight: 400;
     src: url('/fonts/LibreBaskerville/LibreBaskerville-Regular.ttf') format('truetype')
 }
+
+.root {
+    --color-white: #FFFF;
+    --color-black: #262521;
+    --color-white-variant: #F2EDE4;
+    --color-grey: #BFBAB0;
+}
