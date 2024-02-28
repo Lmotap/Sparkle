@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'League Spartan';
+    font-weight: 300;
+    src: url('/fonts/LeagueSpartan/LeagueSpartan-Light.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'League Spartan';
+    font-weight: 700;
+    src: url('/fonts/LeagueSpartan/LeagueSpartan-Bold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    font-style: italic;
+    src: url('/fonts/LibreBaskerville/LibreBaskerville-Italic.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'Libre Baskerville';
+    font-weight: 400;
+    src: url('/fonts/LibreBaskerville/LibreBaskerville-Regular.ttf') format('truetype')
+}
