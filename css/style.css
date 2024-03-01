@@ -21,8 +21,52 @@
 }
 
 .root {
+
+    /* Couleurs variables */
+
     --color-white: #FFFF;
     --color-black: #262521;
     --color-white-variant: #F2EDE4;
     --color-grey: #BFBAB0;
+
+    /* Font variables */
+
+    --fnt-league: "League Spartan";
+    --fnt-libre: "Libre Baskerville";
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+/***********************
+        HEADER
+***********************/
+header {
+    max-width: 30rem;
+    height: 5rem;
+}
+
+.side_nav {
+    width: 3rem;
+    height: 20rem;
+}
+
+#logo-img {
+    width: clamp(2rem, 20vw,8rem);
+}
+
+/*********************
+        MAIN
+*********************/
+
+#main_img {
+    width: clamp(20rem,80vw,30rem);
+}
+
+#titre_main {
+    font-family: "League Spartan";
+    font-weight: 300;
+    font-size: clamp(1em, 15vw, 7em);
 }

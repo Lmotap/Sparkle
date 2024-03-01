@@ -1,0 +1,34 @@
+body {
+    max-height: 100vh;
+}
+
+
+/*********************
+        HEADER
+*********************/
+
+#logo-img {
+    padding-left: 1rem;
+}
+
+/*********************
+        MAIN
+*********************/
+
+#titre_main {
+    text-align: center;
+    padding: 1rem;
+}
+
+.photo_banniere {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+/*********************
+        FOOTER
+*********************/
