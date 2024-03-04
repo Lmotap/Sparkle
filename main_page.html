@@ -17,50 +17,55 @@
     <body>
 
         <!-- Début du header -->
-            <header>
-                <div class="side_nav">
-                    <img id="logo-img" src="./img/logo/logo_black.png" alt="Logo Portfolio">
-                    <ul class="nav-side-left">
-                        <a class="" href="#">Blog</a>
-                        <a class="" href="#">Contact</a>
-                    </ul>
-                </div>
+        <header>
+            <img id="logo-img" src="./img/logo/logo_black.png" alt="Logo du projet">
+            <nav>
+                <ul>
+                    <li id="responsive">
+                        <span id="nav-show" data-target=".collapse"><img id="icon_hamburger" src="./img/svg/burger-list.svg" alt="Icône de burger"></span>
+                    </li>
+                    <li id="centered">
+                    <span id="nav-hide" data-target=".collapse" class="hide"><img id="icon_cross_ham" src="./img/svg/cross-burger.svg" alt="Icône de fermeture"></span>
+                    </li>
+                    <div class="collapse hide">
+                        
+                    <div class="nav-left">
+                        <li class="test-li"><a href="ailleurs.html">Blog</a></li>
+                        <li class="test-li"><a href="ailleurs.html">Contact</a></li>
+                    </div>
+                    <div class="nav-right">
+                        <li class="test-li"><a href="">Newsletters</a></li>
+                    </div>
+                        <li>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </header>
 
-                <div class="wrapper_newsletters">
-                    <ul class="ul-side-right">
-                        <a class="" id="newsletters_text" href="">Newsletters</a>
-                    </ul>
-                </div>
-            </header>
-            
         <!-- Début section Hero Card -->
 
-        <main class="herocard">
-            <div class="container_title">
+        <main id="herocard">
                 <h1 id="titre_main" href="">PORTFOLIO</h1>
-            </div>
-            <div class="photo_banniere">
                 <img id="main_img" src="./img/lille_chevalier.jpg" alt="Un homme devant un chevalier">
-            </div>
         </main>
 
         <!-- Début du Footer -->
 
-            <div class="footer">
-                <div class="reseaux_sociaux">
-                    <img src="./img/svg/instagram_icon.svg" alt="Icône d'instagram">
-                    <img src="./img/svg/twitter-x.svg" alt="Icône X">
-                </div>
+            <footer id="footer">
 
-                <ul>
-                    <div class="politique_p pr3">
-                        <h3 class="">Politique de confidentialité</h3>
-                    </div>
-                    <div class="cprght">
-                        <img class="cprght_img wth0_7" src="./img/svg/c-circle.svg" alt="Icône de copyright">
-                        <h3 class="">Lucas Mota</h3>
-                    </div>
-                </ul>
-            </div>
+                    <img class="icon_rs" src="./img/svg/instagram_icon.svg" alt="Icône d'instagram">
+                    <img class="icon_rs" src="./img/svg/twitter-x.svg" alt="Icône X">
+                
+                <div class="footer_h3">
+                <div id="container-copyright">
+                    <h3 id="cprght_title"> &copy; Lucas Mota</h3>
+                </div>
+                    <h3 id="politique_confid">
+                        Politique de 
+                        confidentialités</h3>
+                </div>
+            </footer>
+            <script src="./js/app.js"></script>
     </body>
 </html>

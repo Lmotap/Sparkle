@@ -1,34 +1,120 @@
 body {
-    max-height: 100vh;
+    position: relative;
+    height: 100vh;
 }
-
 
 /*********************
         HEADER
 *********************/
+header {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav li {
+    margin: 0;
+    text-align: center;
+}
+
+
+nav {
+    display: flex;
+    width: 1%;
+}
 
 #logo-img {
     padding-left: 1rem;
 }
+
+#centered {
+    padding: 2rem 0;
+}
+
+#responsive {
+    position: absolute;
+    right: 2rem;
+    top: 1.5rem;
+}
+
+/* Hamburger */
+@media screen and (min-width: 968px) {
+
+    nav li#responsive {
+        display: none;
+    }
+    
+    .collapse {
+        display: flex; /* Disposition 'flexible' des éléments */
+        gap: 12px;     /* Un espacement de 12px entre les éléments */
+        align-items: center; /* Tous les éléments sont alignés verticalement */
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    
+}
+
 
 /*********************
         MAIN
 *********************/
 
 #titre_main {
-    text-align: center;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
-.photo_banniere {
+
+
+#herocard {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
 }
-
-
-
-
 
 /*********************
         FOOTER
 *********************/
+#footer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    bottom: 0;
+}
+
+.icon_rs {
+    padding: 0 1%;
+}
+
+#container-copyright {
+    transform: translateX(6rem);
+}
+
+#politique_confid {
+    white-space: pre;
+    position: absolute;
+    left: 12rem;
+    bottom: 1%;
+    text-align: center;
+}
+
+
+
+
