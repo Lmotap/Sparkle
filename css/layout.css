@@ -68,7 +68,27 @@ nav {
 
 @media screen and (min-width: 1024px) {
 
+    #logo-img {
+        padding-left: 2rem;
+    }
+
+    .nav-right {
+        position: fixed;
+        top: 23rem;
+        transform: rotate(90deg);
+        right: 0;
+        width: 4%;
+    }
     
+    .nav-left {
+        display: flex;
+        position: fixed;
+        gap: 10rem;
+        left: 0;
+        bottom: 15rem;
+        transform: rotate(-90deg);
+        width: 4%;
+    }
 }
 
 
@@ -80,13 +100,19 @@ nav {
     padding: 1rem 0;
 }
 
-
-
 #herocard {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     margin-bottom: 5rem;
+}
+
+@media screen and (min-width: 1024px) {
+    #herocard {
+        margin-top: -3rem;
+    }
 }
 
 /*********************
@@ -104,15 +130,30 @@ nav {
 }
 
 #container-copyright {
-    transform: translateX(6rem);
+    transform: translateX(8rem);
 }
 
 #politique_confid {
     white-space: pre;
     position: absolute;
-    left: 12rem;
+    left: 14.5rem;
     bottom: 1%;
     text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+    .icon_rs {
+        width: 2rem;
+        margin-left: 4rem;
+    }
+    
+    #container-copyright {
+        transform: translateX(41rem);
+    }
+
+    #politique_confid {
+        left: 90rem;
+    }
 }
 
 

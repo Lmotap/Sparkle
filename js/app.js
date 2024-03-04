@@ -10,6 +10,7 @@ const btnNavHide = document.querySelector("#nav-hide");
 btnNavShow.addEventListener("click", afficherNavigation);
 btnNavHide.addEventListener("click", cacherNavigation);
 
+
 function afficherNavigation() {
 
     // Element à manipuler
@@ -84,4 +85,5 @@ let collection = [1, 2, 3];
 collection.forEach(element => {
 
 });
+
 
