@@ -91,6 +91,18 @@ nav {
     }
 }
 
+@media screen and (min-width: 1200px) {
+    .nav-left {
+        bottom: 10rem;
+    }
+
+    .nav-right {
+        top: 20rem;
+    }
+
+}
+
+
 
 /*********************
         MAIN
@@ -113,16 +125,21 @@ nav {
     #herocard {
         margin-top: -3rem;
     }
+
+    #herocard img {
+        width: 24rem;
+    }
 }
 
 /*********************
         FOOTER
 *********************/
-#footer {
+.footer {
     display: flex;
     flex-direction: row;
     position: relative;
     bottom: 0;
+    width: 50%;
 }
 
 .icon_rs {
@@ -141,6 +158,85 @@ nav {
     text-align: center;
 }
 
+#diese {
+    position: absolute;
+    top: -1rem;
+    left: 34rem;
+}
+
+#mentions_legales {
+    position: absolute;
+    top: -2rem;
+    left: 25rem;
+    text-align: center;
+}
+
+/*********************
+        Page Category
+*********************/
+
+#body_category {
+    height: 100vh;
+}
+
+.container_categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -5rem;
+}
+
+.img_category {
+    padding: 1% 0;
+}
+
+.title_category {
+    z-index: 99;
+    transform: translateY(-25rem);
+}
+
+@media screen and (max-width: 430px) {
+
+    .icon_rs {
+        padding: 0 2%;
+        margin-left: 1rem;
+    }
+
+    #container-copyright {
+        transform: translateX(1rem);
+    }
+
+    #politique_confid {
+        left: 12rem;
+    }
+
+    .title_category {
+        transform: translateY(-20rem);
+    }
+
+    .container_categories {
+        top: 1em;
+    }
+
+    #mentions_legales {
+        left: 6.5rem;
+        top: -1rem;
+    }
+
+    #politique_confid {
+        left: 6rem;
+    }
+
+    #diese {
+        font-size: 0.5em;
+        top: -0.5rem;
+        left: 11rem;
+    }
+
+}
+
 @media screen and (min-width: 1024px) {
     .icon_rs {
         width: 2rem;
@@ -151,11 +247,31 @@ nav {
         transform: translateX(41rem);
     }
 
-    #politique_confid {
-        left: 90rem;
+    #mentions_legales {
+        top: -1rem;
+        left: 30rem;
     }
+
+    #politique_confid {
+        top: -2.5rem;
+        left: 40rem;
+    }
+
+    #diese {
+        left: 36.5rem;
+        top: -0.5rem;
+    }
+
 }
 
+@media screen and (min-width: 1200px) {
+    #politique_confid {
+        left: 30rem;
+    }
 
+    #container-copyright {
+        transform: translate(28rem,0.5rem);
+    }
+}
 
 
