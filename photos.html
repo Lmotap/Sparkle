@@ -12,10 +12,34 @@
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/style.css">
     </head>
-    <body>
+    <body class="body_photos">
+
+        <!-- Début du header -->
 
         <header>
             <a href="./main_page.html"><img id="logo-img" src="./img/logo/logo_black.png" alt="Logo du projet"></a>
+            <nav>
+                <ul>
+                    <li id="responsive">
+                        <span id="nav-show" data-target=".collapse"><img id="icon_hamburger" src="./img/svg/burger-list.svg" alt="Icône de burger"></span>
+                    </li>
+                    <li id="centered">
+                    <span id="nav-hide" data-target=".collapse" class="hide"><img id="icon_cross_ham" src="./img/svg/cross-burger.svg" alt="Icône de fermeture"></span>
+                    </li>
+                    <div class="collapse hide">
+                        
+                    <div class="nav-left">
+                        <li class="test-li"><a href="ailleurs.html">Blog</a></li>
+                        <li class="test-li"><a href="ailleurs.html">Contact</a></li>
+                    </div>
+                    <div class="nav-right">
+                        <li class="test-li"><a href="">Newsletters</a></li>
+                    </div>
+                        <li>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
         </header>
     
         <main>
@@ -40,10 +64,9 @@
             <div class="photos_slider">
                 <img src="" alt="">
             </div>
-
-            <div class="moncercle-container">
-                <div class="moncercle"><img src="" alt=""></div>
-                <div class="moncercle"><img src="" alt=""></div>
+                <div class="arrow_slider">
+                    <img src="./img/svg/arrow_left.svg" alt="">
+                    <img src="./img/svg/arrow_right.svg" alt="">
             </div>
         </main>
 
@@ -63,6 +86,6 @@
                 <div class="avance_barre_etat"></div>
             </div>
     </div>
-    
+    <script src="./js/app.js"></script>
     </body>
 </html>

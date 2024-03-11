@@ -3,8 +3,8 @@ body {
     height: 100vh;
 }
 
-.body_main {
-    height: 120vh;
+.body_photos {
+    height: 115vh;
 }
 
 /*********************
@@ -35,23 +35,6 @@ nav li {
     text-align: center;
 }
 
-.nav-right {
-    position: fixed;
-    top: 23rem;
-    transform: rotate(90deg);
-    right: 0;
-    width: 4%;
-}
-
-.nav-left {
-    display: flex;
-    position: fixed;
-    gap: 10rem;
-    left: 0;
-    bottom: 15rem;
-    transform: rotate(-90deg);
-    width: 4%;
-}
 
 nav {
     display: flex;
@@ -87,7 +70,41 @@ nav {
 
 }
 
+@media screen and (min-width: 1024px) {
 
+    #logo-img {
+        padding-left: 2rem;
+    }
+
+    .nav-right {
+        position: fixed;
+        top: 23rem;
+        transform: rotate(90deg);
+        right: 0;
+        width: 4%;
+    }
+    
+    .nav-left {
+        display: flex;
+        position: fixed;
+        gap: 10rem;
+        left: 0;
+        bottom: 15rem;
+        transform: rotate(-90deg);
+        width: 4%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .nav-left {
+        bottom: 10rem;
+    }
+
+    .nav-right {
+        top: 20rem;
+    }
+
+}
 
 
 
@@ -96,7 +113,7 @@ nav {
 *********************/
 
 #titre_main {
-    margin-top: -2rem;
+    padding: 1rem 0;
 }
 
 #herocard {
@@ -105,9 +122,18 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-bottom: 5rem;
 }
 
+@media screen and (min-width: 1024px) {
+    #herocard {
+        margin-top: -3rem;
+    }
 
+    #herocard img {
+        width: 24rem;
+    }
+}
 
 /*********************
         FOOTER
@@ -115,47 +141,52 @@ nav {
 .footer {
     display: flex;
     flex-direction: row;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
 
+#container-copyright {
+    transform: translateX(8rem);
+}
+
 .icon_rs {
-    position: relative;
-    left: 4rem;
-    margin-left: 1rem;
-    bottom: -1rem;
+    padding: 0 1%;
+    margin-left: 0.5rem;
 }
 
 #container-copyright {
-    position: relative;
-    left: 50rem;
+    transform: translateX(-3%);
 }
 
-#cprght_title {
-    position: relative;
-    bottom: -1.5rem;
+.title_category {
+    transform: translateY(-20rem);
+}
+
+.container_categories {
+    top: 1em;
+}
+
+#mentions_legales {
+    left: 6.5rem;
+    top: -0.5rem;
+    position: absolute;
+    text-align: center;
 }
 
 #politique_confid {
+    transform: translateX(9rem);
     white-space: pre;
     position: absolute;
-    left: 43rem;
-    bottom: -1rem;
+    bottom: -0.5rem;
     text-align: center;
 }
 
 #diese {
     position: absolute;
-    top: 0.5rem;
-    left: 48rem;
-}
-
-#mentions_legales {
-    position: absolute;
-    bottom: -0.8rem;
-    left: 40rem;
-    text-align: center;
+    font-size: 0.5em;
+    top: -0.1rem;
+    left: 11rem;
 }
 
 /*********************
@@ -163,7 +194,7 @@ nav {
 *********************/
 
 #body_category {
-    height: 355vh;
+    height: 100vh;
 }
 
 .container_categories {
@@ -172,7 +203,6 @@ nav {
     align-items: center;
     justify-content: center;
     position: relative;
-    top: -5rem;
 }
 
 .img_category {
@@ -199,53 +229,47 @@ nav {
     width: 90%;
 }
 
-
-@media screen and (max-width: 430px) {
-
-    .icon_rs {
-        padding: 0 2%;
-        margin-left: 1rem;
-    }
-
-    #container-copyright {
-        transform: translateX(1rem);
-    }
-
-    #politique_confid {
-        left: 12rem;
-    }
-
-    .title_category {
-        transform: translateY(-20rem);
-    }
-
-    .container_categories {
-        top: 1em;
-    }
-
-    #mentions_legales {
-        left: 6.5rem;
-        top: -1rem;
-    }
-
-    #politique_confid {
-        left: 6rem;
-    }
-
-    #diese {
-        font-size: 0.5em;
-        top: -0.5rem;
-        left: 11rem;
-    }
-
+.box_description h4 {
+    position: relative;
+    left: 16rem;
+    top: 3.5rem;
 }
 
-@media screen and (max-width: 1500px) {
+.texteDescriptifPhotos {
+    position: relative;
+    top: 4rem;
+    left: 6rem;
+}
 
-    .body_main {
-        height: 120vh;
-    }
+.number_slider_photos {
+    position: absolute;
+    transform: translate(1.5rem,-3rem);
+} 
 
+.barre_etatPhotos {
+    position: relative;
+    top: 0rem;
+    left: 1.5rem;
+}
+
+.avance_barre_etat {
+    position: relative;
+    top: -0.2rem;
+    left: 1.5rem;
+} 
+
+.arrow_slider {
+    display: flex;
+    position: relative;
+    top: -15.5rem;
+    gap: 9.5rem;
+}
+
+.arrow_slider img {
+    margin: 0 2.5rem;
+}
+
+@media screen and (min-width: 1024px) {
     .icon_rs {
         width: 2rem;
         margin-left: 4rem;
@@ -270,6 +294,13 @@ nav {
         top: -0.5rem;
     }
 
+    nav {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
     #politique_confid {
         left: 30rem;
     }
@@ -277,43 +308,6 @@ nav {
     #container-copyright {
         transform: translate(28rem,0.5rem);
     }
-
-    #herocard {
-        margin-top: -3rem;
-    }
-
-    #herocard img {
-        width: 24rem;
-    }
-
-    #logo-img {
-        padding-left: 2rem;
-    }
-
-    .nav-right {
-        position: fixed;
-        top: 23rem;
-        transform: rotate(90deg);
-        right: 0;
-        width: 4%;
-    }
-    
-    .nav-left {
-        display: flex;
-        position: fixed;
-        gap: 10rem;
-        left: 0;
-        bottom: 15rem;
-        transform: rotate(-90deg);
-        width: 4%;
-    }
-    .nav-left {
-        bottom: 10rem;
-    }
-
-    .nav-right {
-        top: 20rem;
-    }
-
 }
+
 
