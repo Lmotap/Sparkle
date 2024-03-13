@@ -148,22 +148,15 @@ footer {
                                                                     CATEGORY PHOTOS
                                     ********************************************************************************/
 
-.img_category:hover {
-    opacity: 0.5;
-    filter:alpha(opacity=40);
-    cursor: pointer;
-}
-
 .img_category {
     width: clamp(25rem,80vw,33rem);
-    transition: opacity 0.3s ease;
 }
 
 .title_category {
     font-family: 'League Spartan';
     font-weight: 300;
     font-size: 4em;
-    color: #FFFF;
+    color: black;
 }
 
 .title_category:hover {
