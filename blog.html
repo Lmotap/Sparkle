@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Catégories </title>
+    <title> Blog </title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
-<body id="body_category">
+<body id="body_blog">
     <!-- Début du header -->
     <header>
         <a href="./main_page.html"><img id="logo-img" src="./img/logo/logo_black.png" alt="Logo du projet"></a>
@@ -29,8 +29,8 @@
                 <div class="collapse hide">
                     
                 <div class="nav-left">
-                    <li class="test-li"><a href="./blog.html">Blog</a></li>
-                    <li class="test-li"><a href="./contact.html">Contact</a></li>
+                    <li class="test-li"><a href="category_photos.html">Portfolio</a></li>
+                    <li class="test-li"><a href="contact.html">Contact</a></li>
                 </div>
                 <div class="nav-right">
                     <li class="test-li"><a href="">Newsletters</a></li>
@@ -43,23 +43,61 @@
     </header>
 
     <main>
-        <section class="container_categories">
+        <div class="box_bio_article">
+            <h2 class="titre_page"> Qui suis-je ?</h3>
+            <img src="./img/blog img/bio_img.jpg" alt="Équipement de photographie posé sur une carte">
+        </div>
 
-                    
-                        <img class="img_category" src="./img/category/louvre.jpg" alt="Architecture à Marseille">
-                        <a class="title_category" href="">Musée</a>
+    
+        <div class="separation_main"></div>
+    
+        <div class="container_categories_article">
+            <a class="" href="">Équipement</a> <span class="separateur_link">/</span> <a class="" href="">Inspirations</a> <span class="separateur_link">/</span> <a class="" href="">Lieux</a>
+        </div>
 
-                        <img class="img_category" src="./img/category/silhouette_musée.jpg" alt="Piéton qui traverse un passage piéton de nuit">
-                        <a class="title_category" href="">Nuit</a>
-                    
-                    
-                        <img class="img_category" src="./img/category/musée_marseille.jpg" alt="Silhouette à un musée de">
-                        <a class="title_category" href="">Prague</a>
+    <div class="grid_container_blog">
 
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
-        </section>
+        <div class="article1">
+            <img class="img_article" src="./img/blog img/light_tunnel.jpg" alt="">
+            <span class="tag_article">Lieux</span>
+            <h3 class="titre_article"> 
+Apprendre à jouer avec 
+la lumière </h3>
+        </div>
+        
+        <div class="article2">
+            <img class="img_article" src="./img/blog img/flou_people.jpg" alt="">
+            <span class="tag_article">Lieux</span>
+            <h3 class="titre_article"> 
+Comment photographier 
+les gens ? </h3>
+        </div>
+
+        
+        <div class="article3">
+            <img class="img_article" src="./img/blog img/equipment_studio.jpg" alt="">
+            <span class="tag_article_equipment">Équipement</span>
+            <h3 class="titre_article">
+Mon équipement</h3>
+        </div>
+
+        <div class="article4">
+            <img class="img_article" src="./img/blog img/museum_blog.jpg" alt="">
+            <span class="tag_article_inspi">Inspirations</span>
+            <h3 class="titre_article"> 
+Les musées, une source 
+d'inspiration </h3>
+        </div>
+
+    </div>
+
+    <button class="btn_more_article">
+        <span class="text">Plus d'articles</span>
+        <span aria-hidden="" class="marquee">Plus d'articles</span>
+    </button>
+
+
+
     </main>
 
     <!-- Début du Footer -->
