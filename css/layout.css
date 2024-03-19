@@ -7,19 +7,11 @@ body,
     position: relative;
 }
 
-body {
-    height: 100vh;
-}
-
 .body_photos {
     height: 150vh;
 }
 #body_blog {
     height: 275vh;
-}
-
-.body_contact {
-    height: 120vh;
 }
 
 #body_category {
@@ -309,22 +301,26 @@ input, label {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50%;
-    margin: 10% 0;
-    transform: translateY(6%);
+    transform: translate(10%,-3%);
 }
 
 .form-example {
-    padding: 5% 0;
-    margin: 3% 0;
+    padding: 10% 0;
+    margin: 2% 0;
+    
 }
 
-.form-example label {
-    padding-bottom: 1%;
+.form-example input {
+    margin: 4% 0;
 }
+
 
 .form-example textarea {
-    height: 15rem;
+    height: 10rem;
+}
+
+.form-example button {
+    margin-top: 1rem;
 }
 
 
