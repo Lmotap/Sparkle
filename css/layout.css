@@ -1,12 +1,33 @@
-body {
+body,
+#body_photos,
+#body_blog,
+#body_contact,
+#body_category,
+#body_main {
     position: relative;
+}
+
+body {
     height: 100vh;
 }
 
 .body_photos {
-    height: 115vh;
+    height: 150vh;
 }
 #body_blog {
+    height: 275vh;
+}
+
+.body_contact {
+    height: 120vh;
+}
+
+#body_category {
+    height: 260vh;
+}
+
+#body_main {
+    margin: 0;
     height: 100vh;
 }
 
@@ -85,62 +106,47 @@ nav {
                                     ********************************************************************************/
 .footer {
     display: flex;
-    flex-direction: row;
     position: relative;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
 }
 
-#container-copyright {
-    transform: translateX(8rem);
-}
-
-.icon_rs {
+.footer img {
     padding: 0 1%;
-    margin-left: 0.5rem;
+    margin-left: 0.5em;
 }
 
-#container-copyright {
-    transform: translateX(-3%);
-}
-
-.title_category {
-    transform: translateY(-20rem);
-}
-
-.container_categories {
-    top: 1em;
-}
-
-#mentions_legales {
-    left: 6.5rem;
-    top: -0.5rem;
-    position: absolute;
+#politique_confid,
+#cprght_title,
+#mentions_legales,
+#diese {
+    position: relative;
     text-align: center;
 }
 
 #politique_confid {
-    transform: translateX(9rem);
-    white-space: pre;
-    position: absolute;
-    bottom: -0.5rem;
-    text-align: center;
+    left: 3em;
+}
+
+#cprght_title {
+    left: 3em;
+    width: 20%;
+    height: 10%;
+    bottom: -1em;
+}
+
+#mentions_legales {
+    left: 5em;
 }
 
 #diese {
-    position: absolute;
-    font-size: 0.5em;
-    top: -0.1rem;
-    left: 11rem;
-}
+    left: 6em;
+} 
 
                                     /*******************************************************************************
                                                                     CATEGORY PHOTOS
                                     ********************************************************************************/
-
-#body_category {
-    height: 100vh;
-}
 
 .container_category1,
 .container_category2,
@@ -152,26 +158,31 @@ nav {
 
 .img_category {
     display: block;
-    padding: 3% 0;
+    padding: 0;
+    margin:  1% 0;
 }
 
 .overlay {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 0%;
+    bottom: 0%;
     left: 0;
     right: 0;
     height: 100%;
     width: 100%;
     opacity: 0;
-    transition: .5s ease;
-    background-color: white;
+    transition: .9s ease;
+    background-color: #262521;
 }
 
 .container_category1:hover .overlay,
 .container_category2:hover .overlay,
 .container_category3:hover .overlay{
-    opacity: 0.5;
+    opacity: 0.7;
+}
+
+.container_category3 {
+    margin-bottom: 1rem;
 }
 
 .title_category {
@@ -196,53 +207,17 @@ nav {
     top: 1.5rem;
 }
 
+.box_description {
+    margin-top: 3rem;
+}
+
+.description_container {
+    margin: 5% 0;
+}
+
 .img_slider {
     width: 90%;
 }
-
-.box_description h4 {
-    position: relative;
-    left: 16rem;
-    top: 3.5rem;
-}
-
-.texteDescriptifPhotos {
-    position: relative;
-    top: 4rem;
-    left: 6rem;
-}
-
-.number_slider_photos {
-    position: absolute;
-    transform: translate(1.5rem,-3rem);
-} 
-
-.barre_etatPhotos {
-    position: relative;
-    top: 0rem;
-    left: 1.5rem;
-}
-
-.avance_barre_etat {
-    position: relative;
-    bottom: 0.3rem;
-    left: 1.5rem;
-} 
-
-.arrow_slider {
-    display: flex;
-    position: relative;
-    top: -15.5rem;
-    gap: 9.5rem;
-    cursor: pointer;
-}
-
-.arrow_slider img {
-    margin: 0 2.5rem;
-}
-
-
-
 
                                     /*******************************************************************************
                                                                     BLOG
@@ -315,6 +290,41 @@ nav {
     position: relative;
     left: 15.5rem;
     top: -5rem;
+}
+
+
+                                    /*******************************************************************************
+                                                                    CONTACT
+                                    ********************************************************************************/
+
+input, label {
+    display: block;
+}
+
+.titre_page {
+    text-align: center;
+}
+
+.container_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    margin: 10% 0;
+    transform: translateY(6%);
+}
+
+.form-example {
+    padding: 5% 0;
+    margin: 3% 0;
+}
+
+.form-example label {
+    padding-bottom: 1%;
+}
+
+.form-example textarea {
+    height: 15rem;
 }
 
 
@@ -418,9 +428,5 @@ nav {
 @media screen and (min-width: 1024px) {
     #herocard {
         margin-top: -3rem;
-    }
-
-    #herocard img {
-        width: 24rem;
     }
 }

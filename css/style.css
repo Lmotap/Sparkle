@@ -35,6 +35,46 @@
     --fnt-libre: "Libre Baskerville";
 }
 
+/* Hamburger */
+@media screen and (min-width: 968px) {
+
+    nav li#responsive {
+        display: none;
+    }
+    
+    .collapse {
+        display: flex; /* Disposition 'flexible' des éléments */
+        gap: 12px;     /* Un espacement de 12px entre les éléments */
+        align-items: center; /* Tous les éléments sont alignés verticalement */
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    #logo-img {
+        padding-left: 2rem;
+    }
+
+    .nav-right {
+        position: fixed;
+        top: 23rem;
+        transform: rotate(90deg);
+        right: 0;
+        width: 4%;
+    }
+    
+    .nav-left {
+        display: flex;
+        position: fixed;
+        gap: 10rem;
+        left: 0;
+        bottom: 15rem;
+        transform: rotate(-90deg);
+        width: 4%;
+    }
+}
+
                                     /*******************************************************************************
                                                                     GENERAL
                                     ********************************************************************************/
@@ -97,16 +137,20 @@ nav a {
     width: 2rem;
 }
 
+
+
+
                                     /*******************************************************************************
                                                                     MAIN
                                     ********************************************************************************/
 
 #main_img {
-    width: clamp(23rem,80vw,31rem);
+    width: clamp(23rem,40vw,30rem);
     transition: opacity 0.3s ease;
 }
 
 #main_img:hover {
+    color: #262521;
     opacity: 0.5;
     filter:alpha(opacity=40);
 }
@@ -114,7 +158,7 @@ nav a {
 .titre_page {
     font-family: "League Spartan";
     font-weight: 300;
-    font-size:2.5em;
+    font-size: clamp(2.5em, 10vw,4em);
 }
 
                                     /*******************************************************************************
@@ -122,17 +166,17 @@ nav a {
                                     ********************************************************************************/
 
 footer {
-    width: 30rem;
-    padding-bottom: 1%;
+    width: 100%;
 }
 
 #diese {
     font-family: "Libre Baskerville";
     font-style: italic;
+    font-size: clamp(0.3%, 3vh,0%);
 }
 
-.icon_rs {
-    width: 1rem;
+footer img {
+    width: clamp(2%,3vh,3%);
 }
 
 #politique_confid,
@@ -140,7 +184,12 @@ footer {
 #mentions_legales {
     font-family: "League Spartan";
     font-weight: 300;
-    font-size: 1em;
+    font-size: clamp(0.5em, 3vw, 3em);
+}
+
+#mentions_legales,
+#politique_confid {
+    margin: 0 5%;
 }
 
 
@@ -156,7 +205,7 @@ footer {
     font-family: 'League Spartan';
     font-weight: 300;
     font-size: 4em;
-    color: black;
+    color: white;
 }
 
 .title_category:hover {
@@ -177,34 +226,8 @@ footer {
     font-family: 'Libre Baskerville';
     font-style: italic;
     font-size: 1em;
-    margin: 0 30%;
+    margin: 0 15%;
     text-align: center;
-}
-
-.number_slider_photos {
-    font-family: "League Spartan";
-    font-weight: 300;
-    font-size: 1.3em;
-}
-
-.barre_etatPhotos {
-    border-radius: 5%;
-    width: 150px;
-    height: 5px;
-    background: #000000;
-}
-
-.avance_barre_etat {
-    border-radius: 5%;
-    width: 20px;
-    height: 5px;
-    background: #e13232;
-}
-
-.arrow_slider img {
-    width: 2rem;
-    background-color: #262521;
-    border-radius: 50px;
 }
 
                                     /*******************************************************************************
@@ -250,6 +273,15 @@ footer {
     width: clamp(9%,85vw,150%);
 }
 
+.img_article:hover {
+    cursor: pointer;
+    background-color: #262521;
+    transition: ease .3s;
+    -webkit-transition: ease .3s;
+    opacity: 1;  
+}
+
+
 #btn_more_article {
     
     background-color: #262521;
@@ -260,9 +292,39 @@ footer {
     font-size: clamp(0.5em,3vw,1em);
     width: 30%;
     height: 1.6rem;
+    font-size: 2em;
 }
 
-                                    
+                                    /*******************************************************************************
+                                                                    CONTACT
+                                    ********************************************************************************/
+
+.container_form label {
+    font-family: 'League Spartan';
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+.container_form button {
+    background-color: #262521;
+    color: white;
+    width: 35%;
+    height: 2rem;
+    font-family: "Libre Baskerville";
+    font-weight: 400;
+    font-size: 0.7em;
+    border-radius: 5px;
+    transform: translateY(-0.5rem);
+}
+
+.container_form input,
+textarea {
+    border: 2px solid #000000;
+}
+
+.container_form input{
+    height: 1.5rem;
+}
 
                                     /*******************************************************************************
                                                                     MEDIA QUERIES
@@ -342,12 +404,12 @@ body {
 }
 }
 
-.btn-23,
-.btn-23 *,
-.btn-23 :after,
-.btn-23 :before,
-.btn-23:after,
-.btn-23:before {
+.btn-more_article,
+.btn-more_article *,
+.btn-more_article:after,
+.btn-more_article :before,
+.btn-more_article:after,
+.btn-more_article:before {
     border: 0 solid;
     box-sizing: border-box;
 }
@@ -367,7 +429,6 @@ body {
     margin: 0;
     -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
     padding: 0;
-    
 }
 
 .btn_more_article:disabled {
