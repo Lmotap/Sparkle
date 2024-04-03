@@ -66,6 +66,7 @@ nav {
     justify-content: center;
     text-align: center;
     margin-bottom: 5rem;
+    flex: 1;
 }
 
 #herocard h2 {
@@ -79,28 +80,35 @@ nav {
                                     /*******************************************************************************
                                                                     FOOTER
                                     ********************************************************************************/
+
 .footer {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
-.nav_footer_right,.nav_footer_center {
+
+.container_icon {
     display: flex;
-
+    gap: 0.5rem;
+    align-self: flex-end;
 }
 
-.nav_footer_center {
-    justify-content: center;
-    align-items: center;
-    width: 20%;
+.nav_footer_center, .nav_footer_right {
+    display: flex;
+    gap: 1rem;
+    align-self: flex-end;
+    padding: 0 5px;
 }
 
-.footer img {
-    padding: 0 1%;
-    margin-left: 0.5em;
+.link_footer {
+    text-align: center;
 }
 
-
+.diese {
+    display: flex;
+    align-self: center;
+}
 
 
                                     /*******************************************************************************
@@ -159,11 +167,11 @@ nav {
                                                                     PHOTOS SLIDER
                                     ********************************************************************************/
 
-.photos_slider {
+.container_photos {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    position: relative;
-    top: 1.5rem;
+    align-items: center;
 }
 
 .box_description {
@@ -174,8 +182,9 @@ nav {
     margin: 5% 0;
 }
 
-.img_slider {
-    width: 90%;
+.img_wdth {
+    width: 95%;
+    margin: 5% 0;
 }
 
                                     /*******************************************************************************
@@ -262,6 +271,7 @@ input, label {
 
 .titre_page {
     text-align: center;
+    margin: 10% 0;
 }
 
 .container_form {
@@ -277,18 +287,25 @@ input, label {
 }
 
 .form-example input {
-    margin: 4% 0;
+    margin: 2% 0;
 }
 
 
 .form-example textarea {
     height: 10rem;
     width: 20rem;
+    margin: 2% 0;
 }
 
 .form-example button {
     margin-top: 1rem;
 }
+
+.required_field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
 
 
 

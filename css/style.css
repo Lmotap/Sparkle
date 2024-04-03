@@ -122,21 +122,21 @@ nav a {
                                                                     FOOTER
                                     ********************************************************************************/
 
-.diese {
-    font-family: "Libre Baskerville";
-    font-style: italic;
-    font-size: clamp(0.3%, 3vh,0%);
+
+.container_icon img {
+    width: 2rem;
 }
 
-footer img {
-    width: clamp(2%,3vh,3%);
-}
-
-.link_footer {
+.link_footer, .diese {
     font-family: "League Spartan";
     font-weight: 300;
     font-size: clamp(0.5em, 3vw, 3em);
 }
+
+
+
+
+
 
                                     /*******************************************************************************
                                                                     CATEGORY PHOTOS
@@ -173,6 +173,11 @@ footer img {
     font-size: 1em;
     margin: 0 15%;
     text-align: center;
+}
+
+.reset_scroll_top {
+    width: 5rem;
+    height: 5rem;
 }
 
                                     /*******************************************************************************
@@ -253,7 +258,6 @@ footer img {
 .container_form button {
     background-color: #262521;
     color: white;
-    width: 35%;
     height: 2rem;
     font-family: "Libre Baskerville";
     font-weight: 400;
@@ -276,9 +280,24 @@ textarea {
     font-style: italic;
 }
 
-.asterik_symbol, .required_field {
-    font-size: 0.4em;
+::placeholder {
+    padding: 0 5px;
 }
+
+.asterik_symbol, .required_field {
+    font-size: 0.7em;
+}
+
+.container_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_suscribe {
+    padding: 30px;
+}
+
 
                                     /*******************************************************************************
                                                                     MEDIA QUERIES
