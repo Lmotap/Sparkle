@@ -24,7 +24,8 @@ nav ul {
 nav a {
     display: inline-block;
     width: 100%;
-    padding: 1rem 0;
+    padding: 5% 0;
+    margin-bottom: 5%;
     text-align: center;
 }
 
@@ -80,41 +81,27 @@ nav {
                                     ********************************************************************************/
 .footer {
     display: flex;
-    position: relative;
-    inset: 0 0 0 0;
+    justify-content: space-between;
 }
 
+.nav_footer_right,.nav_footer_center {
+    display: flex;
+
+}
+
+.nav_footer_center {
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
 
 .footer img {
     padding: 0 1%;
     margin-left: 0.5em;
 }
 
-#politique_confid,
-#cprght_title,
-#mentions_legales,
-#diese {
-    position: relative;
-    text-align: center;
-}
 
-#politique_confid {
-    left: 3em;
-}
 
-#cprght_title {
-    width: 20%;
-    height: 10%;
-    inset: 0 0 -1em 3em;
-}
-
-#mentions_legales {
-    left: 5em;
-}
-
-#diese {
-    left: 6em;
-} 
 
                                     /*******************************************************************************
                                                                     CATEGORY PHOTOS
@@ -281,13 +268,12 @@ input, label {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translate(10%,-3%);
 }
 
 .form-example {
+    display: flex;
+    flex-direction: column;
     padding: 10% 0;
-    margin: 2% 0;
-    
 }
 
 .form-example input {
@@ -297,6 +283,7 @@ input, label {
 
 .form-example textarea {
     height: 10rem;
+    width: 20rem;
 }
 
 .form-example button {
