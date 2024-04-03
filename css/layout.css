@@ -1,26 +1,7 @@
-body,
-#body_photos,
-#body_blog,
-#body_contact,
-#body_category,
-#body_main {
-    position: relative;
-}
 
-.body_photos {
-    height: 150vh;
-}
-#body_blog {
-    height: 275vh;
-}
-
-#body_category {
-    height: 260vh;
-}
-
-#body_main {
-    margin: 0;
-    height: 100vh;
+body {
+    display: flex;
+    flex-direction: column;
 }
 
                                     /*******************************************************************************
@@ -62,11 +43,11 @@ nav {
     padding-left: 1rem;
 }
 
-#centered {
+#close_hamburger {
     padding: 2rem 0;
 }
 
-#responsive {
+#show_hamburger {
     position: absolute;
     right: 2rem;
     top: 1.5rem;
@@ -76,9 +57,6 @@ nav {
                                                                     MAIN
                                     ********************************************************************************/
 
-#titre_main {
-    padding: 1rem 0;
-}
 
 #herocard {
     display: flex;
@@ -87,6 +65,10 @@ nav {
     justify-content: center;
     text-align: center;
     margin-bottom: 5rem;
+}
+
+#herocard h2 {
+    margin-bottom: 1rem;
 }
 
 .main_img {
@@ -99,10 +81,9 @@ nav {
 .footer {
     display: flex;
     position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0 0 0 0;
 }
+
 
 .footer img {
     padding: 0 1%;
@@ -122,10 +103,9 @@ nav {
 }
 
 #cprght_title {
-    left: 3em;
     width: 20%;
     height: 10%;
-    bottom: -1em;
+    inset: 0 0 -1em 3em;
 }
 
 #mentions_legales {
@@ -324,69 +304,14 @@ input, label {
 }
 
 
+
+
                                     /*******************************************************************************
                                                                     MEDIA QUERIES
                                     ********************************************************************************/
 
-@media screen and (min-width: 1024px) {
-    .icon_rs {
-        width: 2rem;
-        margin-left: 4rem;
-    }
-    
-    #container-copyright {
-        transform: translateX(41rem);
-    }
-
-    #mentions_legales {
-        top: -1rem;
-        left: 30rem;
-    }
-
-    #politique_confid {
-        top: -2.5rem;
-        left: 40rem;
-    }
-
-    #diese {
-        left: 36.5rem;
-        top: -0.5rem;
-    }
-
-    nav {
-        display: none;
-    }
-
-}
-
-@media screen and (min-width: 1200px) {
-    #politique_confid {
-        left: 30rem;
-    }
-
-    #container-copyright {
-        transform: translate(28rem,0.5rem);
-    }
-}
-
-
-/* Hamburger */
-@media screen and (min-width: 968px) {
-
-    nav li#responsive {
-        display: none;
-    }
-    
-    .collapse {
-        display: flex; /* Disposition 'flexible' des éléments */
-        gap: 12px;     /* Un espacement de 12px entre les éléments */
-        align-items: center; /* Tous les éléments sont alignés verticalement */
-    }
-
-}
 
 @media screen and (min-width: 1024px) {
-
     #logo-img {
         padding-left: 2rem;
     }
@@ -410,19 +335,3 @@ input, label {
     }
 }
 
-@media screen and (min-width: 1200px) {
-    .nav-left {
-        bottom: 10rem;
-    }
-
-    .nav-right {
-        top: 20rem;
-    }
-
-}
-
-@media screen and (min-width: 1024px) {
-    #herocard {
-        margin-top: -3rem;
-    }
-}
