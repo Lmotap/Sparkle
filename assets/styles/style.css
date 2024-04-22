@@ -1,23 +1,23 @@
 @font-face {
     font-family: 'League Spartan';
     font-weight: 300;
-    src: url('/fonts/LeagueSpartan/LeagueSpartan-Light.ttf') format('truetype')
+    src: url('/assets/fonts/LeagueSpartan/LeagueSpartan-Light.ttf') format('truetype')
 }
 @font-face {
     font-family: 'League Spartan';
     font-weight: 700;
-    src: url('/fonts/LeagueSpartan/LeagueSpartan-Bold.ttf') format('truetype')
+    src: url('/assets/fonts/LeagueSpartan/LeagueSpartan-Bold.ttf') format('truetype')
 }
 
 @font-face {
     font-family: 'Libre Baskerville';
     font-style: italic;
-    src: url('/fonts/LibreBaskerville/LibreBaskerville-Italic.ttf') format('truetype')
+    src: url('/assets/fonts/LibreBaskerville/LibreBaskerville-Italic.ttf') format('truetype')
 }
 @font-face {
     font-family: 'Libre Baskerville';
     font-weight: 400;
-    src: url('/fonts/LibreBaskerville/LibreBaskerville-Regular.ttf') format('truetype')
+    src: url('/assets/fonts/LibreBaskerville/LibreBaskerville-Regular.ttf') format('truetype')
 }
 
 .root {
@@ -124,7 +124,7 @@ nav a {
 
 
 .container_icon img {
-    width: 2rem;
+    width: 1.5rem;
 }
 
 .link_footer, .diese {
@@ -132,11 +132,6 @@ nav a {
     font-weight: 300;
     font-size: clamp(0.5em, 3vw, 3em);
 }
-
-
-
-
-
 
                                     /*******************************************************************************
                                                                     CATEGORY PHOTOS
@@ -305,8 +300,39 @@ textarea {
 
 
 
+                                    /*******************************************************************************
+                                                                    DASHBOARD ADMIN
+                                    ********************************************************************************/
 
+    .dashboard button {
+    color: #262521;
+    border: 2px solid #262521;
+    height: 3rem;
+    font-family: "League Spartan";
+    font-weight: 300;
+    font-size: 2em;
+    padding: 10px;
+    text-align: center;
+    }
 
+    .title_total_article {
+        font-family: "Libre Baskerville";
+        font-weight: 300;
+        font-size: 2em;
+    }
+
+    .separateur {
+        width: 100%;
+        height: 0.1rem;
+        background-color: #262521;
+        margin: 1rem 0;
+    }
+
+    table {
+        font-family: "League Spartan";
+        font-weight: 600;
+        color: #262521;
+    }
 
 
                                     /*******************************************************************************
