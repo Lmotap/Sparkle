@@ -1,3 +1,11 @@
+<?php
+
+    session_name("admin");
+    session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,19 +14,19 @@
     <title>Create Article</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
     <!-- CSS !-->
-    <link rel="stylesheet" href="../assets/styles/reset.css">
-    <link rel="stylesheet" href="../assets/styles/layout.css">
-    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="stylesheet" href="../../assets/styles/reset.css">
+    <link rel="stylesheet" href="../../assets/styles/layout.css">
+    <link rel="stylesheet" href="../../assets/styles/style.css">
     
 </head>
 <body class="body_form_article">
 
     <header class="dashboard">
-        <a href="./index.html"><img class="logo-img" src="../assets/img/logo_black.png" alt="Logo du projet"></a>
-        <a href="./dashboard.html"><img class="icon_logout" src="../assets/icons/arrow-right-return.svg" alt=""></a> 
+        <a href="./index.html"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+        <a href="./dashboard.php"><img class="icon_logout" src="../../assets/icons/arrow-right-return.svg" alt=""></a> 
     </header>
 
     

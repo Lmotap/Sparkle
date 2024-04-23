@@ -1,5 +1,6 @@
 <?php
-require_once "../App/Utilitary/Log.php";
+
+require_once ('../../App/Utilitary/Log.php');
 
 session_name("admin");
 session_start();
@@ -28,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["admin"] = $resultat->id;
             $_SESSION["pseudo"] = $resultat->pseudo;
 
-            header("Location: dashboard.html");
+            header("Location: dashboard.php");
             exit;
     }
 }
@@ -43,17 +44,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Formulaire Admin</title>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
         <!-- CSS !-->
-        <link rel="stylesheet" href="../assets/styles/reset.css">
-        <link rel="stylesheet" href="../assets/styles/layout.css">
-        <link rel="stylesheet" href="../assets/styles/style.css">
+        <link rel="stylesheet" href="../../assets/styles/reset.css">
+        <link rel="stylesheet" href="../../assets/styles/layout.css">
+        <link rel="stylesheet" href="../../assets/styles/style.css">
 
 </head>
 <body>
     <div class="container-logo">
-        <a href="./index.html"><img id="logo-img" src="../assets/img/logo_black.png" alt="Logo du projet"></a>
+        <a href="/index.html"><img id="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
     </div>
 
     <h2 class="title_admin">Admin formulaire</h2>

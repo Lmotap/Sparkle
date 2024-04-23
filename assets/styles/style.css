@@ -138,7 +138,7 @@ nav a {
                                     ********************************************************************************/
 
 .img_category {
-    width: clamp(25rem,80vw,33rem);
+    width: clamp(25rem,120vw, 40rem);
 }
 
 .title_category {
@@ -180,11 +180,11 @@ nav a {
     justify-content: center;
     align-items: center;
     gap: 20%;
-    margin: 10% 0;
+    margin: 5% 0;
 }
 
 .icon_arrow {
-    width: 3rem;
+    width: 2.5rem;
 }
 
                                     /*******************************************************************************
@@ -392,7 +392,27 @@ textarea {
     .logo-img {
         width: 5rem;
     }
+
+
+
+    @media screen and (min-width: 820px) {
+
+        /* PHOTOS */
     
+    .icon_arrow {
+        width: 5rem;
+    }
+
+    .box_description h4 {
+    font-size: 3em;
+}
+
+.texteDescriptifPhotos {
+    font-size: 2em;
+    }
+
+        /* BLOG */
+}    
 
 
 
