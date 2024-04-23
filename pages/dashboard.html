@@ -16,15 +16,23 @@
 </head>
 <body>
     <header class="dashboard">
-        <img class="icon_logout" src="../assets/icons/logout.svg" alt="Icone pour se déconnecter">
-        <a href="./index.html"><img id="logo-img" src="../assets/img/logo_black.png" alt="Logo du projet"></a>
+
+        <img class="logo-img" src="../assets/img/logo_black.png" alt="Logo du projet">
         <button class="btn_create_article"><a href="create-article.html">+ Créer article</a></button>
+        <!-- <a href="./blog.html"><img class="icon_logout" src="../assets/icons/logout.svg" alt="Icone pour se déconnecter"></a> -->
+        
     </header>
 
     <div class="container_total_article_btn_search">
         
         <h2 class="title_total_article"><img class="icon_article" src="../assets/icons/articles.svg" alt="">Total des articles</h2>
-        <button class="btn_search"><img class="icon_dashboard" src="../assets/icons/search-alt.svg" alt="">Rechercher</button>
+
+        <form action="/recherche" method="get">
+            <div class="search-container">
+                <input type="text" name="search-bar" placeholder="Rechercher..." class="search-input">
+                <button type="submit" class="search-button"><img class="search-icon" src="../assets/icons/search-alt.svg" alt=""></button>
+            </div>
+        </form>
     </div>
 
     <div class="separateur"></div>
@@ -44,26 +52,23 @@
                     <td>Voilà pourquoi le Fujifilm-TX-30 II est excellent</td>
                     <td>1</td>
                     <td>Style</td>
-                    <td class="icon_delete_update"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></td>
+                    <td class="icon_delete_update"><a href="./modifier-article.html"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></a></td>
                 </tr>
                 <tr>
                     <td>Fujifilm-TX-30 II</td>
                     <td>2</td>
                     <td>Equipement</td>
-                    <td class="icon_delete_update"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></td>
-                </tr>
+                    <td class="icon_delete_update"><a href="./modifier-article.html"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></a></td>                </tr>
                 <tr>
                     <td>Fujifilm-TX-30 II</td>
                     <td>3</td>
                     <td>Style</td>
-                    <td class="icon_delete_update"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></td>
-                </tr>
+                    <td class="icon_delete_update"><a href="./modifier-article.html"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></a></td>                </tr>
                 <tr>
                     <td>Fujifilm-TX-30 II</td>
                     <td>4</td>
                     <td>Lieux</td>
-                    <td class="icon_delete_update"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></td>
-                </tr> 
+                    <td class="icon_delete_update"><a href="./modifier-article.html"><img class="icon_dashboard" src="../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../assets/icons/bin-delete.svg" alt=""></a></td>                </tr> 
             </tbody>
         </table>
     </div>

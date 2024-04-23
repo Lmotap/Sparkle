@@ -407,6 +407,15 @@ input, label {
     margin-bottom: 3rem;
 }
 
+.dashboard button {
+    text-align: center;
+    padding: 10px;
+}
+
+.separateur {
+    margin: 1rem 0;
+}
+
 .container_total_article_btn_search {
     display: flex;
     align-items: center;
@@ -415,19 +424,12 @@ input, label {
 }
 
 .btn_search {
-    width: 12rem;
-    border: 2px solid #262521;
-    color: #262521;
-    height: 3rem;
-    font-family: "Libre Baskerville";
-    font-weight: 300;
-    font-size: 1em;
-    border-radius: 30px;
     display: flex;
     align-items: center;
     gap: 5px;
     padding: 0 1rem;
 }
+
 
 .icon_logout {
     position: absolute;

@@ -311,8 +311,6 @@ textarea {
     font-family: "League Spartan";
     font-weight: 300;
     font-size: 2em;
-    padding: 10px;
-    text-align: center;
     }
 
     .title_total_article {
@@ -325,7 +323,6 @@ textarea {
         width: 100%;
         height: 0.1rem;
         background-color: #262521;
-        margin: 1rem 0;
     }
 
     table {
@@ -333,6 +330,55 @@ textarea {
         font-weight: 600;
         color: #262521;
     }
+
+    .btn_search {
+        width: 12rem;
+        border: 2px solid #262521;
+        color: #262521;
+        height: 3rem;
+        font-family: "Libre Baskerville";
+        font-weight: 300;
+        font-size: 1em;
+        border-radius: 30px;
+    }
+
+    .dashboard img {
+        width: 5%;
+    }
+
+    .search-container {
+        position: relative;
+    }
+    
+    .search-input {
+        width: 12rem;
+        border: 2px solid #262521;
+        color: #262521;
+        height: 3rem;
+        font-family: "Libre Baskerville";
+        border-radius: 30px;
+        padding-left: 10px;
+    }
+
+    .search-input::placeholder {
+        font-family: "League Spartan";
+        font-size: 1.5em;
+    }
+    
+    .search-button {
+        position: absolute;
+        top: 50%;
+        left: 8rem;
+        transform: translateY(-50%);
+        border: none;
+        cursor: pointer;
+    }
+
+    .search-icon {
+        width: 50%;
+    }
+    
+
 
 
                                     /*******************************************************************************
