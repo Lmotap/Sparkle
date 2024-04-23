@@ -262,6 +262,77 @@ nav {
 
 
                                     /*******************************************************************************
+                                                                    ARTICLE
+                                    ********************************************************************************/
+
+.container-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10% 0;
+}
+
+.title_article {
+    font-family: "League Spartan";
+    font-weight: 300;
+    font-size: 3em;
+}
+
+.wrapper_category_date {
+    display: flex;
+    gap: 10px;
+    font-family: "Libre Baskerville";
+    font-style: italic;
+    font-size: 1em;
+    margin-top: 3%;
+    text-align: center;
+}
+
+.content_article {
+    font-family: "League Spartan";
+    font-weight: 300;
+    font-size: 1.5em;
+    padding: 0 5%;
+    margin: 10% 0;
+    text-align: center;
+}
+
+.container_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_article {
+    width: 80%;
+}
+
+.container_icon_article {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10%;
+    padding-left: 5%;
+}
+
+.return_arrow {
+    width: 10%;
+}
+
+.container_separation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.separation_article {
+    width: 90%;
+    height: 0.1rem;
+    background-color: #262521;
+    margin-bottom: 20%;
+}
+
+                                    /*******************************************************************************
                                                                     CONTACT
                                     ********************************************************************************/
 
@@ -388,10 +459,6 @@ input, label {
     border-radius: 5px;
 }
 
-.btn_submit:hover {
-    background-color: #BFBAB0;
-    transition: .5s ease-in-out;
-}
 
 
 
@@ -505,10 +572,7 @@ td {
     font-size: 1.5em;
 }
 
-.btn_submit_article:hover {
-    background-color: #BFBAB0;
-    transition: 1s ease-in;
-}
+
 
 input[type="file"]::file-selector-button {
     appearance: none; 

@@ -199,7 +199,7 @@ nav a {
 .separation_main {
     width: 90%;
     height: 0.1rem;
-    background-color: black;
+    background-color: #262521;
 }
 
 .container_categories_article a {
@@ -226,11 +226,11 @@ nav a {
     font-size: clamp(0.5em,3vw,2em);
 }
 
-.img_article {
+.cover_img {
     width: clamp(9%,85vw,150%);
 }
 
-.img_article:hover {
+.cover_img:hover {
     cursor: pointer;
     background-color: #262521;
     transition: ease .3s;
