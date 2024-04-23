@@ -342,9 +342,6 @@ textarea {
         border-radius: 30px;
     }
 
-    .dashboard img {
-        width: 5%;
-    }
 
     .search-container {
         position: relative;
@@ -376,6 +373,10 @@ textarea {
 
     .search-icon {
         width: 50%;
+    }
+
+    .logo-img {
+        width: 5rem;
     }
     
 
