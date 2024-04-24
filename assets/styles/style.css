@@ -130,7 +130,7 @@ nav a {
 .link_footer, .diese {
     font-family: "League Spartan";
     font-weight: 300;
-    font-size: clamp(0.5em, 3vw, 3em);
+    font-size: 1em;
 }
 
                                     /*******************************************************************************
@@ -192,20 +192,21 @@ nav a {
                                     ********************************************************************************/
 
 .box_bio_article img {
-    margin: 10% 0;
+    margin-bottom: 10%;
     width: 80%;
 }
 
 .separation_main {
-    width: 90%;
+    width: 80%;
     height: 0.1rem;
     background-color: #262521;
+    transform: translateY(-1.5rem);
 }
 
 .container_categories_article a {
     font-family: "Libre Baskerville";
     font-style: italic;
-    font-size: 1.2em;
+    font-size: 0.8em;
 }
 
 .container_categories_articles a:hover {
@@ -218,26 +219,17 @@ nav a {
     font-size: clamp(1em,7vw,10em);
 }
 
-.tag_article,
-.tag_article_equipment,
-.tag_article_inspi {
+.tag_article {
     font-family: 'Libre Baskerville';
     font-style: italic;
     font-size: clamp(0.5em,3vw,2em);
 }
 
 .cover_img {
-    width: clamp(9%,85vw,150%);
+    width: 21rem;
 }
 
-.cover_img:hover {
-    cursor: pointer;
-    background-color: #262521;
-    transition: ease .3s;
-    -webkit-transition: ease .3s;
-    opacity: 1;  
-}
-
+/* BOUTON ARTICLE*/
 
 .btn_more_article {
     background-color: #262521;
@@ -245,11 +237,118 @@ nav a {
     border-radius: 25px;
     font-family: "Libre Baskerville";
     font-style: italic;
-    font-size: clamp(0.5em,3vw,1em);
     width: 10rem;
     height: 1.6rem;
     font-size: 2em;
 }
+
+.btn-more_article,
+.btn-more_article *,
+.btn-more_article:after,
+.btn-more_article :before,
+.btn-more_article:after,
+.btn-more_article:before {
+    border: 0 solid;
+    box-sizing: border-box;
+}
+
+.btn_more_article {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background-color: #262521;
+    background-image: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Libre Baskerville';
+    font-style: italic;
+    font-size: clamp(0.5em,3vw,4em);
+    font-weight: 900;
+    line-height: 1.5;
+    margin: 0;
+    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+    padding: 0;
+}
+
+.btn_more_article:disabled {
+    cursor: default;
+}
+
+.btn_more_article:-moz-focusring {
+    outline: auto;
+}
+
+.btn_more_article svg {
+    display: block;
+    vertical-align: middle;
+}
+
+.btn_more_article [hidden] {
+    display: none;
+}
+
+.btn_more_article {
+    border-radius: 10rem;
+    border-width: 2px;
+    overflow: hidden;
+    padding: 0.2rem 1rem;
+    position: relative;
+    left: 13rem;
+    bottom: 0;
+    margin-bottom: 10%;
+}
+
+.btn_more_article span {
+    display: grid;
+    inset: 0;
+    place-items: center;
+    position: absolute;
+    transition: opacity 0.2s ease;
+}
+
+.btn_more_article .marquee {
+    --spacing: 10em;
+    --start: 0em;
+    --end: 10em;
+    -webkit-animation: marquee 1s linear infinite;
+    animation: marquee 3s linear infinite;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    opacity: 0;
+position: relative;
+  text-shadow: #fff var(--spacing) 0, #fff calc(var(--spacing) * -1) 0,
+    #fff calc(var(--spacing) * -2) 0;
+}
+
+.btn_more_article:hover .marquee {
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
+    opacity: 1;
+}
+
+.btn_more_article:hover .text {
+    opacity: 0;
+}
+
+@-webkit-keyframes marquee {
+0% {
+    transform: translateX(var(--start));
+}
+
+to {
+    transform: translateX(var(--end));
+    }
+}
+
+@keyframes marquee {
+0% {
+    transform: translateX(var(--start));
+}
+
+to {
+    transform: translateX(var(--end));
+    }
+}
+
 
                                     /*******************************************************************************
                                                                     CONTACT
@@ -270,6 +369,11 @@ nav a {
     font-size: 0.7em;
     border-radius: 5px;
     transform: translateY(-0.5rem);
+}
+
+.container_form button:hover {
+    transition: 1s ease-in;
+    
 }
 
 .container_form input,
@@ -312,6 +416,62 @@ textarea {
                                                                     MEDIA QUERIES
                                     ********************************************************************************/
 
+    @media screen and (min-width: 820px) {
+
+    /* INDEX.HTML */
+
+    .link_nav {
+        font: 300 2.5em League Spartan;
+    }
+
+    .link_footer, .diese {
+        font-size: 1.5em;
+    }
+
+    /* BLOG */
+
+    .separation_main {
+        width: 40rem;
+        height: 0.1rem;
+        background-color: #262521;
+        transform: translateY(-2rem);
+    }
+
+    .container_categories_article a {
+        font-size: 1.5em;
+    }
+
+    .cover_img {
+        width: 40.5rem;
+    }
+
+    .tag_article {
+    margin-top: 1.5%;
+    font-size: 1.2em;
+}
+
+.container_article > .tag_article {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 77%;
+}
+
+.btn_more_article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    left: 30rem;
+    bottom: 0;
+    width: 17rem;
+    font-size: 1.5em;
+    height: 3rem;
+}
+
+
+
+}
 
 
                                     /*******************************************************************************
@@ -446,112 +606,6 @@ body {
     scrollbar-color: var(--sb-thumb-color)
                     var(--sb-track-color);
 }
-}
-
-.btn-more_article,
-.btn-more_article *,
-.btn-more_article:after,
-.btn-more_article :before,
-.btn-more_article:after,
-.btn-more_article:before {
-    border: 0 solid;
-    box-sizing: border-box;
-}
-
-.btn_more_article {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: button;
-    background-color: #262521;
-    background-image: none;
-    color: #fff;
-    cursor: pointer;
-    font-family: 'Libre Baskerville';
-    font-style: italic;
-    font-size: clamp(0.5em,3vw,4em);
-    font-weight: 900;
-    line-height: 1.5;
-    margin: 0;
-    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
-    padding: 0;
-}
-
-.btn_more_article:disabled {
-    cursor: default;
-}
-
-.btn_more_article:-moz-focusring {
-    outline: auto;
-}
-
-.btn_more_article svg {
-    display: block;
-    vertical-align: middle;
-}
-
-.btn_more_article [hidden] {
-    display: none;
-}
-
-.btn_more_article {
-    border-radius: 10rem;
-    border-width: 2px;
-    overflow: hidden;
-    padding: 0.2rem 1rem;
-    position: relative;
-    left: 12rem;
-    bottom: 5rem;
-}
-
-.btn_more_article span {
-    display: grid;
-    inset: 0;
-    place-items: center;
-    position: absolute;
-    transition: opacity 0.2s ease;
-}
-
-.btn_more_article .marquee {
-    --spacing: 10em;
-    --start: 0em;
-    --end: 10em;
-    -webkit-animation: marquee 1s linear infinite;
-    animation: marquee 3s linear infinite;
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-    opacity: 0;
-position: relative;
-  text-shadow: #fff var(--spacing) 0, #fff calc(var(--spacing) * -1) 0,
-    #fff calc(var(--spacing) * -2) 0;
-}
-
-.btn_more_article:hover .marquee {
-    -webkit-animation-play-state: running;
-    animation-play-state: running;
-    opacity: 1;
-}
-
-.btn_more_article:hover .text {
-    opacity: 0;
-}
-
-@-webkit-keyframes marquee {
-0% {
-    transform: translateX(var(--start));
-}
-
-to {
-    transform: translateX(var(--end));
-    }
-}
-
-@keyframes marquee {
-0% {
-    transform: translateX(var(--start));
-}
-
-to {
-    transform: translateX(var(--end));
-    }
 }
 
 

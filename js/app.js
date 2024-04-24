@@ -42,6 +42,8 @@ function cacherNavigation() {
 
 }
 
+
+
 /* Menu déroulants * 
 *******************/
 
@@ -87,7 +89,28 @@ collection.forEach(element => {
 });
 
 
+function updateNavDisplay() {
+    // Je sélectionne l'élément qui permet de gérer le menu hamburger
+    const navMenu = document.querySelector ('.collapse');
 
+    // Je crée une const qui me dit que si l'écran à une taille maximale de 820px me renvoie un booléen vrai ou faux
+    const isSmallScreen = window.matchMedia('(max-width: 820px)').matches;
+
+    // Je crée une condition qui fait si l'écran à une taille maximale de 820px, le menu hamburger est enlevé
+    if (isSmallScreen) {
+        navMenu.classList.add('hide');
+        btnNavShow.classList.remove('hide');
+        btnNavHide.classList.add('hide');
+    } else {
+        navMenu.classList.remove('hide');
+        btnNavShow.classList.add('hide');
+        btnNavHide.classList.add('hide');
+    }
+}
+
+updateNavDisplay();
+
+window.addEventListener('resize', updateNavDisplay);
 
 
 

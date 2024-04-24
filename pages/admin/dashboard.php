@@ -25,7 +25,7 @@
 <body>
     <header class="dashboard">
 
-        <img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet">
+        <a href="./deconnexion.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
         <button class="btn_create_article"><a href="create-article.php">+ Créer article</a></button>
         <!-- <a href="./blog.html"><img class="icon_logout" src="../assets/icons/logout.svg" alt="Icone pour se déconnecter"></a> -->
         
