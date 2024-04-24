@@ -114,9 +114,27 @@ window.addEventListener('resize', updateNavDisplay);
 
 
 
+
+
 const icons = document.querySelectorAll('.icon');
 icons.forEach (icon => {  
 icon.addEventListener('click', (event) => {
     icon.classList.toggle("open");
     });
 });
+
+function FullView(src) {
+    // Récupère l'élément FullImageView
+    const fullImageView = document.getElementById("FullImageView");
+    // Récupère l'élément FullImage
+    const fullImage = document.getElementById("FullImage");
+
+    // Définit la source de l'image
+    fullImage.src = src;
+    // Affiche la div FullImageView
+    fullImageView.style.display = "flex";
+    // Ajoute un événement pour fermer la div FullImageView lors d'un clic sur l'image
+    fullImage.addEventListener("click", function() {
+        fullImageView.style.display = "none";
+    });
+}

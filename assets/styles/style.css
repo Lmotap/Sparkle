@@ -102,7 +102,7 @@ nav a {
                                     ********************************************************************************/
 
 #main_img {
-    width: clamp(23rem,70vw,40rem);
+    width: 25rem;
     transition: opacity 0.3s ease;
 }
 
@@ -433,6 +433,26 @@ textarea {
         font-size: 1.5em;
     }
 
+    #main_img {
+        width: 36rem;
+    }
+
+        /* PHOTOS */
+    
+    .icon_arrow {
+        width: 3rem;
+    }
+
+    .box_description h4 {
+    font-size: 2em;
+}
+
+.texteDescriptifPhotos {
+    font-size: 1em;
+    padding: 0 10%;
+    }
+
+
     /* BLOG */
 
     .separation_main {
@@ -502,10 +522,14 @@ textarea {
     width: 20rem;
 }
 
-
-
 }
 
+@media screen and (min-width: 1200px) {
+
+    #main_img {
+        width: 22rem;
+    }
+}
 
                                     /*******************************************************************************
                                                                     DASHBOARD ADMIN
@@ -587,25 +611,7 @@ textarea {
     }
 
 
-
-    @media screen and (min-width: 820px) {
-
-        /* PHOTOS */
-    
-    .icon_arrow {
-        width: 5rem;
-    }
-
-    .box_description h4 {
-    font-size: 3em;
-}
-
-.texteDescriptifPhotos {
-    font-size: 2em;
-    }
-
-        /* BLOG */
-}    
+  
 
 
 
