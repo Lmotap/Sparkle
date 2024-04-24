@@ -83,7 +83,7 @@ nav {
 
 .footer {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 }
 
@@ -225,13 +225,17 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10% 0;
+    padding: 0 5%;
+    text-align: center;
+    margin-bottom: 10%;
 }
 
 .title_article {
     font-family: "League Spartan";
     font-weight: 300;
     font-size: 3em;
+    margin: 0;
+    margin-top: 10%;
 }
 
 .wrapper_category_date {
@@ -240,18 +244,8 @@ nav {
     font-family: "Libre Baskerville";
     font-style: italic;
     font-size: 1em;
-    margin-top: 3%;
-    text-align: center;
 }
 
-.content_article {
-    font-family: "League Spartan";
-    font-weight: 300;
-    font-size: 1.5em;
-    padding: 0 5%;
-    margin: 10% 0;
-    text-align: center;
-}
 
 .container_img {
     display: flex;
@@ -260,14 +254,30 @@ nav {
 }
 
 .img_article {
-    width: 80%;
+    width: 110%;
+}
+
+.wraper_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content_article {
+    font-family: "Libre Baskerville";
+    font-weight: 300;
+    font-size: 1em;
+    padding: 0 7%;
+    text-align: left;
+    margin: 5% 0;
 }
 
 .container_icon_article {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-bottom: 10%;
+    margin: 10% 0;
     padding-left: 5%;
 }
 
@@ -371,6 +381,7 @@ input, label {
         width: 10%;
     }
 
+
     
     .footer {
         padding: 0 10px;
@@ -380,6 +391,41 @@ input, label {
 
     .title_article {
         font-size: 5em;
+    }
+
+    .img_article {
+        width: 70%;
+    }
+
+    .wrapper_category_date {
+        font-size: 1.2em;
+    }
+
+    .return_arrow {
+        width: 100%;
+    }
+    
+
+    /* Contact */
+
+    .container_form {
+        margin-bottom: 5%;
+    }
+
+    .wraper_content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .content_article {
+        font-family: "Libre Baskerville";
+        font-weight: 400;
+        font-size: 1.5em;
+        padding: 0 5%;
+        text-align: left;
+        max-width: 80%;
     }
 
 }

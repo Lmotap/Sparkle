@@ -130,7 +130,7 @@ nav a {
 .link_footer, .diese {
     font-family: "League Spartan";
     font-weight: 300;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
                                     /*******************************************************************************
@@ -231,6 +231,10 @@ nav a {
 
 /* BOUTON ARTICLE*/
 
+.container_btn_more_article {
+    margin-bottom: 30%;
+}
+
 .btn_more_article {
     background-color: #262521;
     color: white;
@@ -293,7 +297,7 @@ nav a {
     padding: 0.2rem 1rem;
     position: relative;
     left: 13rem;
-    bottom: 0;
+    bottom: -2rem;
     margin-bottom: 10%;
 }
 
@@ -382,7 +386,7 @@ textarea {
 }
 
 .container_form input{
-    height: 1.5rem;
+    height: 2rem;
 }
 
 .asterik_symbol, .required_field, ::placeholder {
@@ -405,12 +409,13 @@ textarea {
 }
 
 .btn_suscribe {
-    display: flex;
-    align-items: center;
-    padding: 15px;
     margin-bottom: 15%;
+    width: 100%;
 }
 
+.title_neswletters {
+    margin-top: 5%;
+}
 
                                     /*******************************************************************************
                                                                     MEDIA QUERIES
@@ -421,7 +426,7 @@ textarea {
     /* INDEX.HTML */
 
     .link_nav {
-        font: 300 2.5em League Spartan;
+        font: 300 2em League Spartan;
     }
 
     .link_footer, .diese {
@@ -467,6 +472,34 @@ textarea {
     width: 17rem;
     font-size: 1.5em;
     height: 3rem;
+}
+
+/* Contact */
+
+.container_form button {
+    height: 3rem;
+    font-size: 1em;
+}
+
+.container_form label {
+    font-size: 2em;
+}
+
+.container_form input {
+    height: 3rem;
+}
+
+.container_form input::placeholder,
+.container_form textarea::placeholder {
+    font-size: 1.2em;
+}
+
+.asterik_symbol, .required_field {
+    font-size: 1em;
+}
+
+.input_email_neswletter {
+    width: 20rem;
 }
 
 
