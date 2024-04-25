@@ -138,7 +138,7 @@ nav a {
                                     ********************************************************************************/
 
 .img_category {
-    width: clamp(25rem,120vw, 40rem);
+    width: 100%;
 }
 
 .title_category {
@@ -148,9 +148,7 @@ nav a {
     color: white;
 }
 
-.title_category:hover {
-    text-decoration: none;
-}
+
 
                                     /*******************************************************************************
                                                                     PHOTOS PAGE

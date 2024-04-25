@@ -138,3 +138,13 @@ function FullView(src) {
         fullImageView.style.display = "none";
     });
 }
+
+
+function returnAlinea() {
+    const description = document.getElementById("description");
+    const text = description.innerText;
+    const newText = text.split(", ").join("<br>");
+    description.innerHTML = newText;
+}
+
+returnAlinea();
