@@ -442,6 +442,19 @@ textarea {
         width: 36rem;
     }
 
+
+        /* CATEGORIES */
+
+        .img_category {
+            width: 80%;
+        }
+
+        .title_category {
+            font-size: 6em;
+        }
+        
+
+
         /* PHOTOS */
     
     .icon_arrow {
@@ -472,12 +485,12 @@ textarea {
     }
 
     .cover_img {
-        width: 40.5rem;
+        width: 40rem;
     }
 
     .tag_article {
-    margin-top: 1.5%;
-    font-size: 1.2em;
+    margin-top: 3%;
+    font-size: 1em;
 }
 
 .container_article > .tag_article {
@@ -534,6 +547,17 @@ textarea {
     #main_img {
         width: 22rem;
     }
+
+    /* Categorie Photo */
+
+    .img_category {
+        width: 40%;
+    }
+
+    .title_category {
+        font-size: 3em;
+    }
+    
 }
 
                                     /*******************************************************************************

@@ -122,15 +122,21 @@ nav {
                                                                     CATEGORY PHOTOS
                                     ********************************************************************************/
 
-.container_louvre, .container_musee, .container_night {
+.container_paris, .container_musee, .container_night, .container_fleurs, .container_haute_savoie, .container_mont_saint_michel, .container_la_defense {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.container_categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10%;
+}
 
-.container_categories .title_category {
+.title_category {
     position: absolute;
     top: 50%;
     left: 0;
@@ -426,7 +432,7 @@ input, label {
      /* Photos Page */
 
     .img_wdth {
-        width: 50%;
+        width: 70%;
         margin-bottom: 5%;
     }
 
