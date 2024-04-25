@@ -148,3 +148,24 @@ function returnAlinea() {
 }
 
 returnAlinea();
+
+function start() {
+    let dyslexic_link = document.querySelector("#dyslexic");
+
+    dyslexic_link.addEventListener("click", gerer_dyslexic);
+
+    if (localStorage.getItem("theme") == "Dyslexic") {
+
+        console.log("Préférence existante dans le local storage");
+
+        let dyslexic_style = document.createElement("style");
+        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('fonts/OpenDyslexic.ttf');}"));
+
+        document.head.appendChild(dyslexic_style);
+        let html_element = document.querySelector("html");
+
+        html_element.style.fontFamily = "OpenDyslexic";
+
+    }
+}
+

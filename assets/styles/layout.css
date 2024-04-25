@@ -12,6 +12,12 @@ header {
     display: flex;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .hide {
     display: none;
 }
@@ -258,6 +264,10 @@ nav {
     margin-bottom: 10%;
 }
 
+.icon_dyslexic {
+    
+}
+
 .title_article {
     font-family: "League Spartan";
     font-weight: 300;
@@ -465,6 +475,17 @@ input, label {
         margin-top: -2rem;
     }
 
+    .header {
+        justify-content: flex-start;
+    }
+
+    .icon_dyslexic {
+        width: 2.5rem;
+    }
+
+    #dyslexic {
+        margin-left: auto;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -498,6 +519,8 @@ input, label {
         margin-top: -2rem;
         margin-bottom: 7rem;
     }
+
+    
 
 
 
