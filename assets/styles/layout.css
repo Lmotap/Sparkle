@@ -172,6 +172,12 @@ nav {
                                                                     BLOG
                                     ********************************************************************************/
 
+.img_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .box_bio_article {
     display: flex;
     flex-direction: column;
@@ -194,17 +200,13 @@ nav {
     margin-bottom: 10%;
 }
 
-.container_article > .tag_article {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 78%;
-    margin-top: 1%;
-}
-
 .titre_article {
     text-align: center;
     white-space: pre;
+}
+
+.tag_article {
+    margin-top: 3.5%;
 }
 
 
