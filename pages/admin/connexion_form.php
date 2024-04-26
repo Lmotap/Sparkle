@@ -1,6 +1,6 @@
 <?php
 
-require_once ('../../App/Utilitary/Log.php');
+require_once __DIR__ . ('../../../App/Utilitary/Log.php');
 
 session_name("admin");
 session_start();
@@ -28,18 +28,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $resultat = $requete->fetch();
         var_dump($resultat);
 
-             // Vérification du mot de passe
-        if (password_verify('1234', $password)) {
-            $_SESSION["admin"] = $resultat->id;
-            $_SESSION["pseudo"] = $resultat->pseudo;
-
-            header("Location: dashboard.php");
-            exit;
-        } else {
-            echo "Mot de passe incorrect";
-        }
-    } else {
-        echo "Nom d'utilisateur ou adresse e-mail incorrecte";
     }
 }
 

@@ -1,0 +1,6 @@
+26/04/2024
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Le champ 'titleCover' ne peut être vide (null) in C:\Users\DWWM\Desktop\Mon Espace de Travail\Mes projets\Street photography portfolio\Sparkle\App\Modal\Cover.php:52
+Stack trace:
+#0 C:\Users\DWWM\Desktop\Mon Espace de Travail\Mes projets\Street photography portfolio\Sparkle\App\Modal\Cover.php(52): PDOStatement->execute()
+#1 C:\Users\DWWM\Desktop\Mon Espace de Travail\Mes projets\Street photography portfolio\Sparkle\pages\admin\create-article.php(43): Cover->createCover()
+#2 {main}

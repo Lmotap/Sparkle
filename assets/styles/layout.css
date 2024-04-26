@@ -12,11 +12,6 @@ header {
     display: flex;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .hide {
     display: none;
@@ -270,9 +265,7 @@ nav {
     margin-bottom: 10%;
 }
 
-.icon_dyslexic {
-    
-}
+
 
 .title_article {
     font-family: "League Spartan";

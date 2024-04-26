@@ -1,27 +1,16 @@
 <?php
 
     class Admin {
-        private int $adminId = 0;
-
-        private string $pseudo = "";
-
+        private int $newsletterSubscriberId = 0;
         private string $email = "";
 
-        private string $password = "";
+        public function getId(){return $this->newsletterSubscriberId;}
+        public function setId($newsletterSubscriberId){$this->newsletterSubscriberId = $newsletterSubscriberId;}
     
-        public function getId(){return $this->adminId;}
-        public function setId($adminId){$this->adminId = $adminId;}
-    
-        public function getPseudo(){return $this->pseudo;}
-        public function setPseudo($pseudo){$this->pseudo = $pseudo;}
-    
-        public function getEmail(){return $this->email;}
-        public function setEmail($email){$this->email = $email;}
-    
-        public function getPassword(){return $this->password;}
-        public function setPassword($password){$this->password = $password;}
+        public function getPseudo(){return $this->email;}
+        public function setPseudo($email){$this->email = $email;}
 
-    public function checkAdmin($pseudo ,$email, $password) {
+    public function createSubscriber($email) {
 
     require_once __DIR__ ."../../config/config.php";
 
@@ -33,9 +22,7 @@
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             // Données postées depuis un formulaire
-            $username = $_POST["pseudo"];
             $email = $_POST["email"];
-            $password = $_POST["password"];
 
             try {
             
@@ -43,12 +30,13 @@
                 $connexion = new PDO ($dsn, DBUSER, DBPASS);
                 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-                $sql = "SELECT * FROM admin WHERE pseudo=:pseudo AND email=:email AND password=:password ;";
+                $sql = "INSERT INTO newsletter_subscriber
+                (email)
+                VALUES
+                (:email);";
                 // Préparation de la requête
                 $requete = $connexion-> prepare($sql);
-                $requete->bindParam(":pseudo", $pseudo);
                 $requete->bindParam(":email", $email);
-                $requete->bindParam(":password", $password);
             
                 if ($requete-> execute()) {
                     $resultat = $requete->fetch();
