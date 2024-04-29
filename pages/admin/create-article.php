@@ -3,9 +3,10 @@
     session_name("admin");
     session_start();
 
-    require_once __DIR__ . ('../../../App/Utilitary/Log.php');
-    require_once __DIR__. ('../../../App/Modal/Article.php');
-    require_once __DIR__. ('../../../App/Modal/Cover.php');
+    require_once __DIR__ . ('../../../App/Utiltary/Log.php');
+    require_once __DIR__. ('../../../App/models/Admin.php');
+    require_once __DIR__. ('../../../App/models/Categories.php');
+    require_once __DIR__. ('../../../App/models/Cover.php');
 
 
 

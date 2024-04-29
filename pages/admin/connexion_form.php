@@ -1,35 +1,51 @@
 <?php
 
-require_once __DIR__ . ('../../../App/Utilitary/Log.php');
+require_once __DIR__ . ('../../../App/Utiltary/Log.php');
 
 session_name("admin");
 session_start();
 
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Données postées depuis un formulaire
+        $username = $_POST["pseudo"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
+        //Connexion à la base de donnée
+        $connexion = new PDO ("mysql:host=localhost; dbname=blog_portfolio", "lmotap", "Te9B1cp!L3aV+iD!");
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Données postées depuis un formulaire
-    $username = $_POST["pseudo"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+        $sql = "SELECT * FROM admin WHERE pseudo=:pseudo AND email=:email;";
+        // Préparation de la requête
+        $requete = $connexion-> prepare($sql);
+        $requete->bindParam(":pseudo", $username); // Correction ici
+        $requete->bindParam(":email", $email); // Correction ici // Correction ici
 
-    //Connexion à la base de donnée
-    $connexion = new PDO ("mysql:host=localhost; dbname=blog_portfolio", "lmotap", "Te9B1cp!L3aV+iD!");
-    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if ($requete-> execute()) {
+            $resultat = $requete->fetch();
+            var_dump($resultat);
 
-    $sql = "SELECT * FROM admin WHERE pseudo=:pseudo AND email=:email AND password=:password ;";
-    // Préparation de la requête
-    $requete = $connexion-> prepare($sql);
-    $requete->bindParam(":pseudo", $pseudo);
-    $requete->bindParam(":email", $email);
-    $requete->bindParam(":password", $password);
-
-    if ($requete-> execute()) {
-        $resultat = $requete->fetch();
-        var_dump($resultat);
-
+            if (!empty($resultat)) {
+                // Verifier le mot de passe
+                if (password_verify($password, $resultat["password"] )) {
+                     // Stocker les informations de l'utilisateur dans la session
+                        $_SESSION['admin'] = [
+                        'id' => $resultat['id'],
+                        'pseudo' => $resultat['pseudo'],
+                        'email' => $resultat['email']
+                    ];
+                    header('Location: dashboard.php');
+                    exit();
+                } else {
+                    // Mot de passe incorrect
+                    echo "Identifiants incorrects";
+                }
+            } else {
+                // Aucun utilisateur ne correspond à cette identifiant
+                echo "Identifiants incorrects";
+            }
+        }
     }
-}
 
 ?>
 

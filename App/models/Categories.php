@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__. ('../../Utilitary/Log.php');
+require_once __DIR__. ('../../Utiltary/Log.php');
 
 
 class Category {

@@ -1,7 +1,17 @@
 <?php
 
+    require_once __DIR__.  '../../../App/models/Article.php';
+    require_once __DIR__. '../../../App/models/Categories.php';
+
     session_name("admin");
     session_start();
+
+    // $article = new Article();
+    // $article->findAllArticleById();
+    $listeArticles = Article::findAllArticles();
+
+//   var_dump($listeArticles);
+//   die();
 
 ?>
 
@@ -56,27 +66,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Voilà pourquoi le Fujifilm-TX-30 II est excellent</td>
-                    <td>1</td>
-                    <td>Style</td>
-                    <td class="icon_delete_update"><a href="./modifier-article.php"><img class="icon_dashboard" src="../../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../../assets/icons/bin-delete.svg" alt=""></a></td>
-                </tr>
-                <tr>
-                    <td>Fujifilm-TX-30 II</td>
-                    <td>2</td>
-                    <td>Equipement</td>
-                    <td class="icon_delete_update"><a href="./modifier-article.php"><img class="icon_dashboard" src="../../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../../assets/icons/bin-delete.svg" alt=""></a></td>                </tr>
-                <tr>
-                    <td>Fujifilm-TX-30 II</td>
-                    <td>3</td>
-                    <td>Style</td>
-                    <td class="icon_delete_update"><a href="./modifier-article.php"><img class="icon_dashboard" src="../../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../../assets/icons/bin-delete.svg" alt=""></a></td>                </tr>
-                <tr>
-                    <td>Fujifilm-TX-30 II</td>
-                    <td>4</td>
-                    <td>Lieux</td>
-                    <td class="icon_delete_update"><a href="./modifier-article.php"><img class="icon_dashboard" src="../../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../../assets/icons/bin-delete.svg" alt=""></a></td>                </tr> 
+                <?php 
+                foreach ($listeArticles as $article) { 
+                ?>
+                    <tr>
+                        <td><?php
+                        echo $article["title"]
+                        ?>
+                        </td>
+                        <td><?php
+                        echo $article["article_id"]
+                        ?>
+                        </td>
+                        <td><?php
+                        echo $article["category"]
+                        ?>
+                        </td>
+                        <td class="icon_delete_update"><a href="./modifier-article.php"><img class="icon_dashboard" src="../../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../../assets/icons/bin-delete.svg" alt=""></a></td>
+                    </tr>
+
+                <?php
+                }
+                ?> 
             </tbody>
         </table>
     </div>

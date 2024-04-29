@@ -165,7 +165,7 @@ function start() {
         let html_element = document.querySelector("html");
 
         html_element.style.fontFamily = "OpenDyslexic";
-
+t
     }
 }
 
