@@ -13,12 +13,12 @@ class Article {
     private int $coverId = 0;
 
     public function __construct($articleId, $title, $content, $image, $date_modified, $date_created) {
-        $this->articleId = $articleId;
-        $this->title = $title;
-        $this->image = $image;
-        $this->content = $content;
-        $this->date_created = $date_created;
-        $this->date_modified = $date_modified;
+        $this->articleId = 0;
+        $this->title = "";
+        $this->image = "";
+        $this->content = "";
+        $this->date_created = "";
+        $this->date_modified = "";
     }
 
     /** Les accesseurs magiques */
@@ -94,12 +94,14 @@ class Article {
         }
     }
 
-    // Create a new article
-    public function createArticle($title, $content, $image)
-    {
-        include_once __DIR__ . "/../../config/config.php";
+    // Create a new Article //
 
-        $sql = "INSERT INTO article (title, content, image) VALUES (:title, :content, :image);";
+    public function createArticle(): array {
+        include_once __DIR__ . "../../config/config.php";
+
+        $sql = "INSERT INTO article (title, content, image) 
+        VALUES 
+        (:title, :content, :image);";
 
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
@@ -110,15 +112,18 @@ class Article {
             $req->bindParam(":image", $image, PDO::PARAM_STR);
             $req->bindParam(":content", $content, PDO::PARAM_STR);
 
-            $req->execute();
-        } catch (Exception | Error $ex) {
-                echo $ex->getMessage();
-        }
-    }
 
-    // Read an article by ID
-    public function read($articleId)
-    {
+            if ($req->execute()) {
+            // La requête s'est bien passée !
+            return ['success' => true, 'id' => $db->lastInsertId()];
+            } else {
+            // La requête n'a pu être executée
+            return ['success' => false];
+            }
+        } catch (Exception | Error $ex) {
+            echo $ex->getMessage();
+            return array();
+        }
     }
 
     // Update an existing article
@@ -129,6 +134,10 @@ class Article {
     // Delete an article by ID
     public function delete($articleId)
     {
+         // Assurez-vous que $this->db est une instance de PDO
+    $req = $this->db->prepare("DELETE FROM articles WHERE id = :id");
+    $req->bindParam(':id', $articleId);
+    $req->execute();
     }
 
 

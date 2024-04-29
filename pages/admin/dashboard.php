@@ -82,7 +82,15 @@
                         echo $article["category"]
                         ?>
                         </td>
-                        <td class="icon_delete_update"><a href="./modifier-article.php"><img class="icon_dashboard" src="../../assets/icons/pen.svg" alt=""><img class="icon_dashboard" src="../../assets/icons/bin-delete.svg" alt=""></a></td>
+                        <td class="icon_delete_update">
+                            <a href="./modifier-article.php">
+                                <img class="icon_dashboard" src="../../assets/icons/pen.svg" alt="">
+                            </a>
+
+                            <a href="./supprimer-article.php?id=<?php echo $article['article_id']; ?>">
+                                <img class="icon_dashboard" src="../../assets/icons/bin-delete.svg" alt="">
+                            </a>
+                        </td>
                     </tr>
 
                 <?php
