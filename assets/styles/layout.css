@@ -10,6 +10,7 @@ body {
 
 header {
     display: flex;
+    z-index: 1;
 }
 
 
@@ -140,7 +141,7 @@ nav {
 
 .container_categories {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     margin-bottom: 10%;
 }
@@ -154,6 +155,8 @@ nav {
     color: #fff;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    width: 200px; /* ou la largeur que vous voulez */
+    margin: auto;
 }
 
 .container_categories .img_category {
