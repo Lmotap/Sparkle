@@ -63,6 +63,20 @@ class Article {
         }
     }
 
+    // Permet de trier et d'afficher les articles selon les categories dans la page blog et dashboard
+    public static function findArticlesByCategory($categoryName) {
+
+        include_once __DIR__ . "../../config/config.php";
+
+        $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+
+        $req = $db->prepare('SELECT article_id, content, image, date_modified, date_created, title, name as category 
+        FROM article 
+        INNER JOIN category ON fk_category_article = category_id WHERE category.name = :categoryName;');
+        $req->execute(array('categoryName' => $categoryName));
+        return $req->fetchAll();
+    }
+
     public static function findAllArticles(): array {
         include_once __DIR__ . "../../config/config.php";
 
@@ -90,7 +104,7 @@ class Article {
         }
     }
 
-    // Create a new Article //
+    // CRUD operations, CREATE ARTICLE
 
     public function createArticle(): array {
         include_once __DIR__ . "../../config/config.php";
@@ -98,17 +112,16 @@ class Article {
         $sql = "INSERT INTO article (title, content, image) 
         VALUES 
         (:title, :content, :image);";
-
+    
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
-
+    
             $req = $db->prepare($sql);
-
-            $req->bindParam(":title", $title, PDO::PARAM_STR);
-            $req->bindParam(":image", $image, PDO::PARAM_STR);
-            $req->bindParam(":content", $content, PDO::PARAM_STR);
-
-
+    
+            $req->bindParam(":title", $this->title, PDO::PARAM_STR);
+            $req->bindParam(":image", $this->image, PDO::PARAM_STR);
+            $req->bindParam(":content", $this->content, PDO::PARAM_STR);
+    
             if ($req->execute()) {
             // La requête s'est bien passée !
             return ['success' => true, 'id' => $db->lastInsertId()];
@@ -118,11 +131,11 @@ class Article {
             }
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
-            return array();
+            return ['success' => false];
         }
     }
 
-    // Update an existing article
+    
     public function update()
     {
     }

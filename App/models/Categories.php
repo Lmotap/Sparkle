@@ -15,21 +15,31 @@ class Category {
 
         public function findOneCategoryById() {
             include_once __DIR__ . "../../config/config.php";
-    
-            $sql = "SELECT * FROM category WHERE categoryId = :categoryId";
-    
+        
+            $sql = "SELECT * FROM category WHERE category_id = :categoryId";
+        
             try {
                 $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
-    
-                $req->bindParam("categoryId, $this->categoryId", PDO::PARAM_INT);
+        
                 $req = $db->prepare($sql);
-    
+                $req->bindParam(":categoryId", $this->categoryId, PDO::PARAM_INT);
+        
                 $req->execute();
+        
+                // Récupérez le résultat de la requête
+                $result = $req->fetch(PDO::FETCH_ASSOC);
+        
+                // Si aucun résultat n'est trouvé, renvoyez null
+                if (!$result) {
+                    return null;
+                }
+        
+                // Sinon, renvoyez le résultat
+                return $result;
             } catch (Exception | Error $ex) {
-                    echo $ex->getMessage();
+                echo $ex->getMessage();
             }
         }
-
         public static function findAllCategories(): array {
             include_once __DIR__ . "../../config/config.php";
     

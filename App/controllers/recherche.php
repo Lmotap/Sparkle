@@ -1,20 +1,10 @@
 <?php
-
     require_once __DIR__.  '../../../App/models/Article.php';
     require_once __DIR__. '../../../App/models/Categories.php';
 
-    session_name("admin");
-    session_start();
-
-    // $article = new Article();
-    // $article->findAllArticleById();
-    $listeArticles = Article::findAllArticles();
-
-//   var_dump($listeArticles);
-//   die();
-
+    $categoryName = $_GET['search-bar']; // Récupère la valeur de la barre de recherche
+    $articlesByCategory = Article::findArticlesByCategory($categoryName);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -35,9 +25,8 @@
 <body>
     <header class="dashboard">
 
-        <a href="../../App//controllers/deconnexion.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+        <a href="./dashboard.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
         <button class="btn_create_article"><a href="create-article.php">+ Créer article</a></button>
-        <!-- <a href="./blog.html"><img class="icon_logout" src="../assets/icons/logout.svg" alt="Icone pour se déconnecter"></a> -->
         
     </header>
 
@@ -45,7 +34,7 @@
         
         <h2 class="title_total_article"><img class="icon_article" src="../../assets/icons/articles.svg" alt="">Total des articles</h2>
 
-        <form action="../../App/controllers/recherche.php" method="get">
+        <form action="recherche.php" method="get">
             <div class="search-container">
                 <input type="text" name="search-bar" placeholder="Rechercher..." class="search-input">
                 <button type="submit" class="search-button"><img class="search-icon" src="../../assets/icons/search-alt.svg" alt=""></button>
@@ -67,23 +56,14 @@
             </thead>
             <tbody>
                 <?php 
-                foreach ($listeArticles as $article) { 
+                foreach ($articlesByCategory as $article) { 
                 ?>
                     <tr>
-                        <td><?php
-                        echo $article["title"]
-                        ?>
-                        </td>
-                        <td><?php
-                        echo $article["article_id"]
-                        ?>
-                        </td>
-                        <td><?php
-                        echo $article["category"]
-                        ?>
-                        </td>
+                        <td><?php echo $article["title"] ?></td>
+                        <td><?php echo $article["article_id"] ?></td>
+                        <td><?php echo $article["category"] ?></td>
                         <td class="icon_delete_update">
-                            <a href="./modifier-article.php">
+                            <a href="./modifier-article.php?id=<?php echo $article['article_id']; ?>">
                                 <img class="icon_dashboard" src="../../assets/icons/pen.svg" alt="">
                             </a>
 
@@ -92,7 +72,6 @@
                             </a>
                         </td>
                     </tr>
-
                 <?php
                 }
                 ?> 

@@ -197,6 +197,11 @@ function gerer_dyslexic() {
     let html_element = document.querySelector("html");
     let body_element = document.querySelector("body");
 
+    if (!html_element || !body_element) {
+        console.error("Les éléments HTML ou BODY n'ont pas été trouvés");
+        return;
+    }
+
     if (localStorage.getItem("theme") == "Dyslexic") {
         localStorage.removeItem("theme");
 
@@ -210,7 +215,7 @@ function gerer_dyslexic() {
     } else { 
         let dyslexic_style = document.createElement("style");
 
-        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
+        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('./assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
 
         document.head.appendChild(dyslexic_style);
 

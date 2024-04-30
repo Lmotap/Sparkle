@@ -7,11 +7,13 @@ class Cover {
     private int $coverId = 0;
     private ?string $titleCover = "";
     private ?string $imageCover = "";
+    private int $fk_article_cover = 0;
 
     public function __construct($coverId, $titleCover, $imageCover) {
         $this->coverId = 0;
         $this->titleCover = "";
         $this->imageCover = "";
+        $this->fk_article_cover = 0;
     }
 
     public function getCoverId(){return $this->coverId;}
@@ -23,31 +25,35 @@ class Cover {
     public function geImage(){return $this->imageCover;}
     public function setImage($imageCover){$this->imageCover = $imageCover;}
 
-    public function createCover() {
+
+    // CRUD operations, CREATE COVER
+    public function createCover(): array {
         include_once __DIR__ . "../../config/config.php";
-
-        $sql = "INSERT INTO cover (titleCover, imageCover) 
-        VALUES 
-        (:titleCover, :imageCover);";
-
+    
+        $sqlInsert = "INSERT INTO cover (titleCover, imageCover, fk_article_cover) VALUES (:titleCover, :imageCover, :fk_article_cover);";
+    
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
-
-            $req = $db->prepare($sql);
-
-            $req->bindParam(":titleCover", $title, PDO::PARAM_STR);
-            $req->bindParam(":imageCover", $image, PDO::PARAM_STR);
+        
+            $reqInsert = $db->prepare($sqlInsert);
+            $reqInsert->bindParam(":titleCover", $this->titleCover, PDO::PARAM_STR);
+            $reqInsert->bindParam(":imageCover", $this->imageCover, PDO::PARAM_STR);
+            $reqInsert->bindParam(":fk_article_cover", $this->fk_article_cover, PDO::PARAM_INT);
             
-            if ($req->execute()) {
-            // La requête s'est bien passée !
-            return ['success' => true, 'id' => $db->lastInsertId()];
+            // Insérez ces commandes ici
+            $result = $reqInsert->execute();
+            var_dump($result);
+            
+            if ($result) {
+                // La requête s'est bien passée !
+                return ['success' => true, 'id' => $db->lastInsertId()];
             } else {
-            // La requête n'a pu être executée
-            return ['success' => false];
+                // La requête n'a pu être executée
+                return ['success' => false, 'error' => $reqInsert->errorInfo()];
             }
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
-            return array();
+            return ['success' => false, 'error' => $ex->getMessage()];
         }
     }
 

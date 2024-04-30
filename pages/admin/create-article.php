@@ -5,10 +5,62 @@
 
     require_once __DIR__ . ('../../../App/Utiltary/Log.php');
     require_once __DIR__. ('../../../App/models/Admin.php');
+    require_once __DIR__. ('../../../App/models/Article.php');
     require_once __DIR__. ('../../../App/models/Categories.php');
     require_once __DIR__. ('../../../App/models/Cover.php');
 
+     // Créez une nouvelle instance de Category
+    $category = new Category();
 
+     // Récupérez toutes les catégories
+    $allCategories = $category->findAllCategories();
+    
+     // Vérifiez si le formulaire a été soumis
+    try {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Récupérez les données du formulaire
+            $titleCover = $_POST['titleCover'];
+            $imageCover = $_FILES['imageCover']['name'];
+            $title = $_POST['title'];
+            $categories = intval($_POST['categories']);
+            $content = $_POST['content'];
+            $image = $_FILES['image']['name'];
+
+            // Vérifiez si la catégorie existe
+            $category = new Category();
+            $category->setId($categories);
+            $categoryResult = $category->findOneCategoryById();
+            var_dump($categoryResult);
+            
+            if (!$categoryResult) {
+                echo "La catégorie spécifiée n'existe pas.";
+                return;
+            }
+            // Créez un nouvel objet Article et enregistrez-le dans la base de données
+            $article = new Article(0, $title, $content, $image, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'));
+            $articleResult = $article->createArticle();
+            var_dump($articleResult);
+
+            // Vérifiez si la création de l'article a réussi
+            if ($articleResult['success']) {
+                // Créez un nouvel objet Cover avec l'ID de l'article nouvellement créé et enregistrez-le dans la base de données
+                $cover = new Cover(0, $titleCover, $imageCover, $articleResult['id']);
+                $coverResult = $cover->createCover();
+                var_dump($coverResult);;
+    
+            
+                    if ($coverResult['success']) {
+                        echo "L'article et la couverture ont été créés avec succès.";
+                    } else {
+                        echo "Une erreur est survenue lors de la création de la couverture.";
+                    }
+                } else {
+                    echo "Une erreur est survenue lors de la création de l'article.";
+                }
+        }
+    } catch (Exception $e) {
+        echo 'Exception attrapée : ',  $e->getMessage(), "\n";
+    }
 
 ?>
 
@@ -32,7 +84,7 @@
 <body class="body_form_article">
 
     <header class="dashboard">
-        <a href="./index.html"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+        <a href="./dashboard.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
         <a href="./dashboard.php"><img class="icon_logout" src="../../assets/icons/arrow-right-return.svg" alt=""></a> 
     </header>
 
@@ -54,10 +106,11 @@
             
                 <select class="select-categories" name="categories" id="categories">
                     <option value="">Séléctionner une catégorie</option>
-                    <option value="Inspirations">Inspirations</option>
-                    <option value="Style">Style</option>
-                    <option value="Equipement">Equipement</option>
-                    <option value="Lieux">Lieux</option>
+                    <?php foreach ($allCategories as $category): ?>
+                    <option value="<?php echo $category['category_id']; ?>">
+                        <?php echo $category['name']; ?>
+                    </option>
+                    <?php endforeach; ?>
                 </select>
 
                 <label for="content">Contenu de l'article</label>
