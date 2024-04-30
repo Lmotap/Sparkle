@@ -142,12 +142,35 @@ function FullView(src) {
 
 function returnAlinea() {
     const description = document.getElementById("description");
-    const text = description.innerText;
-    const newText = text.split(", ").join("<br>");
-    description.innerHTML = newText;
+    if (description) {
+        const text = description.innerText;
+        const newText = text.split(", ").join("<br>");
+        description.innerHTML = newText;
+    }
 }
 
 returnAlinea();
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    let showHamburger = document.getElementById('show_hamburger');
+    let closeHamburger = document.getElementById('close_hamburger');
+    let dyslexicIcon = document.getElementById('dyslexic');
+
+    if (showHamburger && dyslexicIcon) {
+        showHamburger.addEventListener('click', function() {
+            dyslexicIcon.style.display = 'none';
+        });
+    }
+
+    if (closeHamburger && dyslexicIcon) {
+        closeHamburger.addEventListener('click', function() {
+            dyslexicIcon.style.display = 'block';
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", start);
 
 function start() {
     let dyslexic_link = document.querySelector("#dyslexic");
@@ -159,13 +182,43 @@ function start() {
         console.log("Préférence existante dans le local storage");
 
         let dyslexic_style = document.createElement("style");
-        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('fonts/OpenDyslexic.ttf');}"));
+        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
 
         document.head.appendChild(dyslexic_style);
         let html_element = document.querySelector("html");
 
         html_element.style.fontFamily = "OpenDyslexic";
-t
+
     }
 }
 
+
+function gerer_dyslexic() {
+    let html_element = document.querySelector("html");
+    let body_element = document.querySelector("body");
+
+    if (localStorage.getItem("theme") == "Dyslexic") {
+        localStorage.removeItem("theme");
+
+        // Supprimez la classe 'open-dyslexic'
+        html_element.classList.remove('open-dyslexic');
+
+        // Ajoutez les polices "League Spartan" et "Libre Baskerville"
+        html_element.style.fontFamily = "'Libre Baskerville', 'League Spartan', sans-serif";
+        body_element.style.fontFamily = "'Libre Baskerville', 'League Spartan', sans-serif";
+
+    } else { 
+        let dyslexic_style = document.createElement("style");
+
+        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
+
+        document.head.appendChild(dyslexic_style);
+
+        // Ajoutez la classe 'open-dyslexic'
+        html_element.classList.add('open-dyslexic');
+        html_element.style.fontFamily = "OpenDyslexic";
+        body_element.style.fontFamily = "OpenDyslexic";
+
+        localStorage.setItem("theme", "Dyslexic");
+    }
+}

@@ -41,6 +41,20 @@ nav {
     width: 1%;
 }
 
+.container-icon-dyslexic {
+    display: flex;
+    align-items: center;
+}
+
+#dyslexic {
+    position: absolute;
+    right: 5rem;
+}
+
+.icon_dyslexic {
+    width: 4rem;
+}
+
 #logo-img {
     padding-left: 1rem;
 }

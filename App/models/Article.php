@@ -57,10 +57,6 @@ class Article {
             $req->bindParam("articleId", $this->articleId, PDO::PARAM_INT);
             $req = $db->prepare($sql);
 
-            $req->bindParam("title", $this->title, PDO::PARAM_STR);
-            $req->bindParam("photo", $this->image, PDO::PARAM_STR);
-            $req->bindParam("content", $this->content, PDO::PARAM_STR);
-
             $req->execute();
         } catch (Exception | Error $ex) {
                 echo $ex->getMessage();
@@ -132,12 +128,16 @@ class Article {
     }
 
     // Delete an article by ID
-    public function delete($articleId)
+    public static function delete($articleId)
     {
-         // Assurez-vous que $this->db est une instance de PDO
-    $req = $this->db->prepare("DELETE FROM articles WHERE id = :id");
-    $req->bindParam(':id', $articleId);
-    $req->execute();
+        include_once __DIR__ . "../../config/config.php";
+
+        $sql = "DELETE FROM article WHERE article_id = :article_id;";
+        $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+    
+        $req = $db->prepare($sql);
+        $req->bindParam(':article_id', $articleId);
+        $req->execute();
     }
 
 

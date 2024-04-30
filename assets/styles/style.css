@@ -1,23 +1,32 @@
 @font-face {
     font-family: 'League Spartan';
     font-weight: 300;
-    src: url('/assets/fonts/LeagueSpartan/LeagueSpartan-Light.ttf') format('truetype')
+    src: url('../fonts/LeagueSpartan/LeagueSpartan-Light.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'League Spartan';
+    font-weight: 400;
+    src: url('../fonts/LeagueSpartan/LeagueSpartan-Regular.ttf') format('truetype')
 }
 @font-face {
     font-family: 'League Spartan';
     font-weight: 700;
-    src: url('/assets/fonts/LeagueSpartan/LeagueSpartan-Bold.ttf') format('truetype')
+    src: url('../fonts/LeagueSpartan/LeagueSpartan-Bold.ttf') format('truetype')
 }
 
 @font-face {
     font-family: 'Libre Baskerville';
     font-style: italic;
-    src: url('/assets/fonts/LibreBaskerville/LibreBaskerville-Italic.ttf') format('truetype')
+    src: url('../fonts/LibreBaskerville/LibreBaskerville-Italic.ttf') format('truetype')
 }
 @font-face {
     font-family: 'Libre Baskerville';
     font-weight: 400;
-    src: url('/assets/fonts/LibreBaskerville/LibreBaskerville-Regular.ttf') format('truetype')
+    src: url('../fonts/LibreBaskerville/LibreBaskerville-Regular.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('../fonts/OpenDyslexic/OpenDyslexic.ttf') format('truetype');
 }
 
 .root {
