@@ -3,7 +3,26 @@
     session_name("admin");
     session_start();
 
-    
+     // Récupérez l'ID de l'article à partir de l'URL
+    $articleId = $_GET['id'];
+
+     // Créez une nouvelle instance d'Article
+        $article = new Article(null, $title, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'), $categoryResult["category_id"], $created_by);
+
+     // Récupérez les informations de l'article à partir de la base de données
+    $articleInfo = $article->findArticleById($articleId);
+
+     // Récupérez les informations de la couverture de l'article
+    $cover = new Cover(0, $titleCover, $finalFile, $article->getId());
+    $coverInfo = $cover->findCoverByArticleId($articleId);
+
+     // Récupérez les paragraphes de l'article
+    $paragraph = new Paragraph(null, $paragraphContent, $article->getId());
+    $paragraphs = $paragraph->findParagraphsByArticleId($articleId);
+
+     // Récupérez les médias de l'article
+    $media = new Media(null, $finalFile, $article->getId());
+    $medias = $media->findMediaByArticleId($articleId);
 
 ?>
 

@@ -56,7 +56,7 @@ class Article {
 
     /** CRUD operations */
 
-    public function findOneArticleById() {
+    public function findArticleById($articleId) {
         include_once __DIR__ . "../../config/config.php";
 
         $sql = "SELECT * FROM article WHERE articleiD = :articleId";
@@ -68,6 +68,7 @@ class Article {
             $req = $db->prepare($sql);
 
             $req->execute();
+            return $req->fetchAll();
         } catch (Exception | Error $ex) {
                 echo $ex->getMessage();
         }

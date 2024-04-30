@@ -84,33 +84,42 @@
                     // insérer les paragraphes dans la base de données
 
                     $paragraphs = $_POST['content'];
-                    foreach ($paragraphs as $paragraphContent) {
+                    foreach ($paragraphs as $index => $paragraphContent) {
                         $paragraph = new Paragraph(null, $paragraphContent, $article->getId());
                             if (!$paragraph->createParagraph()) {
+                                var_dump($paragraph);
                                     echo "Une erreur est survenue lors de la création du paragraphe.";
                                     return;
                             }
                         }
 
-                    // Insérer les images dans la base de données
-                    if (isset($_FILES["url"]["name"]) && $_FILES["url"]["name"] != "" && $_FILES["url"]["error"] == 0) {
-                        $uploadDirectory = "../../assets/img/blog/";
-                        if (!file_exists($uploadDirectory)) {
-                            mkdir($uploadDirectory, 0777, true); // Forcer la création des sous-dossiers 
-                        }
-                    
-                        $tempFile = $_FILES["url"]["tmp_name"];
-                        $finalFile = $uploadDirectory . $_FILES["url"]["name"];
-                    
-                        move_uploaded_file($tempFile, $finalFile);
-                    
-                        // Créez un nouvel objet Image avec l'ID de l'article nouvellement créé et enregistrez-le dans la base de données
-                        $image = new Media(0, $finalFile, $article->getId());
-                        if (!$image->createMedia()) {
-                            echo "Une erreur est survenue lors de la création du média.";
-                            return;
-                        }
-                    }
+   // Insérer les images dans la base de données
+if (isset($_FILES["url"]["name"])) {
+    $uploadDirectory = "../../assets/img/blog/";
+    if (!file_exists($uploadDirectory)) {
+        mkdir($uploadDirectory, 0777, true); // Forcer la création des sous-dossiers 
+    }
+
+    for ($i = 0; $i < count($_FILES["url"]["name"]); $i++) {
+        if ($_FILES["url"]["name"][$i] != "" && $_FILES["url"]["error"][$i] == 0) {
+            $tempFile = $_FILES["url"]["tmp_name"][$i];
+            $finalFile = $uploadDirectory . $_FILES["url"]["name"][$i];
+
+            move_uploaded_file($tempFile, $finalFile);
+
+            // Créez un nouvel objet Image avec l'ID de l'article nouvellement créé et enregistrez-le dans la base de données
+            $image = new Media(null, $finalFile, $article->getId());
+            if (!$image->createMedia()) {
+                var_dump($image);
+                echo "Une erreur est survenue lors de la création du média.";
+                return;
+            }
+        } else {
+            echo "Aucune image n'a été téléchargée.";
+            return;
+        }
+    }
+}
 
                 
                     if ($articleResult && $coverResult){
@@ -184,8 +193,8 @@
                         <label for="content">Contenu de l'article</label>
                         <textarea class="textarea-content-article" id="content" name="content[]"></textarea>
 
-                        <label for="image">Image</label>
-                        <input class="input-image" type="file" id="url" name="url" accept="image/png, image/jpeg, image/webp "/>
+                        <label for="url">Image</label>
+                        <input class="input-image" type="file" id="url" name="url[]" accept="image/png, image/jpeg, image/webp "/>
                     </section>
                 </div>
 

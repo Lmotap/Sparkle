@@ -3,7 +3,11 @@ const sections = document.querySelector("#sections");
 
 addSectionBtn.addEventListener("click", addSection);
 
+let sectionCounter = 0;
+
 function addSection() {
+    sectionCounter++;
+
     const label = document.createElement("label");
     const content = document.createElement("textarea");
     const file = document.createElement("input");
@@ -11,18 +15,20 @@ function addSection() {
     label.classList.add("label-article");
 
     content.classList.add(("textarea-content-article"));
-    content.setAttribute("name", "content[]");
+    content.setAttribute("name", `content[${sectionCounter}]`);
+    content.setAttribute("id", `content${sectionCounter}`);
 
     file.classList.add("input-file");
     file.setAttribute("type", "file");
-    file.setAttribute("name", "url[]");
+    file.setAttribute("name", `url[${sectionCounter}]`);
+    file.setAttribute("id", `url${sectionCounter}`);
 
     const contentLabel = document.createElement("label");
-    contentLabel.setAttribute("for", "content");
+    contentLabel.setAttribute("for", `content${sectionCounter}`);
     contentLabel.textContent = "Contenu de l'article";
 
     const imageLabel = document.createElement("label");
-    imageLabel.setAttribute("for", "url");
+    imageLabel.setAttribute("for", `url${sectionCounter}`);
     imageLabel.textContent = "Image";
 
     const section = document.createElement("section");
@@ -31,5 +37,6 @@ function addSection() {
     section.appendChild(imageLabel);
     section.appendChild(file);
     sections.appendChild(section);
-
 }
+
+addSectionBtn.addEventListener("click", addSection);

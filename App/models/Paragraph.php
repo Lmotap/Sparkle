@@ -36,13 +36,18 @@ class Paragraph {
             $reqInsert = $db->prepare($sqlInsert);
             $reqInsert->bindParam(":content", $this->content, PDO::PARAM_STR);
             $reqInsert->bindParam(":article", $this->article, PDO::PARAM_INT);
+
+            // Debug: Afficher les valeurs de content et article
+            var_dump($this->content, $this->article);
             
             // Insérez ces commandes ici
             if ($reqInsert->execute()) {
                 $this->paraph_id = $db->lastInsertId();
                 return true;
             } else {
-                return false;
+            // Debug: Afficher l'erreur
+            var_dump($reqInsert->errorInfo());
+            return false;
             }
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
