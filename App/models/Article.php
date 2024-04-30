@@ -4,7 +4,7 @@ require_once __DIR__. ('../../Utiltary/Log.php');
 require_once __DIR__. ('../../models/Cover.php');
 
 class Article {
-    private int $articleId = 0;
+    private ?int $articleId = 0;
     private ?string $title = "";
     private ?array $content = null;
     private ?array $image = null;
@@ -12,8 +12,9 @@ class Article {
     private string $date_created = "";
     private int $coverId = 0;
     private int $category = 0;
+    private int $created_by = 0;
 
-    public function __construct($articleId, $title, $date_modified, $date_created, $category, $content=null, $image=null) {
+    public function __construct($articleId, $title, $date_modified, $date_created, $category,$created_by, $content=null, $image=null) {
         $this->articleId = $articleId;
         $this->title = $title;
         $this->content = $content;
@@ -21,6 +22,7 @@ class Article {
         $this->date_created = $date_modified;
         $this->date_modified = $date_created;
         $this->category = $category;
+        $this->created_by = $created_by;
     }
 
     /** Les accesseurs magiques */
@@ -48,6 +50,9 @@ class Article {
 
     public function getCategory(){return $this->category;}
     public function setCategory($category){$this->category = $category;}
+
+    public function getAdmin(){return $this->created_by;}
+    public function setAdmin($created_by){$this->created_by = $created_by;}
 
     /** CRUD operations */
 
@@ -114,9 +119,9 @@ class Article {
     public function createArticle(): bool {
         include_once __DIR__ . "../../config/config.php";
 
-        $sql = "INSERT INTO article (title, category) 
+        $sql = "INSERT INTO article (title, category, created_by) 
         VALUES 
-        (:title, :category);";
+        (:title, :category, :created_by);";
     
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
@@ -125,6 +130,7 @@ class Article {
     
             $req->bindParam(":title", $this->title, PDO::PARAM_STR);
             $req->bindParam(":category", $this->category, PDO::PARAM_INT);
+            $req->bindParam(":created_by", $this->created_by, PDO::PARAM_INT);
     
             if ($req->execute()) {
             // La requête s'est bien passée !

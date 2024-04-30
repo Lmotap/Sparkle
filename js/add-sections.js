@@ -15,14 +15,14 @@ function addSection() {
 
     file.classList.add("input-file");
     file.setAttribute("type", "file");
-    file.setAttribute("name", "image[]");
+    file.setAttribute("name", "url[]");
 
     const contentLabel = document.createElement("label");
     contentLabel.setAttribute("for", "content");
     contentLabel.textContent = "Contenu de l'article";
 
     const imageLabel = document.createElement("label");
-    imageLabel.setAttribute("for", "image");
+    imageLabel.setAttribute("for", "url");
     imageLabel.textContent = "Image";
 
     const section = document.createElement("section");

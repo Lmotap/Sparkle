@@ -8,6 +8,8 @@
     require_once __DIR__. ('../../../App/models/Article.php');
     require_once __DIR__. ('../../../App/models/Categories.php');
     require_once __DIR__. ('../../../App/models/Cover.php');
+    require_once __DIR__. ('../../../App/models/Paragraph.php');
+    require_once __DIR__. ('../../../App/models/Media.php');
 
      // Créez une nouvelle instance de Category
     $category = new Category();
@@ -47,8 +49,6 @@
                 //$imageCover = $_FILES['imageCover']['name'];
                 $title = $_POST['title'];
                 $categories = intval($_POST['categories']);
-                $content = $_POST['content'];
-                $image = $_FILES['image']['name'];
     
                 // Vérifiez si la catégorie existe
                 $category = new Category();
@@ -62,14 +62,17 @@
                     echo "La catégorie spécifiée n'existe pas.";
                     return;
                 }
+
+                // Assurez-vous que vous avez bien récupéré l'ID de l'administrateur
+                $created_by = isset($_SESSION['admin_id']) && !is_null($_SESSION['admin_id']) ? intval($_SESSION['admin_id']) : 1;
     
                 // Créez un nouvel objet Article et enregistrez-le dans la base de données
-                $article = new Article(0, $title, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'), $categoryResult["category_id"]);
+                $article = new Article(null, $title, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'), $categoryResult["category_id"], $created_by);
 
                 var_dump($article);
                 //die();
 
-                if ($article->createArticle()) {
+                if ($articleResult = $article->createArticle()) {
                     // Créez un nouvel objet Cover avec l'ID de l'article nouvellement créé et enregistrez-le dans la base de données
                     $cover = new Cover(0, $titleCover, $finalFile, $article->getId());
 
@@ -80,10 +83,37 @@
 
                     // insérer les paragraphes dans la base de données
 
+                    $paragraphs = $_POST['content'];
+                    foreach ($paragraphs as $paragraphContent) {
+                        $paragraph = new Paragraph(null, $paragraphContent, $article->getId());
+                            if (!$paragraph->createParagraph()) {
+                                    echo "Une erreur est survenue lors de la création du paragraphe.";
+                                    return;
+                            }
+                        }
+
                     // Insérer les images dans la base de données
-        
+                    if (isset($_FILES["url"]["name"]) && $_FILES["url"]["name"] != "" && $_FILES["url"]["error"] == 0) {
+                        $uploadDirectory = "../../assets/img/blog/";
+                        if (!file_exists($uploadDirectory)) {
+                            mkdir($uploadDirectory, 0777, true); // Forcer la création des sous-dossiers 
+                        }
+                    
+                        $tempFile = $_FILES["url"]["tmp_name"];
+                        $finalFile = $uploadDirectory . $_FILES["url"]["name"];
+                    
+                        move_uploaded_file($tempFile, $finalFile);
+                    
+                        // Créez un nouvel objet Image avec l'ID de l'article nouvellement créé et enregistrez-le dans la base de données
+                        $image = new Media(0, $finalFile, $article->getId());
+                        if (!$image->createMedia()) {
+                            echo "Une erreur est survenue lors de la création du média.";
+                            return;
+                        }
+                    }
+
                 
-                    if ($coverResult['success']) {
+                    if ($articleResult && $coverResult){
                         echo "L'article et la couverture ont été créés avec succès.";
                     } else {
                         echo "Une erreur est survenue lors de la création de la couverture.";
@@ -155,7 +185,7 @@
                         <textarea class="textarea-content-article" id="content" name="content[]"></textarea>
 
                         <label for="image">Image</label>
-                        <input class="input-image" type="file" id="image" name="image" accept="image/png, image/jpeg, image/webp "/>
+                        <input class="input-image" type="file" id="url" name="url" accept="image/png, image/jpeg, image/webp "/>
                     </section>
                 </div>
 
