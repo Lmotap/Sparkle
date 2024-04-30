@@ -7,13 +7,13 @@ class Cover {
     private int $coverId = 0;
     private ?string $titleCover = "";
     private ?string $imageCover = "";
-    private int $fk_article_cover = 0;
+    private int $article = 0;
 
     public function __construct(int $coverId , string $titleCover, string $pathCover, int $article) {
         $this->coverId = $coverId;
         $this->titleCover = $titleCover;
         $this->imageCover = $pathCover;
-        $this->fk_article_cover = $article;
+        $this->article = $article;
     }
 
     public function getCoverId(){return $this->coverId;}
@@ -24,6 +24,9 @@ class Cover {
 
     public function geImage(){return $this->imageCover;}
     public function setImage($imageCover){$this->imageCover = $imageCover;}
+
+    public function getArticle(){return $this->article;}
+    public function setArticle($article){$this->article = $article;}
 
 
     // CRUD operations, CREATE COVER
@@ -38,16 +41,16 @@ class Cover {
             $reqInsert = $db->prepare($sqlInsert);
             $reqInsert->bindParam(":titleCover", $this->titleCover, PDO::PARAM_STR);
             $reqInsert->bindParam(":imageCover", $this->imageCover, PDO::PARAM_STR);
-            $reqInsert->bindParam(":article", $this->fk_article_cover, PDO::PARAM_INT);
+            $reqInsert->bindParam(":article", $this->article, PDO::PARAM_INT);
             
             // Insérez ces commandes ici
-           if ($reqInsert->execute()) {
+            if ($reqInsert->execute()) {
                 $this->coverId = $db->lastInsertId();
                 return true;
-           } else {
+            } else {
                 return false;
             }
-              
+            
 
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();

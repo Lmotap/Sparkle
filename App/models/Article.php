@@ -11,7 +11,6 @@ class Article {
     private string $date_modified = "";
     private string $date_created = "";
     private int $coverId = 0;
-
     private int $category = 0;
 
     public function __construct($articleId, $title, $date_modified, $date_created, $category, $content=null, $image=null) {
@@ -46,6 +45,9 @@ class Article {
 
     public function getCoverId(){return $this->coverId;}
     public function setCoverId($coverId){$this->coverId = $coverId;}
+
+    public function getCategory(){return $this->category;}
+    public function setCategory($category){$this->category = $category;}
 
     /** CRUD operations */
 
