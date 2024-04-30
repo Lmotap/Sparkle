@@ -19,36 +19,70 @@
     try {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Récupérez les données du formulaire
-            $titleCover = $_POST['titleCover'];
-            $imageCover = $_FILES['imageCover']['name'];
-            $title = $_POST['title'];
-            $categories = intval($_POST['categories']);
-            $content = $_POST['content'];
-            $image = $_FILES['image']['name'];
 
-            // Vérifiez si la catégorie existe
-            $category = new Category();
-            $category->setId($categories);
-            $categoryResult = $category->findOneCategoryById();
-            var_dump($categoryResult);
-            
-            if (!$categoryResult) {
-                echo "La catégorie spécifiée n'existe pas.";
-                return;
+            $coverUploaded = false;
+
+            if (isset($_FILES["imageCover"]["name"]) && $_FILES["imageCover"]["name"] != "" && $_FILES["imageCover"]["error"] == 0) {
+                // Fichier cover bien reçu ?
+                //die("Fichier bien reçu !");
+                // créer le fichier de destination s'il n'existe pas
+
+                $uploadDirectory = "../../assets/img/blog/";
+                if (!file_exists($uploadDirectory)) {
+                    mkdir($uploadDirectory, 0777, true); // Forcer la création des sous-dossiers 
+                }
+
+                $tempFile = $_FILES["imageCover"]["tmp_name"];
+                $finalFile = $uploadDirectory . $_FILES["imageCover"]["name"];
+
+                move_uploaded_file($tempFile, $finalFile);
+
+                // Si le fichier a bien été conservé :
+                $coverUploaded = true;
             }
-            // Créez un nouvel objet Article et enregistrez-le dans la base de données
-            $article = new Article(0, $title, $content, $image, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'));
-            $articleResult = $article->createArticle();
-            var_dump($articleResult);
 
-            // Vérifiez si la création de l'article a réussi
-            if ($articleResult['success']) {
-                // Créez un nouvel objet Cover avec l'ID de l'article nouvellement créé et enregistrez-le dans la base de données
-                $cover = new Cover(0, $titleCover, $imageCover, $articleResult['id']);
-                $coverResult = $cover->createCover();
-                var_dump($coverResult);;
+            if ($coverUploaded) {
+
+                $titleCover = $_POST['titleCover'];
+                //$imageCover = $_FILES['imageCover']['name'];
+                $title = $_POST['title'];
+                $categories = intval($_POST['categories']);
+                $content = $_POST['content'];
+                $image = $_FILES['image']['name'];
     
-            
+                // Vérifiez si la catégorie existe
+                $category = new Category();
+                $category->setId($categories);
+                $categoryResult = $category->findOneCategoryById();
+
+                var_dump($categoryResult);
+                var_dump($_POST, $_FILES);
+                
+                if (!$categoryResult) {
+                    echo "La catégorie spécifiée n'existe pas.";
+                    return;
+                }
+    
+                // Créez un nouvel objet Article et enregistrez-le dans la base de données
+                $article = new Article(0, $title, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'), $categoryResult["category_id"]);
+
+                var_dump($article);
+                //die();
+
+                if ($article->createArticle()) {
+                    // Créez un nouvel objet Cover avec l'ID de l'article nouvellement créé et enregistrez-le dans la base de données
+                    $cover = new Cover(0, $titleCover, $finalFile, $article->getId());
+
+                    var_dump($cover);
+                    
+                    $coverResult = $cover->createCover();
+                    var_dump($coverResult);
+
+                    // insérer les paragraphes dans la base de données
+
+                    // Insérer les images dans la base de données
+        
+                
                     if ($coverResult['success']) {
                         echo "L'article et la couverture ont été créés avec succès.";
                     } else {
@@ -57,6 +91,8 @@
                 } else {
                     echo "Une erreur est survenue lors de la création de l'article.";
                 }
+                
+            }
         }
     } catch (Exception $e) {
         echo 'Exception attrapée : ',  $e->getMessage(), "\n";
@@ -113,23 +149,26 @@
                     <?php endforeach; ?>
                 </select>
 
-                <label for="content">Contenu de l'article</label>
-                <textarea class="textarea-content-article" id="content" name="content"></textarea>
+                <div id="sections">
+                    <section>
+                        <label for="content">Contenu de l'article</label>
+                        <textarea class="textarea-content-article" id="content" name="content[]"></textarea>
 
-                <label for="image">Image</label>
-                <input class="input-image" type="file" id="image" name="image" accept="image/png, image/jpeg, image/webp "/>
+                        <label for="image">Image</label>
+                        <input class="input-image" type="file" id="image" name="image" accept="image/png, image/jpeg, image/webp "/>
+                    </section>
+                </div>
 
-                <label for="content">Contenu de l'article</label>
-                <textarea class="textarea-content-article" id="content" name="content"></textarea>
 
-                <label for="image">Image</label>
-                <input class="input-image" type="file" id="image" name="image" accept="image/png, image/jpeg, image/webp "/>
 
-                <button class="btn_submit_article" type="submit">Envoyer</button>
+                <button class="btn_add_article" type="button" id="add-section-btn">Ajouter une section</button>
+
+                <button class="btn_submit_article">Envoyer</button>
 
             
         </form>
     </div>
 
+    <script src="../../js/add-sections.js"></script>
 </body>
 </html>

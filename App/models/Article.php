@@ -6,19 +6,22 @@ require_once __DIR__. ('../../models/Cover.php');
 class Article {
     private int $articleId = 0;
     private ?string $title = "";
-    private ?string $content = "";
-    private ?string $image = "";
+    private ?array $content = null;
+    private ?array $image = null;
     private string $date_modified = "";
     private string $date_created = "";
     private int $coverId = 0;
 
-    public function __construct($articleId, $title, $content, $image, $date_modified, $date_created) {
-        $this->articleId = 0;
-        $this->title = "";
-        $this->image = "";
-        $this->content = "";
-        $this->date_created = "";
-        $this->date_modified = "";
+    private int $category = 0;
+
+    public function __construct($articleId, $title, $date_modified, $date_created, $category, $content=null, $image=null) {
+        $this->articleId = $articleId;
+        $this->title = $title;
+        $this->content = $content;
+        $this->image = $image;
+        $this->date_created = $date_modified;
+        $this->date_modified = $date_created;
+        $this->category = $category;
     }
 
     /** Les accesseurs magiques */
@@ -70,9 +73,9 @@ class Article {
 
         $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
 
-        $req = $db->prepare('SELECT article_id, content, image, date_modified, date_created, title, name as category 
+        $req = $db->prepare('SELECT article_id, date_modified, date_created, title, name as category 
         FROM article 
-        INNER JOIN category ON fk_category_article = category_id WHERE category.name = :categoryName;');
+        INNER JOIN category ON category = category_id WHERE category.name = :categoryName;');
         $req->execute(array('categoryName' => $categoryName));
         return $req->fetchAll();
     }
@@ -80,9 +83,9 @@ class Article {
     public static function findAllArticles(): array {
         include_once __DIR__ . "../../config/config.php";
 
-        $sql = "SELECT article_id, content, image, date_modified, date_created, title, name as category
+        $sql = "SELECT article_id, date_modified, date_created, title, name as category
         FROM article
-        INNER JOIN category ON fk_category_article = category_id;";
+        INNER JOIN category ON category = category_id;";
 
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
@@ -106,12 +109,12 @@ class Article {
 
     // CRUD operations, CREATE ARTICLE
 
-    public function createArticle(): array {
+    public function createArticle(): bool {
         include_once __DIR__ . "../../config/config.php";
 
-        $sql = "INSERT INTO article (title, content, image) 
+        $sql = "INSERT INTO article (title, category) 
         VALUES 
-        (:title, :content, :image);";
+        (:title, :category);";
     
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
@@ -119,19 +122,20 @@ class Article {
             $req = $db->prepare($sql);
     
             $req->bindParam(":title", $this->title, PDO::PARAM_STR);
-            $req->bindParam(":image", $this->image, PDO::PARAM_STR);
-            $req->bindParam(":content", $this->content, PDO::PARAM_STR);
+            $req->bindParam(":category", $this->category, PDO::PARAM_INT);
     
             if ($req->execute()) {
             // La requête s'est bien passée !
-            return ['success' => true, 'id' => $db->lastInsertId()];
+                $this->articleId =  $db->lastInsertId();
+
+                return true;
             } else {
             // La requête n'a pu être executée
-            return ['success' => false];
+                return false;
             }
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
-            return ['success' => false];
+            return false;
         }
     }
 
