@@ -2,9 +2,19 @@
 
     require_once __DIR__.  '../../../App/models/Article.php';
     require_once __DIR__. '../../../App/models/Categories.php';
+    require_once __DIR__. ('../../../App/models/Admin.php');
 
     session_name("admin");
     session_start();
+
+    if (!isset($_SESSION['adminId'])) {
+        // Redirigez vers la page de connexion ou affichez un message d'erreur
+        echo "Vous devez être connecté en tant qu'administrateur pour accéder à cette page.";
+        echo "<br>La valeur de \$_SESSION['adminId'] est : ";
+        var_dump($_SESSION['adminId']);
+        // header('Location: connexion_form.php');
+        exit;
+    }
 
     // $article = new Article();
     // $article->findAllArticleById();
@@ -35,7 +45,7 @@
 <body>
     <header class="dashboard">
 
-        <a href="../../App//controllers/deconnexion.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+        <a href="../../App/controllers/deconnexion.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
         <button class="btn_create_article"><a href="../../pages/admin/create-article.php">+ Créer article</a></button>
         <!-- <a href="./blog.html"><img class="icon_logout" src="../assets/icons/logout.svg" alt="Icone pour se déconnecter"></a> -->
         
@@ -83,7 +93,7 @@
                         ?>
                         </td>
                         <td class="icon_delete_update">
-                            <a href="./modifier-article.php">
+                            <a href="./modifier-article.php?id=<?php echo $article['article_id']; ?>">
                                 <img class="icon_dashboard" src="../../assets/icons/pen.svg" alt="">
                             </a>
 

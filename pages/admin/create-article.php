@@ -1,8 +1,5 @@
 <?php
 
-    session_name("admin");
-    session_start();
-
     require_once __DIR__ . ('../../../App/Utiltary/Log.php');
     require_once __DIR__. ('../../../App/models/Admin.php');
     require_once __DIR__. ('../../../App/models/Article.php');
@@ -11,6 +8,14 @@
     require_once __DIR__. ('../../../App/models/Paragraph.php');
     require_once __DIR__. ('../../../App/models/Media.php');
 
+    session_name("admin");
+    session_start();
+
+    if (!isset($_SESSION['adminId'])) {
+        // Redirigez vers la page de connexion ou affichez un message d'erreur
+        header('Location: connexion_form.php');
+        exit;
+    }
      // Créez une nouvelle instance de Category
     $category = new Category();
 
@@ -21,7 +26,7 @@
     try {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Récupérez les données du formulaire
-
+            var_dump($_POST, $_FILES);
             $coverUploaded = false;
 
             if (isset($_FILES["imageCover"]["name"]) && $_FILES["imageCover"]["name"] != "" && $_FILES["imageCover"]["error"] == 0) {
@@ -167,7 +172,7 @@ if (isset($_FILES["url"]["name"])) {
     <h2 class="title_admin">Création d'article</h2>
 
     <div class="container_form_create_article">
-        <form action="#" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data">
 
                 <label for="titleCover">Titre de couverture de l'article</label>
                 <input class="input-title" type="text" name="titleCover" id="titleCover" autocomplete="titleCover" aria-label="votre titre" required />

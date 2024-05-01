@@ -4,4 +4,4 @@
 
     session_destroy();
 
-    header("Location: connexion_form.php");
+    header("Location: ../../pages/admin/connexion_form.php");

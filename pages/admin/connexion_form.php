@@ -5,6 +5,7 @@ require_once __DIR__ . ('../../../App/Utiltary/Log.php');
 session_name("admin");
 session_start();
 
+
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         // Données postées depuis un formulaire
         $username = $_POST["pseudo"];
@@ -30,10 +31,14 @@ session_start();
                 if (password_verify($password, $resultat["password"] )) {
                      // Stocker les informations de l'utilisateur dans la session
                         $_SESSION['admin'] = [
-                        'id' => $resultat['id'],
+                        'admin_id' => $resultat['admin_id'],
                         'pseudo' => $resultat['pseudo'],
                         'email' => $resultat['email']
                     ];
+
+                    // Stocker l'ID de l'administrateur dans la session
+                    $_SESSION['adminId'] = $resultat['admin_id'];
+
                     header('Location: dashboard.php');
                     exit();
                 } else {
