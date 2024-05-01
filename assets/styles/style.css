@@ -138,7 +138,7 @@ nav a {
 
 .link_footer, .diese {
     font-family: "League Spartan";
-    font-weight: 300;
+    font-weight: 400;
     font-size: 0.8em;
 }
 
@@ -560,13 +560,87 @@ textarea {
     /* Categorie Photo */
 
     .img_category {
+        width: 35%;
+    }
+
+    .title_category {
+        font-size: 4em;
+    }
+
+    /* Blog */
+
+    .box_bio_article img {
+        width: 50rem;
+    }
+
+    .separation_main {
+        width: 50rem;
+    }
+
+    .tag_article {
+        font-size: 1.5em;
+        margin-top: 4%;
+    }
+
+    .cover_img {
+        width: 50rem;
+    }
+
+    .titre_article {
+        font-size: 4em;
+    }
+
+    /* Article */
+    
+
+    
+}
+
+@media screen and (min-width: 1400px) {
+
+    #main_img {
+        width: 30rem;
+    }
+
+    .img_category {
         width: 40%;
     }
 
     .title_category {
-        font-size: 3em;
+        font-size: 5em;
     }
-    
+
+    .img_wdth {
+        width: 40rem;
+    }
+
+    .texteDescriptifPhotos {
+        font-size: 1.5em;
+    }
+    /* Blog */
+
+    .box_bio_article img {
+        width: 50rem;
+    }
+
+    .separation_main {
+        width: 50rem;
+    }
+
+    .tag_article {
+        font-size: 1.5em;
+        margin-top: 4%;
+    }
+
+    .cover_img {
+        width: 50rem;
+    }
+
+    .titre_article {
+        font-size: 4em;
+    }
+
+    /* Article */
 }
 
                                     /*******************************************************************************

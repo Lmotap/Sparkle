@@ -81,7 +81,7 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 
@@ -308,7 +308,7 @@ nav {
 }
 
 .img_article {
-    width: 110%;
+    width: 85%;
 }
 
 .wraper_content {
@@ -419,7 +419,7 @@ input, label {
 
     .nav-right {
         position: fixed;
-        top: 33rem;
+        top: 35rem;
         transform: rotate(90deg);
         right: -0.8rem;
         width: 10%;
@@ -428,12 +428,17 @@ input, label {
     .nav-left {
         display: flex;
         position: fixed;
-        gap: 10rem;
-        left: -0.8rem;
-        bottom: 25rem;
+        gap: 15rem;
+        left: -1rem;
+        bottom: 20rem;
         transform: rotate(-90deg);
         width: 10%;
     }
+
+    .nav-variant {
+        bottom: 8rem;
+        gap: 15rem;
+    }   
 
     .footer {
         padding: 0 10px;
@@ -446,6 +451,13 @@ input, label {
         margin-bottom: 5%;
     }
 
+    .icon_dyslexic {
+        width: 5.5rem;
+        position: relative;
+        top: -0px;
+        right: -65px;
+    }
+
     /* ARTICLE */
 
     .title_article {
@@ -453,15 +465,20 @@ input, label {
     }
 
     .img_article {
-        width: 70%;
+        width: 80%;
     }
 
     .wrapper_category_date {
         font-size: 1.2em;
     }
 
+    .container_icon_article
+    {
+        padding-left: 10%;
+    }   
+
     .return_arrow {
-        width: 100%;
+        width: 90%;
     }
     
 
@@ -495,9 +512,6 @@ input, label {
         justify-content: flex-start;
     }
 
-    .icon_dyslexic {
-        width: 2.5rem;
-    }
 
     #dyslexic {
         margin-left: auto;
@@ -515,7 +529,7 @@ input, label {
 
     .nav-right {
         position: fixed;
-        top: 23rem;
+        top: 26rem;
         transform: rotate(90deg);
         right: 0;
         width: 4%;
@@ -524,23 +538,66 @@ input, label {
     .nav-left {
         display: flex;
         position: fixed;
-        gap: 10rem;
+        gap: 12rem;
+        left: 0;
+        bottom: 10rem;
+        transform: rotate(-90deg);
+        width: 4%;
+    }
+
+    .nav-variant {
+        bottom: 3rem;
+        gap: 9rem;
+    }   
+
+    .herocard {
+        margin-top: -2rem;
+        margin-bottom: 12rem;
+    }
+
+    .icon_dyslexic {
+        width: 6rem;
+        position: relative;
+        top: -0px;
+        right: -50px;
+    }
+
+    /* Photos Page */
+
+    .img_wdth {
+        width: 40%;
+        margin-bottom: 5%;
+    }
+
+    /* Blog */
+
+
+}
+
+@media screen and (min-width: 1400px) {
+
+    .nav-right {
+        position: fixed;
+        top: 30rem;
+        transform: rotate(90deg);
+        right: 0;
+        width: 4%;
+    }
+    
+    .nav-left {
+        display: flex;
+        position: fixed;
+        gap: 12rem;
         left: 0;
         bottom: 15rem;
         transform: rotate(-90deg);
         width: 4%;
     }
 
-    .herocard {
-        margin-top: -2rem;
-        margin-bottom: 7rem;
-    }
-
-    
-
-
-
-    
+    .nav-variant {
+        bottom: 7rem;
+        gap: 10rem;
+    }   
 }
 
 
