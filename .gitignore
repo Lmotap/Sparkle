@@ -1,4 +1,2 @@
-./App
-/.vscode
-config.php
-.vscode/
+.vscode
+/App/Config/config.php
