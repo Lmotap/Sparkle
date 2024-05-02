@@ -25,7 +25,7 @@
 <body>
     <header class="dashboard">
 
-        <a href="./dashboard.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+        <a href="../../pages/admin/dashboard.php"><img class="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
         <button class="btn_create_article"><a href="create-article.php">+ Créer article</a></button>
         
     </header>

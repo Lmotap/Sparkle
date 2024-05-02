@@ -98,7 +98,6 @@ class Cover {
             
     
             $req->bindParam(":imageCover", $this->imageCover, PDO::PARAM_STR);
-            var_dump($this->imageCover);
     
             $req->bindParam(":article", $this->article, PDO::PARAM_INT);
             

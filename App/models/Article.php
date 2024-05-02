@@ -56,6 +56,36 @@ class Article {
     public function getAdmin(){return $this->created_by;}
     public function setAdmin($created_by){$this->created_by = $created_by;}
 
+
+public static function getArticlesWithCoverAndCategory() {
+    include_once __DIR__ . "../../config/config.php";
+
+    // Connect to the database
+    $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+
+    // Prepare the query
+    $stmt = $db->prepare("
+        SELECT article.*, cover.imageCover, cover.titleCover, category.name
+        FROM article
+        LEFT JOIN cover ON cover.article = article.article_id
+        LEFT JOIN category ON article.category = category.category_id
+        ORDER BY article.date_created DESC
+    ");
+
+    // Execute the query
+    $stmt->execute();
+
+    // Fetch all results
+    $articles = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    if (!$articles) {
+        echo "Aucun article trouvé.";
+        exit;
+    }
+
+    return $articles;
+}
+
     /** CRUD operations */
 
     public function getFullArticle($articleId) {
@@ -190,27 +220,20 @@ class Article {
     
             
             $req->bindParam(":title", $this->title, PDO::PARAM_STR);
-            var_dump($this->title);
     
-            
             $req->bindParam(":category", $this->category, PDO::PARAM_INT);
-            var_dump($this->category);
             
             $req->bindParam(":created_by", $this->created_by, PDO::PARAM_INT);
-            var_dump($this->created_by);
             
             $req->bindParam(":article_id", $this->articleId, PDO::PARAM_INT);
-            var_dump($this->articleId);
 
             // Get current date and time
             $date_modified = date('Y-m-d H:i:s');
             $req->bindParam(":date_modified", $date_modified, PDO::PARAM_STR);
-            var_dump($date_modified);
 
             // Get current date and time
             $date_created = date('Y-m-d H:i:s');
             $req->bindParam(":date_created", $date_created, PDO::PARAM_STR);
-            var_dump($date_created); 
     
             try {
                 if ($req->execute()) {

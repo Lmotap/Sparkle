@@ -95,9 +95,6 @@ class Paragraph {
             $reqUpdate->bindParam(":content", $this->content, PDO::PARAM_STR);
             $reqUpdate->bindParam(":paraph_id", $this->paraph_id, PDO::PARAM_INT);
 
-            var_dump($this->content);
-            var_dump($this->paraph_id);
-    
             if (!$reqUpdate->execute()) {
                 var_dump($reqUpdate->errorInfo());
                 throw new Exception("Le paragraphe avec l'ID " . $this->paraph_id . " n'a pas été mis à jour.");

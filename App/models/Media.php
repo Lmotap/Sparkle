@@ -116,11 +116,7 @@ public function updateMedia() {
         $reqUpdate->bindParam(":url", $this->url, PDO::PARAM_STR);
         $reqUpdate->bindParam(":media_id", $this->media_id, PDO::PARAM_INT);
 
-        var_dump($this->url);
-        var_dump($this->media_id);
-
         if (!$reqUpdate->execute()) {
-            var_dump($reqUpdate->errorInfo());
             throw new Exception("Le média avec l'ID " . $this->media_id . " n'a pas été mis à jour.");
         }
 

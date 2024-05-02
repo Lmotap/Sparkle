@@ -17,7 +17,6 @@ session_start();
 
 $category = new Category();
 
-//   // Récupérez toutes les catégories
 $allCategories = $category->findAllCategories();
 
 $articleId = $_GET['id'];
@@ -77,7 +76,6 @@ foreach ($paragraphs as $index => $paragraphData) {
 
     // Mettez à jour le paragraphe
     $result = $paragraph->updateParagraph();
-    var_dump($result);
 }
 
 // Récupérez les médias de l'article
@@ -115,7 +113,6 @@ foreach ($mediaItems as $index => $mediaData) {
 
     // Mettez à jour le média
     $result = $media->updateMedia();
-    var_dump($result);
 }
 
     // Récupérez les informations de la couverture pour l'article
@@ -155,12 +152,15 @@ foreach ($mediaItems as $index => $mediaData) {
             // Enregistrez les modifications
             $cover->updateCover();
 
-
-
             // Enregistrez les modifications
-            $article->updateArticle();  
-    }
+            $result = $article->updateArticle();  
 
+            if ($result) {
+                echo "L'article a été modifié avec succès.";
+            } else {
+                echo "Une erreur s'est produite lors de la modification de l'article.";
+            }
+    }
 }
 
 
@@ -236,5 +236,7 @@ foreach ($mediaItems as $index => $mediaData) {
 
             
         </form>
+
+        
 </body>
 </html>
