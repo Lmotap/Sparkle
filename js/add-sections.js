@@ -5,7 +5,8 @@ addSectionBtn.addEventListener("click", addSection);
 
 let sectionCounter = 0;
 
-function addSection() {
+
+function addSection(paragraphId) {
     sectionCounter++;
 
     const label = document.createElement("label");
@@ -17,6 +18,12 @@ function addSection() {
     content.classList.add(("textarea-content-article"));
     content.setAttribute("name", `content[${sectionCounter}]`);
     content.setAttribute("id", `content${sectionCounter}`);
+
+    const paragraphIdInput = document.createElement("input");
+    paragraphIdInput.setAttribute("type", "hidden");
+    paragraphIdInput.setAttribute("name", `paragraphId[${sectionCounter}]`);
+    paragraphIdInput.setAttribute("value", paragraphId);
+    
 
     file.classList.add("input-file");
     file.setAttribute("type", "file");
@@ -32,6 +39,7 @@ function addSection() {
     imageLabel.textContent = "Image";
 
     const section = document.createElement("section");
+    section.appendChild(paragraphIdInput);
     section.appendChild(contentLabel);
     section.appendChild(content);
     section.appendChild(imageLabel);
@@ -40,3 +48,5 @@ function addSection() {
 }
 
 addSectionBtn.addEventListener("click", addSection);
+
+let paragraphId = getfindParagraphsByArticleId();

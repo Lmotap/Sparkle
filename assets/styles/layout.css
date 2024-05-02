@@ -720,6 +720,7 @@ td {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: auto;
 }
 
 .icon_logout {
@@ -785,7 +786,7 @@ input[type="file"]::file-selector-button {
     }
 
 .body_form_article {
-    height: 150vw;
+    min-height: 150vw;
 }
 
 .select-categories {

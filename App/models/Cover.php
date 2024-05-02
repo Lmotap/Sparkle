@@ -65,68 +65,59 @@ class Cover {
     
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
-        
+    
             $reqSelect = $db->prepare($sqlSelect);
             $reqSelect->bindParam(":article", $article, PDO::PARAM_INT);
-            
-            // Insérez ces commandes ici
+    
             if ($reqSelect->execute()) {
-                return $reqSelect->fetch(PDO::FETCH_ASSOC);
+                $result = $reqSelect->fetch(PDO::FETCH_ASSOC);
+                
+                return $result;
             } else {
+                echo "Erreur lors de l'exécution de la requête SQL : " . $db->errorInfo()[2];
                 return false;
             }
-            
-    
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
             return false;
         }
     }
-
-    public function updateCover($articleId, $postData): bool {
+    
+    public function updateCover(): bool {
         include_once __DIR__ . "../../config/config.php";
     
-        // Récupérez l'ID de la couverture associée à l'article
-        $coverData = $this->findCoverByArticleId($articleId);
-        if ($coverData === false) {
-            throw new Exception("Aucune couverture trouvée pour l'article avec l'ID " . $articleId);
-        }
-        $this->coverId = $coverData['cover_id'];
-    
-        // Mettez à jour la couverture
-        $sqlUpdate = "UPDATE cover SET titleCover = :titleCover, imageCover = :imageCover, article = :article WHERE cover_id = :cover_id;";
+        $sql = "UPDATE cover SET cover_id = :cover_id, titleCover = :titleCover,  imageCover = :imageCover WHERE article = :article;";
     
         try {
+
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
     
-            $reqUpdate = $db->prepare($sqlUpdate);
+            $req = $db->prepare($sql);
     
-            $this->titleCover = $postData['titleCover'];
-            $reqUpdate->bindParam(":titleCover", $this->titleCover, PDO::PARAM_STR);
+            $req->bindParam(":titleCover", $this->titleCover, PDO::PARAM_STR);
+            
     
-            $this->imageCover = isset($postData['imageCover']) ? $postData['imageCover'] : '';
-            $reqUpdate->bindParam(":imageCover", $this->imageCover, PDO::PARAM_STR);
-    
-            $this->article = $articleId;
-            $reqUpdate->bindParam(":article", $this->article, PDO::PARAM_INT);
-    
-            $reqUpdate->bindParam(":cover_id", $this->coverId, PDO::PARAM_INT);
-
-            var_dump($this->titleCover);
+            $req->bindParam(":imageCover", $this->imageCover, PDO::PARAM_STR);
             var_dump($this->imageCover);
-            var_dump($this->article);
-            var_dump($this->coverId);
     
-            if ($reqUpdate->execute()) {
-                return true;
-            } else {
-                throw new Exception("La couverture n'a pas été mise à jour.");
+            $req->bindParam(":article", $this->article, PDO::PARAM_INT);
+            
+
+            $req->bindParam(":cover_id", $this->coverId, PDO::PARAM_INT);
+            
+    
+            try {
+                if ($req->execute()) {
+                    return true;
+                } else {
+                    throw new Exception("Impossible de mettre à jour l'article.");
+                }
+            } catch (PDOException $e) {
+                if ($e->getCode() === 'HY093') {
+                    echo 'Erreur dans le fichier ' . __FILE__ . ' à la ligne ' . __LINE__;
+                }
+                return false;
             }
-        } catch (PDOException $e) {
-            if ($e->getCode() === 'HY093') {
-                echo 'Erreur dans le fichier ' . __FILE__ . ' à la ligne ' . __LINE__;
-            }
-            return false;
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
             return false;

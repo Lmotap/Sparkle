@@ -55,31 +55,7 @@ class Paragraph {
         }
     }
 
-    public function readParagraph(): array {
-        include_once __DIR__ . "../../config/config.php";
-    
-        $sql = "SELECT * FROM paragraph WHERE article = :article;";
-    
-        try {
-            $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
-        
-            $req = $db->prepare($sql);
-            $req->bindParam(":article", $this->article, PDO::PARAM_INT);
-            
-            // Insérez ces commandes ici
-            if ($req->execute()) {
-                $results = $req->fetchAll(PDO::FETCH_ASSOC);
-                return $results;
-            } else {
-                return array();
-            }
-            
 
-        } catch (Exception | Error $ex) {
-            echo $ex->getMessage();
-            return array();
-        }
-    }
 
     public function findParagraphsByArticleId($article) {
         include_once __DIR__ . "../../config/config.php";
@@ -106,31 +82,25 @@ class Paragraph {
         }
     }
 
-    public function updateParagraph($articleId, $paraph_id, $content): bool {
+    public function updateParagraph() {
         include_once __DIR__ . "../../config/config.php";
     
-        $sqlUpdate = "UPDATE paragraph SET content = :content, article = :article WHERE paraph_id = :paraph_id;";
-    
+        $sqlUpdate = "UPDATE paragraph SET content = :content WHERE paraph_id = :paraph_id;";
+        
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
     
             $reqUpdate = $db->prepare($sqlUpdate);
     
-            $this->content = isset($content) ? $content : '';
             $reqUpdate->bindParam(":content", $this->content, PDO::PARAM_STR);
-
-            $this->article = $articleId;
-            $reqUpdate->bindParam(":article", $this->article, PDO::PARAM_INT);
-
-            $this->paraph_id = $paraph_id;
             $reqUpdate->bindParam(":paraph_id", $this->paraph_id, PDO::PARAM_INT);
-        
+
             var_dump($this->content);
-            var_dump($this->article);
             var_dump($this->paraph_id);
     
             if (!$reqUpdate->execute()) {
-                throw new Exception("Le paragraphe avec l'ID " . $paraph_id . " n'a pas été mis à jour.");
+                var_dump($reqUpdate->errorInfo());
+                throw new Exception("Le paragraphe avec l'ID " . $this->paraph_id . " n'a pas été mis à jour.");
             }
     
             return true;
@@ -141,7 +111,7 @@ class Paragraph {
             return false;
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
-            return false;
+            return $ex;
         }
     }
     }

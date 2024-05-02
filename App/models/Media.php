@@ -102,31 +102,38 @@ class Media {
         }
     }
 
-    public function updateMedia(): bool {
-        include_once __DIR__ . "../../config/config.php";
     
-        $sqlUpdate = "UPDATE media SET url = :url, article = :article WHERE media_id = :media_id;";
-    
-        try {
-            $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
-        
-            $reqUpdate = $db->prepare($sqlUpdate);
-            $reqUpdate->bindParam(":url", $this->url, PDO::PARAM_STR);
-            $reqUpdate->bindParam(":article", $this->article, PDO::PARAM_INT);
-            $reqUpdate->bindParam(":media_id", $this->media_id, PDO::PARAM_INT);
-            
-            // Insérez ces commandes ici
-            if ($reqUpdate->execute()) {
-                return true;
-            } else {
-                throw new Exception("Aucun media n'est mis à jour.");
-            }
-            
+public function updateMedia() {
+    include_once __DIR__ . "../../config/config.php";
 
-        } catch (Exception | Error $ex) {
-            echo $ex->getMessage();
-            return false;
+    $sqlUpdate = "UPDATE media SET url = :url WHERE media_id = :media_id;";
+
+    try {
+        $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+
+        $reqUpdate = $db->prepare($sqlUpdate);
+
+        $reqUpdate->bindParam(":url", $this->url, PDO::PARAM_STR);
+        $reqUpdate->bindParam(":media_id", $this->media_id, PDO::PARAM_INT);
+
+        var_dump($this->url);
+        var_dump($this->media_id);
+
+        if (!$reqUpdate->execute()) {
+            var_dump($reqUpdate->errorInfo());
+            throw new Exception("Le média avec l'ID " . $this->media_id . " n'a pas été mis à jour.");
         }
+
+        return true;
+    } catch (PDOException $e) {
+        if ($e->getCode() === 'HY093') {
+            echo 'Erreur dans le fichier ' . __FILE__ . ' à la ligne ' . __LINE__;
+        }
+        return false;
+    } catch (Exception | Error $ex) {
+        echo $ex->getMessage();
+        return $ex;
     }
+}
     
 }

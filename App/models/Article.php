@@ -2,6 +2,8 @@
 
 require_once __DIR__. ('../../Utiltary/Log.php');
 require_once __DIR__. ('../../models/Cover.php');
+require_once __DIR__. ('../../models/Paragraph.php');
+require_once __DIR__. ('../../models/Media.php');   
 
 class Article {
     private ?int $articleId = 0;
@@ -80,54 +82,6 @@ class Article {
             'medias' => $mediasInfo,
         ];
     }
-
-    public function updateFullArticle($articleId, $postData) {
-        // Mettez à jour l'article
-        $this->setTitre($postData['title']);
-        if (isset($postData['category'])) {
-            // Convertissez la valeur en int avant de l'attribuer à la propriété category
-            $this->setCategory(intval($postData['category']));
-        } else {
-            // Si la clé "category" n'existe pas, attribuez une valeur par défaut à la propriété category
-            $this->setCategory(0);
-        }
-        // Vérifiez si la clé "admin" existe dans le tableau $postData
-    if (isset($postData['created_by'])) {
-        // Convertissez la valeur en int avant de l'attribuer à la propriété created_by
-        $this->setAdmin(intval($postData['created_by']));
-    } else {
-        // Si la clé "admin" n'existe pas, attribuez une valeur par défaut à la propriété created_by
-        $this->setAdmin(0);
-    }
-        $this->updateArticle();
-
-       // Mettez à jour la couverture
-    $cover = new Cover();
-    $cover->setTitreCover($postData['titleCover']);
-    if (isset($postData['imageCover'])) {
-        $cover->setImageCover($postData['imageCover']);
-    } else {
-        $cover->setImageCover(''); // valeur par défaut si 'imageCover' n'est pas défini
-    }
-    $cover->updateCover($articleId, $_POST);
-
-        // Mettez à jour les paragraphes
-        $paragraph = new Paragraph();
-        if (is_array($postData['content'])) {
-            foreach ($postData['content'] as $paragraphId => $content) {
-                $paragraph->updateParagraph($articleId, $paragraphId, $content);
-            }
-        }
-
-        // Mettez à jour les médias
-        $media = new Media();
-    if (isset($postData['url']) && is_array($postData['url'])) {
-        foreach ($postData['url'] as $mediaId => $url) {
-            $media->setUrl($url);
-            $media->updateMedia();
-        }
-    }
-}
 
     public function findArticleById($articleId) {
         include_once __DIR__ . "../../config/config.php";
@@ -225,6 +179,7 @@ class Article {
     
     public function updateArticle(): bool {
         include_once __DIR__ . "../../config/config.php";
+        
     
         $sql = "UPDATE article SET title = :title, category = :category, created_by = :created_by, date_created = :date_created, date_modified = :date_modified WHERE article_id = :article_id;";
     
@@ -235,23 +190,27 @@ class Article {
     
             
             $req->bindParam(":title", $this->title, PDO::PARAM_STR);
+            var_dump($this->title);
     
             
             $req->bindParam(":category", $this->category, PDO::PARAM_INT);
-    
+            var_dump($this->category);
             
             $req->bindParam(":created_by", $this->created_by, PDO::PARAM_INT);
-    
+            var_dump($this->created_by);
             
             $req->bindParam(":article_id", $this->articleId, PDO::PARAM_INT);
-    
+            var_dump($this->articleId);
+
             // Get current date and time
             $date_modified = date('Y-m-d H:i:s');
             $req->bindParam(":date_modified", $date_modified, PDO::PARAM_STR);
+            var_dump($date_modified);
 
             // Get current date and time
             $date_created = date('Y-m-d H:i:s');
             $req->bindParam(":date_created", $date_created, PDO::PARAM_STR);
+            var_dump($date_created); 
     
             try {
                 if ($req->execute()) {
