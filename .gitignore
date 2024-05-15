@@ -1,2 +1,4 @@
 .vscode
-/App/Config/config.php
+config.php
+config/
+pages/admin/
