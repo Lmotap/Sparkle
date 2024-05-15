@@ -4,10 +4,8 @@
 require_once __DIR__ . '/../App/models/Article.php';
 
 
-
 // Récupérer les articles de la base de données
 $articles = Article::getArticlesWithCoverAndCategory();
-
 
 
 // Limiter à 5 articles
@@ -85,8 +83,7 @@ $articles = array_slice($articles, 0, 5);
             <div class="container_article">
     <div class="img wrapper">
         <a class="link_article" href="./article/article.html">
-            <?php var_dump($article->imageCover); // Afficher la valeur pour le débogage ?>
-            <img class="cover_img" src="<?php echo $article->imageCover; ?>" alt="">
+            <img class="cover_img" src="<?php echo substr($article->imageCover, 3); ?>" alt="">        
         </a>
         <span class="tag_article"><?php echo $article->name; ?></span>
     </div>

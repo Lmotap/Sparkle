@@ -55,12 +55,12 @@ collapsableMenuItems.forEach(element => {
 
 function manageCollapsableMenuItem(event) {
     let collapsable = document.querySelector(event.target.dataset.target);
-    
+
     if (collapsable.classList.contains("hide")) {
         collapsable.classList.remove("hide");
     } else {
-    collapsable.classList.add("hide");
-    
+        collapsable.classList.add("hide");
+
     }
 }
 
@@ -91,7 +91,7 @@ collection.forEach(element => {
 
 function updateNavDisplay() {
     // Je sélectionne l'élément qui permet de gérer le menu hamburger
-    const navMenu = document.querySelector ('.collapse');
+    const navMenu = document.querySelector('.collapse');
 
     // Je crée une const qui me dit que si l'écran à une taille maximale de 820px me renvoie un booléen vrai ou faux
     const isSmallScreen = window.matchMedia('(max-width: 820px)').matches;
@@ -117,9 +117,9 @@ window.addEventListener('resize', updateNavDisplay);
 
 
 const icons = document.querySelectorAll('.icon');
-icons.forEach (icon => {  
-icon.addEventListener('click', (event) => {
-    icon.classList.toggle("open");
+icons.forEach(icon => {
+    icon.addEventListener('click', (event) => {
+        icon.classList.toggle("open");
     });
 });
 
@@ -134,7 +134,7 @@ function FullView(src) {
     // Affiche la div FullImageView
     fullImageView.style.display = "flex";
     // Ajoute un événement pour fermer la div FullImageView lors d'un clic sur l'image
-    fullImage.addEventListener("click", function() {
+    fullImage.addEventListener("click", function () {
         fullImageView.style.display = "none";
     });
 }
@@ -158,72 +158,107 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let dyslexicIcon = document.getElementById('dyslexic');
 
     if (showHamburger && dyslexicIcon) {
-        showHamburger.addEventListener('click', function() {
+        showHamburger.addEventListener('click', function () {
             dyslexicIcon.style.display = 'none';
         });
     }
 
     if (closeHamburger && dyslexicIcon) {
-        closeHamburger.addEventListener('click', function() {
+        closeHamburger.addEventListener('click', function () {
             dyslexicIcon.style.display = 'block';
         });
     }
 });
 
-document.addEventListener("DOMContentLoaded", start);
+// document.addEventListener("DOMContentLoaded", start);
 
-function start() {
-    let dyslexic_link = document.querySelector("#dyslexic");
+// function start() {
+//     let dyslexic_link = document.querySelector("#dyslexic");
 
-    dyslexic_link.addEventListener("click", gerer_dyslexic);
+//     dyslexic_link.addEventListener("click", gerer_dyslexic);
 
-    if (localStorage.getItem("theme") == "Dyslexic") {
+//     if (localStorage.getItem("theme") == "Dyslexic") {
 
-        console.log("Préférence existante dans le local storage");
+//         console.log("Préférence existante dans le local storage");
 
-        let dyslexic_style = document.createElement("style");
-        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
+//         let dyslexic_style = document.createElement("style");
+//         dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
 
-        document.head.appendChild(dyslexic_style);
-        let html_element = document.querySelector("html");
+//         document.head.appendChild(dyslexic_style);
+//         let html_element = document.querySelector("html");
 
-        html_element.style.fontFamily = "OpenDyslexic";
+//         html_element.style.fontFamily = "OpenDyslexic";
 
-    }
+//     }
+// }
+
+
+// function gerer_dyslexic() {
+//     let html_element = document.querySelector("html");
+
+//     if (!html_element || !html_element) {
+//         console.error("Les éléments HTML ou BODY n'ont pas été trouvés");
+//         return;
+//     }
+
+//     if (localStorage.getItem("theme") == "Dyslexic") {
+//         localStorage.removeItem("theme");
+
+
+//         // Ajoutez les polices "League Spartan" et "Libre Baskerville"
+//         html_element.style.fontFamily = "'Libre Baskerville', 'League Spartan', sans-serif";
+
+//     } else {
+//         let dyslexic_style = document.createElement("style");
+
+//         dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
+
+//         document.head.appendChild(dyslexic_style);
+
+//         html_element.style.fontFamily = "OpenDyslexic";
+
+//         localStorage.setItem("theme", "Dyslexic");
+//     }
+// }
+
+
+
+
+
+
+
+let page = 1;
+
+function loadMoreArticles() {
+    page++;
+    fetch(`../App/controllers/load-more-articles.php?page=${page}`)
+        .then(response => response.json())
+        .then(articles => {
+            // Créez des éléments HTML pour les nouveaux articles
+            const newArticles = articles.map(article => {
+                console.log(article.imageCover);  // Ajoutez cette ligne
+                const imageCover = `http://lmota/Mes%20projets/Street%20photography%20portfolio/Sparkle/${article.imageCover.substring(6)}`;
+                return `                    
+                <div class="container_article">
+                        <div class="img wrapper">
+                            <a class="link_article" href="./article/article.html">
+                                <img class="cover_img" src="${imageCover}" alt="">        
+                            </a>
+                            <span class="tag_article">${article.name}</span>
+                        </div>
+                        <h2 class="titre_article">${article.titleCover}</h2>
+                    </div>
+                `;
+            });
+
+            // Ajoutez les nouveaux articles à la page
+            document.querySelector('footer').insertAdjacentHTML('beforebegin', newArticles.join(''));
+
+            // Déplacez le bouton "Plus d'articles" après les nouveaux articles
+            const buttonContainer = document.querySelector('.container_btn_more_article');
+            document.querySelector('footer').insertAdjacentElement('beforebegin', buttonContainer);
+        });
 }
 
-
-function gerer_dyslexic() {
-    let html_element = document.querySelector("html");
-    let body_element = document.querySelector("body");
-
-    if (!html_element || !body_element) {
-        console.error("Les éléments HTML ou BODY n'ont pas été trouvés");
-        return;
-    }
-
-    if (localStorage.getItem("theme") == "Dyslexic") {
-        localStorage.removeItem("theme");
-
-        // Supprimez la classe 'open-dyslexic'
-        html_element.classList.remove('open-dyslexic');
-
-        // Ajoutez les polices "League Spartan" et "Libre Baskerville"
-        html_element.style.fontFamily = "'Libre Baskerville', 'League Spartan', sans-serif";
-        body_element.style.fontFamily = "'Libre Baskerville', 'League Spartan', sans-serif";
-
-    } else { 
-        let dyslexic_style = document.createElement("style");
-
-        dyslexic_style.appendChild(document.createTextNode("@font-face { font-family: 'OpenDyslexic'; src: url('./assets/fonts/OpenDyslexic/OpenDyslexic.ttf');}"));
-
-        document.head.appendChild(dyslexic_style);
-
-        // Ajoutez la classe 'open-dyslexic'
-        html_element.classList.add('open-dyslexic');
-        html_element.style.fontFamily = "OpenDyslexic";
-        body_element.style.fontFamily = "OpenDyslexic";
-
-        localStorage.setItem("theme", "Dyslexic");
-    }
-}
+// Ajoutez un écouteur d'événements au bouton pour charger plus d'articles
+document.querySelector('.btn_more_article').addEventListener('click', loadMoreArticles);
