@@ -73,10 +73,8 @@ button, input[type="submit"], input[type="reset"] {
     height: 20rem;
 }
 
-
 #logo-img {
-    max-width: 3rem;
-    max-height: 3rem;
+    width: 4rem;
 }
 
 .link_nav {
@@ -89,23 +87,12 @@ nav a {
 }
 
 
-
-/* Soulignement des liens nav ( NE MARCHE PAS A VOIR )
-.nav a:hover {
-    text-decoration: 2px black underline;
-    text-underline-offset: 5px;
-}
-*****************/
-
 /* Menu Hamburger */
 
 #nav-show img,
 #nav-hide img {
     width: 2rem;
 }
-
-
-
 
                                     /*******************************************************************************
                                                                     MAIN
@@ -132,7 +119,6 @@ nav a {
                                                                     FOOTER
                                     ********************************************************************************/
 
-
 .container_icon img {
     width: 1.5rem;
 }
@@ -157,8 +143,6 @@ nav a {
     font-size: 4em;
     color: white;
 }
-
-
 
                                     /*******************************************************************************
                                                                     PHOTOS PAGE
@@ -236,12 +220,12 @@ nav a {
 
 .cover_img {
     width: 21rem;
-    transition: transform .4s; /* Animation de transition */
+    transition: transform .4s; 
 }
 
 .cover_img:hover {
-    transform: scale(1.1); /* Zoom à 1.1x lors du survol */
-    cursor: pointer; /* Le curseur devient un pointeur */
+    transform: scale(1.1); 
+    cursor: pointer; 
 }
 
 /* BOUTON ARTICLE*/

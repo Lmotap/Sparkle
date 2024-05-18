@@ -1,6 +1,6 @@
 <?php
 
-    class Admin {
+    class Newsletter_subscriber {
         private int $newsletterSubscriberId = 0;
         private string $email = "";
 
@@ -14,19 +14,13 @@
 
     require_once __DIR__ ."../../config/config.php";
 
-    $dsn = "mysql:host=" . HOST . ";";
-    $dsn .= "port=" . PORT . ";";
-    $dsn .= "dbname=" . DBNAME . ";";
-    $dsn .= "charset=" . CHARSET . ";";
-
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Données postées depuis un formulaire
+
             $email = $_POST["email"];
 
             try {
             
-                //Connexion à la base de donnée
                 $connexion = new PDO ($dsn, DBUSER, DBPASS);
                 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
@@ -34,7 +28,7 @@
                 (email)
                 VALUES
                 (:email);";
-                // Préparation de la requête
+
                 $requete = $connexion-> prepare($sql);
                 $requete->bindParam(":email", $email);
             

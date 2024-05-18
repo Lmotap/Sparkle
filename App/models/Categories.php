@@ -25,15 +25,12 @@ class Category {
         
                 $req->execute();
         
-                // Récupérez le résultat de la requête
                 $result = $req->fetch(PDO::FETCH_ASSOC);
         
-                // Si aucun résultat n'est trouvé, renvoyez null
                 if (!$result) {
                     return null;
                 }
         
-                // Sinon, renvoyez le résultat
                 return $result;
             } catch (Exception | Error $ex) {
                 echo $ex->getMessage();
@@ -49,13 +46,11 @@ class Category {
     
                 $req = $db->prepare($sql);
                 if ($req->execute()) {
-                // La requête s'est bien passée !
     
                     $results = $req->fetchAll(PDO::FETCH_ASSOC);
     
                     return $results;
                 } else {
-                // La requête n'a pu être executée
                     return array();
                 }
             } catch (Exception | Error $ex) {

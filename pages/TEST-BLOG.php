@@ -1,19 +1,11 @@
 <?php
 
-
 require_once __DIR__ . '/../App/models/Article.php';
 
-
-// Récupérer les articles de la base de données
 $articles = Article::getArticlesWithCoverAndCategory();
 
-
-// Limiter à 5 articles
 $articles = array_slice($articles, 0, 5);
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">

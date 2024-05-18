@@ -43,7 +43,6 @@ class Cover {
             $reqInsert->bindParam(":imageCover", $this->imageCover, PDO::PARAM_STR);
             $reqInsert->bindParam(":article", $this->article, PDO::PARAM_INT);
             
-            // Insérez ces commandes ici
             if ($reqInsert->execute()) {
                 $this->coverId = $db->lastInsertId();
                 return true;

@@ -9,12 +9,6 @@ body {
                                                                     HEADER
                                     ********************************************************************************/
 
-header {
-    display: flex;
-    z-index: 1;
-}
-
-
 .hide {
     display: none;
 }
@@ -24,37 +18,11 @@ nav ul {
     padding: 0;
 }
 
-nav a {
-    display: inline-block;
-    width: 100%;
-    padding: 5% 0;
-    margin-bottom: 5%;
-    text-align: center;
-}
-
-nav li {
-    margin: 0;
-    text-align: center;
-}
-
-
-nav {
+.container-nav {
     display: flex;
-    width: 1%;
-}
-
-.container-icon-dyslexic {
-    display: flex;
-    align-items: center;
-}
-
-#dyslexic {
-    position: absolute;
-    right: 5rem;
-}
-
-.icon_dyslexic {
-    width: 4rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
 }
 
 #logo-img {
@@ -62,13 +30,15 @@ nav {
 }
 
 #close_hamburger {
-    padding: 2rem 0;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
 }
 
 #show_hamburger {
     position: absolute;
     right: 2rem;
-    top: 1.5rem;
+    top: 1rem;
 }
 
                                     /*******************************************************************************
@@ -83,6 +53,7 @@ nav {
     justify-content: center;
     text-align: center;
     margin-bottom: 4rem;
+    margin-top: 3rem; 
 }
 
 
@@ -157,7 +128,7 @@ nav {
     color: #fff;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    width: 200px; /* ou la largeur que vous voulez */
+    width: 200px; 
     margin: auto;
 }
 
@@ -411,39 +382,48 @@ input, label {
 
     /* INDEX.HTML */
 
-    #show_hamburger, #close_hamburger {
-        display: none;
-    }
-
-    #logo-img {
-        padding-left: 2rem;
-    }
-
-    .nav-right {
-        position: fixed;
-        top: 35rem;
-        transform: rotate(90deg);
-        right: -0.8rem;
-        width: 10%;
-    }
-    
-    .nav-left {
+    header {
         display: flex;
-        position: fixed;
-        gap: 15rem;
-        left: -1rem;
-        bottom: 20rem;
-        transform: rotate(-90deg);
-        width: 10%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
     }
 
-    .nav-variant {
-        bottom: 8rem;
-        gap: 15rem;
-    }   
+    nav {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .container-nav {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .collapse {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-nav , .collapse {
+        margin: 0;
+        padding: 0;
+    } 
 
     .footer {
         padding: 0 10px;
+    }
+
+    .herocard {
+        margin-top: 5rem; 
     }
 
      /* Photos Page */
@@ -505,10 +485,6 @@ input, label {
         text-align: left;
         max-width: 80%;
     }
-    
-    .herocard {
-        margin-top: -2rem;
-    }
 
     .header {
         justify-content: flex-start;
@@ -524,37 +500,54 @@ input, label {
 
     /* INDEX */
 
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .container-nav {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .collapse {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-nav , .collapse {
+        margin: 0;
+        padding: 0;
+    }
+
 
     #logo-img {
         padding-left: 2rem;
     }
-
-    .nav-right {
-        position: fixed;
-        top: 26rem;
-        transform: rotate(90deg);
-        right: 0;
-        width: 4%;
-    }
     
-    .nav-left {
-        display: flex;
-        position: fixed;
-        gap: 12rem;
-        left: 0;
-        bottom: 10rem;
-        transform: rotate(-90deg);
-        width: 4%;
-    }
-
-    .nav-variant {
-        bottom: 3rem;
-        gap: 9rem;
-    }   
 
     .herocard {
-        margin-top: -2rem;
         margin-bottom: 12rem;
+    }
+
+    .herocard {
+        margin-top: 5rem; 
     }
 
     .icon_dyslexic {
@@ -578,30 +571,46 @@ input, label {
 
 @media screen and (min-width: 1400px) {
 
-    .nav-right {
-        position: fixed;
-        top: 30rem;
-        transform: rotate(90deg);
-        right: 0;
-        width: 4%;
-    }
-    
-    .nav-left {
+    header {
         display: flex;
-        position: fixed;
-        gap: 12rem;
-        left: 0;
-        bottom: 15rem;
-        transform: rotate(-90deg);
-        width: 4%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
     }
 
-    .nav-variant {
-        bottom: 7rem;
-        gap: 10rem;
-    }   
-}
+    nav {
+        display: flex;
+        justify-content: flex-end;
+    }
 
+    ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .container-nav {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .collapse {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-nav , .collapse {
+        margin: 0;
+        padding: 0;
+    }
+
+    .herocard {
+        margin-top: 5rem; 
+    }
+    }
 
 
                                     /*******************************************************************************
