@@ -52,12 +52,10 @@ class Paragraph {
         }
     }
 
-
-
     public function findParagraphsByArticleId($article) {
         include_once __DIR__ . "../../config/config.php";
     
-        $sqlSelect = "SELECT * FROM paragraph WHERE article = :article;";
+        $sqlSelect = "SELECT * FROM paragraph WHERE article = :article; ORDER BY paraph_id";
     
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);

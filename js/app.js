@@ -139,7 +139,7 @@ function loadMoreArticles() {
                 return `                    
                 <div class="container_article">
                         <div class="img wrapper">
-                            <a class="link_article" href="./article/article.html">
+                            <a class="link_article" href="./article/article.php?id=${article.article_id}">
                                 <img class="cover_img" src="${imageCover}" alt="">        
                             </a>
                             <span class="tag_article">${article.name}</span>

@@ -30,12 +30,8 @@ $articles = array_slice($articles, 0, 5);
 <body>
 
     <!-- Début du header -->
-
     <header>
         <a href="../index.html"><img id="logo-img" src="../assets/img/logo_black.png" alt="Logo du projet"></a>
-        <div class="container-icon-dyslexic">
-            <a id="dyslexic" area-label="Adapter la police de caractères"><img class="icon_dyslexic" src="../assets/img/logo-dyslexique.png" alt="Logo Dislexique"></a>
-        </div>
         <nav>
             <ul>
                 <li id="show_hamburger">
@@ -46,17 +42,11 @@ $articles = array_slice($articles, 0, 5);
                 </li>
                 <div class="collapse hide">
                     
-                <div class="nav-left nav-variant">
-                    <li class="link_nav"><a href="../pages/category_photos.html">Portfolio</a></li>
-                    <li class="link_nav"><a href="./blog.html">Blog</a></li>
+                <div class="container-nav">
+                    <li class="link_nav"><a href="./category_photos.html">Portfolio</a></li>
                     <li class="link_nav"><a href="./contact.html">Contact</a></li>
                 </div>
                 
-                <div class="nav-right nav-variant_newsletters">
-                    <li class="link_nav"><a href="./contact.html">Newsletters</a></li>
-                </div>
-                    <li>
-                    </li>
                 </div>
             </ul>
         </nav>
@@ -74,7 +64,7 @@ $articles = array_slice($articles, 0, 5);
         <?php foreach ($articles as $article): ?>
             <div class="container_article">
     <div class="img wrapper">
-        <a class="link_article" href="./article/article.html">
+        <a class="link_article" href="./article/article.php?id=<?php echo $article->article_id; ?>">
             <img class="cover_img" src="<?php echo substr($article->imageCover, 3); ?>" alt="">        
         </a>
         <span class="tag_article"><?php echo $article->name; ?></span>

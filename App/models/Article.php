@@ -65,7 +65,7 @@ public static function getArticlesWithCoverAndCategory() {
 
     
     $stmt = $db->prepare("
-        SELECT article.*, cover.imageCover, cover.titleCover, category.name
+        SELECT article.*, article.article_id, cover.imageCover, cover.titleCover, category.name
         FROM article
         LEFT JOIN cover ON cover.article = article.article_id
         LEFT JOIN category ON article.category = category.category_id
@@ -107,10 +107,13 @@ public static function getArticlesWithCoverAndCategory() {
         ];
     }
 
-    public function findArticleById($articleId) {
+    public static function findArticleById($articleId) {
         include_once __DIR__ . "../../config/config.php";
     
-        $sql = "SELECT * FROM article WHERE article_id = :article_id;";
+        $sql = "SELECT article.*, category.name as category 
+        FROM article 
+        INNER JOIN category ON article.category = category.category_id 
+        WHERE article.article_id = :article_id;";
     
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
@@ -120,9 +123,57 @@ public static function getArticlesWithCoverAndCategory() {
             $req->bindParam(":article_id", $articleId, PDO::PARAM_INT); 
     
             $req->execute();
-            return $req->fetchAll();
+            return $req->fetch();
         } catch (Exception | Error $ex) {
                 echo $ex->getMessage();
+        }
+    }
+
+    public function findParagraphsByArticleId($article) {
+        include_once __DIR__ . "../../config/config.php";
+    
+        $sqlSelect = "SELECT * FROM paragraph WHERE article = :article; ORDER BY paraph_id";
+    
+        try {
+            $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+        
+            $reqSelect = $db->prepare($sqlSelect);
+            $reqSelect->bindParam(":article", $article, PDO::PARAM_INT);
+            
+            if ($reqSelect->execute()) {
+                return $reqSelect->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+            
+
+        } catch (Exception | Error $ex) {
+            echo $ex->getMessage();
+            return false;
+        }
+    }
+
+    public function findMediaByArticleId($article) {
+        include_once __DIR__ . "../../config/config.php";
+    
+        $sqlSelect = "SELECT * FROM media WHERE article = :article ORDER BY media_id;";
+    
+        try {
+            $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+        
+            $reqSelect = $db->prepare($sqlSelect);
+            $reqSelect->bindParam(":article", $article, PDO::PARAM_INT);
+            
+            if ($reqSelect->execute()) {
+                return $reqSelect->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+            
+
+        } catch (Exception | Error $ex) {
+            echo $ex->getMessage();
+            return false;
         }
     }
     
