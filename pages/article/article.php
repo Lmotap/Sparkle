@@ -5,7 +5,6 @@ require_once __DIR__ . '/../../App/models/Paragraph.php';
 require_once __DIR__ . '/../../App/models/Media.php';
 
 if (!isset($_GET['id'])) {
-    // Si aucun ID n'est fourni, redirigez vers la page d'accueil
     header('Location: ../index.html');
     exit;
 }
@@ -29,8 +28,6 @@ $medias = $article->findMediaByArticleId($id);
 foreach ($medias as &$media) {
     $media['item_id'] = $media['media_id'];
 }
-
-$items = array_merge($paragraphs, $medias);
 
 $items = [];
 while (!empty($paragraphs) || !empty($medias)) {

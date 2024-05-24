@@ -35,8 +35,6 @@ class Paragraph {
             $reqInsert = $db->prepare($sqlInsert);
             $reqInsert->bindParam(":content", $this->content, PDO::PARAM_STR);
             $reqInsert->bindParam(":article", $this->article, PDO::PARAM_INT);
-
-            var_dump($this->content, $this->article);
             
             if ($reqInsert->execute()) {
                 $this->paraph_id = $db->lastInsertId();

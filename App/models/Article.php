@@ -8,21 +8,16 @@ require_once __DIR__. ('../../models/Media.php');
 class Article {
     private ?int $articleId = 0;
     private ?string $title = "";
-    private ?array $content = null;
-    private ?array $image = null;
     private string $date_modified = "";
     private string $date_created = "";
-    private int $coverId = 0;
     private int $category = 0;
     private int $created_by = 0;
 
-    public function __construct($articleId = 0, $title = '', $date_modified = '', $date_created = '', $category = 0,$created_by = 0, $content=null, $image=null) {
+    public function __construct($articleId = 0, $title = '', $date_modified = '', $date_created = '', $category = 0,$created_by = 0) {
         $this->articleId = $articleId;
         $this->title = $title;
-        $this->content = $content;
-        $this->image = $image;
-        $this->date_modified = $date_created;
-        $this->date_created = $date_modified;
+        $this->date_modified = $date_modified;
+        $this->date_created = $date_created;
         $this->category = $category;
         $this->created_by = $created_by;
     }
@@ -35,20 +30,11 @@ class Article {
     public function getTitre(){return $this->title;}
     public function setTitre($title){$this->title = $title;}
 
-    public function getContent(){return $this->content;}
-    public function setContent($content){$this->content = $content;}
-
-    public function geImage(){return $this->image;}
-    public function setImage($image){$this->image = $image;}
-
     public function getDateModified(){return $this->date_modified;}
     public function setDateModified($date_modified){$this->date_modified = $date_modified;}
 
     public function getDateCreated(){return $this->date_created;}
     public function setDateCreated($date_created){$this->date_created = $date_created;}
-
-    public function getCoverId(){return $this->coverId;}
-    public function setCoverId($coverId){$this->coverId = $coverId;}
 
     public function getCategory(){return $this->category;}
     public function setCategory($category){$this->category = $category;}
@@ -77,7 +63,7 @@ public static function getArticlesWithCoverAndCategory() {
     $articles = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     if (!$articles) {
-        echo "Aucun article trouvé.";
+        echo "Aucun article trouvé";
         exit;
     }
 
@@ -250,7 +236,6 @@ public static function getArticlesWithCoverAndCategory() {
     
     public function updateArticle(): bool {
         include_once __DIR__ . "../../config/config.php";
-        
     
         $sql = "UPDATE article SET title = :title, category = :category, created_by = :created_by, date_created = :date_created, date_modified = :date_modified WHERE article_id = :article_id;";
     
@@ -259,32 +244,24 @@ public static function getArticlesWithCoverAndCategory() {
     
             $req = $db->prepare($sql);
     
-            
             $req->bindParam(":title", $this->title, PDO::PARAM_STR);
     
             $req->bindParam(":category", $this->category, PDO::PARAM_INT);
-            
+    
             $req->bindParam(":created_by", $this->created_by, PDO::PARAM_INT);
-            
+    
             $req->bindParam(":article_id", $this->articleId, PDO::PARAM_INT);
-
+    
             $date_modified = date('Y-m-d H:i:s');
             $req->bindParam(":date_modified", $date_modified, PDO::PARAM_STR);
-
+    
             $date_created = date('Y-m-d H:i:s');
             $req->bindParam(":date_created", $date_created, PDO::PARAM_STR);
     
-            try {
-                if ($req->execute()) {
-                    return true;
-                } else {
-                    throw new Exception("Impossible de mettre à jour l'article.");
-                }
-            } catch (PDOException $e) {
-                if ($e->getCode() === 'HY093') {
-                    echo 'Erreur dans le fichier ' . __FILE__ . ' à la ligne ' . __LINE__;
-                }
-                return false;
+            if ($req->execute()) {
+                return true;
+            } else {
+                throw new Exception("Impossible de mettre à jour l'article.");
             }
         } catch (Exception | Error $ex) {
             echo $ex->getMessage();
@@ -303,5 +280,4 @@ public static function getArticlesWithCoverAndCategory() {
         $req->bindParam(':article_id', $articleId);
         $req->execute();
     }
-
 }
