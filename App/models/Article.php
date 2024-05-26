@@ -60,22 +60,20 @@ class Article {
 public static function getArticlesWithCoverAndCategory() {
     include_once __DIR__ . "../../config/config.php";
 
-    // Connect to the database
+    
     $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
 
-    // Prepare the query
+    
     $stmt = $db->prepare("
-        SELECT article.*, cover.imageCover, cover.titleCover, category.name
+        SELECT article.*, article.article_id, cover.imageCover, cover.titleCover, category.name
         FROM article
         LEFT JOIN cover ON cover.article = article.article_id
         LEFT JOIN category ON article.category = category.category_id
         ORDER BY article.date_created DESC
     ");
 
-    // Execute the query
     $stmt->execute();
 
-    // Fetch all results
     $articles = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     if (!$articles) {
@@ -89,22 +87,18 @@ public static function getArticlesWithCoverAndCategory() {
     /** CRUD operations */
 
     public function getFullArticle($articleId) {
-        // Récupérez les informations de l'article
+
         $articleInfo = $this->findArticleById($articleId);
 
-        // Récupérez les informations de la couverture de l'article
         $cover = new Cover();
         $coverInfo = $cover->findCoverByArticleId($articleId);
 
-        // Récupérez les paragraphes de l'article
         $paragraph = new Paragraph();
         $paragraphsInfo = $paragraph->findParagraphsByArticleId($articleId);
 
-        // Récupérez les médias de l'article
         $media = new Media();
         $mediasInfo = $media->findMediaByArticleId($articleId);
 
-        // Retournez toutes les informations
         return [
             'article' => $articleInfo,
             'cover' => $coverInfo,
@@ -113,26 +107,76 @@ public static function getArticlesWithCoverAndCategory() {
         ];
     }
 
-    public function findArticleById($articleId) {
+    public static function findArticleById($articleId) {
         include_once __DIR__ . "../../config/config.php";
     
-        $sql = "SELECT * FROM article WHERE article_id = :article_id;";
+        $sql = "SELECT article.*, category.name as category 
+        FROM article 
+        INNER JOIN category ON article.category = category.category_id 
+        WHERE article.article_id = :article_id;";
     
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
     
-            $req = $db->prepare($sql); // Préparez la requête en premier
+            $req = $db->prepare($sql); 
     
-            $req->bindParam(":article_id", $articleId, PDO::PARAM_INT); // Ensuite, liez les paramètres
+            $req->bindParam(":article_id", $articleId, PDO::PARAM_INT); 
     
             $req->execute();
-            return $req->fetchAll();
+            return $req->fetch();
         } catch (Exception | Error $ex) {
                 echo $ex->getMessage();
         }
     }
+
+    public function findParagraphsByArticleId($article) {
+        include_once __DIR__ . "../../config/config.php";
     
-    // Permet de trier et d'afficher les articles selon les categories dans la page blog et dashboard
+        $sqlSelect = "SELECT * FROM paragraph WHERE article = :article; ORDER BY paraph_id";
+    
+        try {
+            $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+        
+            $reqSelect = $db->prepare($sqlSelect);
+            $reqSelect->bindParam(":article", $article, PDO::PARAM_INT);
+            
+            if ($reqSelect->execute()) {
+                return $reqSelect->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+            
+
+        } catch (Exception | Error $ex) {
+            echo $ex->getMessage();
+            return false;
+        }
+    }
+
+    public function findMediaByArticleId($article) {
+        include_once __DIR__ . "../../config/config.php";
+    
+        $sqlSelect = "SELECT * FROM media WHERE article = :article ORDER BY media_id;";
+    
+        try {
+            $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+        
+            $reqSelect = $db->prepare($sqlSelect);
+            $reqSelect->bindParam(":article", $article, PDO::PARAM_INT);
+            
+            if ($reqSelect->execute()) {
+                return $reqSelect->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+            
+
+        } catch (Exception | Error $ex) {
+            echo $ex->getMessage();
+            return false;
+        }
+    }
+    
     public static function findArticlesByCategory($categoryName) {
 
         include_once __DIR__ . "../../config/config.php";
@@ -158,13 +202,12 @@ public static function getArticlesWithCoverAndCategory() {
 
             $req = $db->prepare($sql);
             if ($req->execute()) {
-            // La requête s'est bien passée !
 
                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
                 return $results;
             } else {
-            // La requête n'a pu être executée
+
                 return array();
             }
         } catch (Exception | Error $ex) {
@@ -173,7 +216,6 @@ public static function getArticlesWithCoverAndCategory() {
         }
     }
 
-    // CRUD operations, CREATE ARTICLE
 
     public function createArticle(): bool {
         include_once __DIR__ . "../../config/config.php";
@@ -192,12 +234,11 @@ public static function getArticlesWithCoverAndCategory() {
             $req->bindParam(":created_by", $this->created_by, PDO::PARAM_INT);
     
             if ($req->execute()) {
-            // La requête s'est bien passée !
                 $this->articleId =  $db->lastInsertId();
 
                 return true;
             } else {
-            // La requête n'a pu être executée
+
                 return false;
             }
         } catch (Exception | Error $ex) {
@@ -227,11 +268,9 @@ public static function getArticlesWithCoverAndCategory() {
             
             $req->bindParam(":article_id", $this->articleId, PDO::PARAM_INT);
 
-            // Get current date and time
             $date_modified = date('Y-m-d H:i:s');
             $req->bindParam(":date_modified", $date_modified, PDO::PARAM_STR);
 
-            // Get current date and time
             $date_created = date('Y-m-d H:i:s');
             $req->bindParam(":date_created", $date_created, PDO::PARAM_STR);
     
@@ -253,7 +292,6 @@ public static function getArticlesWithCoverAndCategory() {
         }
     }
 
-    // Delete an article by ID
     public static function delete($articleId)
     {
         include_once __DIR__ . "../../config/config.php";
@@ -265,6 +303,5 @@ public static function getArticlesWithCoverAndCategory() {
         $req->bindParam(':article_id', $articleId);
         $req->execute();
     }
-
 
 }

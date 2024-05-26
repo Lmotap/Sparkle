@@ -7,7 +7,7 @@ session_start();
 
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Données postées depuis un formulaire
+
         $username = $_POST["pseudo"];
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -17,36 +17,36 @@ session_start();
         $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "SELECT * FROM admin WHERE pseudo=:pseudo AND email=:email;";
-        // Préparation de la requête
+
         $requete = $connexion-> prepare($sql);
-        $requete->bindParam(":pseudo", $username); // Correction ici
-        $requete->bindParam(":email", $email); // Correction ici // Correction ici
+        $requete->bindParam(":pseudo", $username); 
+        $requete->bindParam(":email", $email); 
 
         if ($requete-> execute()) {
             $resultat = $requete->fetch();
             var_dump($resultat);
 
             if (!empty($resultat)) {
-                // Verifier le mot de passe
+                
                 if (password_verify($password, $resultat["password"] )) {
-                     // Stocker les informations de l'utilisateur dans la session
+            
                         $_SESSION['admin'] = [
                         'admin_id' => $resultat['admin_id'],
                         'pseudo' => $resultat['pseudo'],
                         'email' => $resultat['email']
                     ];
 
-                    // Stocker l'ID de l'administrateur dans la session
+                    
                     $_SESSION['adminId'] = $resultat['admin_id'];
 
                     header('Location: dashboard.php');
                     exit();
                 } else {
-                    // Mot de passe incorrect
+                    
                     echo "Identifiants incorrects";
                 }
             } else {
-                // Aucun utilisateur ne correspond à cette identifiant
+                
                 echo "Identifiants incorrects";
             }
         }

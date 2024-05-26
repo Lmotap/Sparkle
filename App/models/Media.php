@@ -36,7 +36,6 @@ class Media {
             $reqInsert->bindParam(":url", $this->url, PDO::PARAM_STR);
             $reqInsert->bindParam(":article", $this->article, PDO::PARAM_INT);
             
-            // Insérez ces commandes ici
             if ($reqInsert->execute()) {
                 $this->media_id = $db->lastInsertId();
                 return true;
@@ -62,7 +61,6 @@ class Media {
             $reqRead = $db->prepare($sqlRead);
             $reqRead->bindParam(":media_id", $this->media_id, PDO::PARAM_INT);
             
-            // Insérez ces commandes ici
             if ($reqRead->execute()) {
                 $result = $reqRead->fetch(PDO::FETCH_ASSOC);
                 return $result;
@@ -88,7 +86,6 @@ class Media {
             $reqSelect = $db->prepare($sqlSelect);
             $reqSelect->bindParam(":article", $article, PDO::PARAM_INT);
             
-            // Insérez ces commandes ici
             if ($reqSelect->execute()) {
                 return $reqSelect->fetchAll(PDO::FETCH_ASSOC);
             } else {

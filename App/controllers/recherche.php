@@ -2,7 +2,7 @@
     require_once __DIR__.  '../../../App/models/Article.php';
     require_once __DIR__. '../../../App/models/Categories.php';
 
-    $categoryName = $_GET['search-bar']; // Récupère la valeur de la barre de recherche
+    $categoryName = $_GET['search-bar']; 
     $articlesByCategory = Article::findArticlesByCategory($categoryName);
 ?>
 

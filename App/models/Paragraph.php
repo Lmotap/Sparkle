@@ -23,7 +23,6 @@ class Paragraph {
     public function getArticleId(){return $this->article;}
     public function setArticleId($article){$this->article = $article;}
 
-    // Créer un paragraphe 
 
     public function createParagraph(): bool {
         include_once __DIR__ . "../../config/config.php";
@@ -37,15 +36,13 @@ class Paragraph {
             $reqInsert->bindParam(":content", $this->content, PDO::PARAM_STR);
             $reqInsert->bindParam(":article", $this->article, PDO::PARAM_INT);
 
-            // Debug: Afficher les valeurs de content et article
             var_dump($this->content, $this->article);
             
-            // Insérez ces commandes ici
             if ($reqInsert->execute()) {
                 $this->paraph_id = $db->lastInsertId();
                 return true;
             } else {
-            // Debug: Afficher l'erreur
+
             var_dump($reqInsert->errorInfo());
             return false;
             }
@@ -55,12 +52,10 @@ class Paragraph {
         }
     }
 
-
-
     public function findParagraphsByArticleId($article) {
         include_once __DIR__ . "../../config/config.php";
     
-        $sqlSelect = "SELECT * FROM paragraph WHERE article = :article;";
+        $sqlSelect = "SELECT * FROM paragraph WHERE article = :article; ORDER BY paraph_id";
     
         try {
             $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
@@ -68,7 +63,6 @@ class Paragraph {
             $reqSelect = $db->prepare($sqlSelect);
             $reqSelect->bindParam(":article", $article, PDO::PARAM_INT);
             
-            // Insérez ces commandes ici
             if ($reqSelect->execute()) {
                 return $reqSelect->fetchAll(PDO::FETCH_ASSOC);
             } else {
