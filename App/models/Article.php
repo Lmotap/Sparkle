@@ -84,6 +84,32 @@ public static function getArticlesWithCoverAndCategory() {
     return $articles;
 }
 
+public static function findArticlesByCategory($category_id) {
+    include_once __DIR__ . "../../config/config.php";
+
+    $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
+
+    $stmt = $db->prepare("
+        SELECT article.*, article.article_id, cover.imageCover, cover.titleCover, category.name
+        FROM article
+        LEFT JOIN cover ON cover.article = article.article_id
+        LEFT JOIN category ON article.category = category.category_id
+        WHERE article.category = :category_id
+        ORDER BY article.date_created DESC
+    ");
+
+    $stmt->execute(['category_id' => $category_id]);
+
+    $articles = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    if (!$articles) {
+        echo "Aucun article trouvé.";
+        exit;
+    }
+
+    return $articles;
+}
+
     /** CRUD operations */
 
     public function getFullArticle($articleId) {
@@ -177,19 +203,6 @@ public static function getArticlesWithCoverAndCategory() {
         }
     }
     
-    public static function findArticlesByCategory($categoryName) {
-
-        include_once __DIR__ . "../../config/config.php";
-
-        $db = new PDO("mysql:host=" . Database::HOST . "; port=" . Database::PORT . "; dbname=" . Database::DBNAME . "; charset=utf8;", Database::DBUSER, Database::DBPASS);
-
-        $req = $db->prepare('SELECT article_id, date_modified, date_created, title, name as category 
-        FROM article 
-        INNER JOIN category ON category = category_id WHERE category.name = :categoryName;');
-        $req->execute(array('categoryName' => $categoryName));
-        return $req->fetchAll();
-    }
-
     public static function findAllArticles(): array {
         include_once __DIR__ . "../../config/config.php";
 

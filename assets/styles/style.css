@@ -112,7 +112,7 @@ nav a {
 .titre_page {
     font-family: "League Spartan";
     font-weight: 300;
-    font-size: clamp(2.5em, 10vw,4em);
+    font-size: 3em;
 }
 
                                     /*******************************************************************************
@@ -134,13 +134,13 @@ nav a {
                                     ********************************************************************************/
 
 .img_category {
-    width: 90%;
+    width: 70%;
 }
 
 .title_category {
     font-family: 'League Spartan';
     font-weight: 300;
-    font-size: 4em;
+    font-size: 3em;
     color: white;
 }
 
@@ -436,31 +436,14 @@ textarea {
     }
 
     .link_footer, .diese {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
     #main_img {
-        width: 36rem;
+        width: 20rem;
     }
 
-
-        /* CATEGORIES */
-
-        .img_category {
-            width: 80%;
-        }
-
-        .title_category {
-            font-size: 6em;
-        }
-        
-
-
-        /* PHOTOS */
-    
-    .icon_arrow {
-        width: 3rem;
-    }
+    /* PHOTOS */
 
     .box_description h4 {
     font-size: 2em;
@@ -546,7 +529,15 @@ textarea {
 @media screen and (min-width: 1200px) {
 
     #main_img {
-        width: 22rem;
+        width: 26rem;
+    }
+
+    #logo-img {
+        width: 5rem;
+    }
+
+    .titre_page {
+        font-size: 4em;
     }
 
     /* Categorie Photo */

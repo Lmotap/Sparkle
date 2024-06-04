@@ -67,7 +67,7 @@ $categories = Category::findAllCategories();
 <div class="container-categories">
     <?php 
     $categoryNames = array_map(function($category) {
-        return '<div class="category"><a href="./category.php?id=' . $category['id'] . '">' . $category['name'] . '</a></div>';
+        return '<div class="category"><a href="category.php?id=' . $category['category_id'] . '">' . $category['name'] . '</a></div>';
     }, $categories);
     echo implode(' / ', $categoryNames);
     ?>

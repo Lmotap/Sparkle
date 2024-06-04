@@ -53,7 +53,6 @@ nav ul {
     justify-content: center;
     text-align: center;
     margin-bottom: 4rem;
-    margin-top: 3rem; 
 }
 
 
@@ -128,7 +127,7 @@ nav ul {
     color: #fff;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    width: 200px; 
+    width: 60%; 
     margin: auto;
 }
 
@@ -234,7 +233,7 @@ nav ul {
 .container-categories{
     display: flex;
     justify-content: center;
-    gap: 5%;
+    gap: 1%;
 }
 
 
@@ -242,6 +241,10 @@ nav ul {
     text-align: center;
     transform: translateY(-0.5rem);
     margin-bottom: 5%;
+}
+
+.footer-category {
+    margin-top: 10%;
 }
 
 
@@ -428,9 +431,6 @@ input, label {
         padding: 0 10px;
     }
 
-    .herocard {
-        margin-top: 5rem; 
-    }
 
      /* Photos Page */
 
@@ -547,14 +547,6 @@ input, label {
         padding-left: 2rem;
     }
     
-
-    .herocard {
-        margin-bottom: 12rem;
-    }
-
-    .herocard {
-        margin-top: 5rem; 
-    }
 
     .icon_dyslexic {
         width: 6rem;
