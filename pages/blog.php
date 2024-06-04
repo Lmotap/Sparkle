@@ -1,3 +1,15 @@
+<?php
+
+require_once __DIR__ . '/../App/models/Article.php';
+require_once __DIR__ . '/../App/models/Categories.php';
+
+$articles = Article::getArticlesWithCoverAndCategory();
+
+$articles = array_slice($articles, 0, 5);
+
+$categories = Category::findAllCategories();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,7 +29,7 @@
     <link rel="stylesheet" href="../assets/styles/style.css">
 
 </head>
-<img src="./" alt="">
+
 <body>
 
     <!-- Début du header -->
@@ -48,59 +60,31 @@
                 <img src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
         </div>
 
-        <div class="container_separation">
-            <div class="separation_main"></div>
-        </div>
+<div class="container_separation">
+    <div class="separation_main"></div>
+</div>
 
-        <div class="container_categories_article">
-            <a class="" href="">Équipement</a>
-                <span class="separateur_link">/</span>
-            <a class="" href="">Inspirations</a> 
-                <span class="separateur_link">/</span> 
-            <a class="" href="">Lieux</a>
-        </div>
+<div class="container-categories">
+    <?php 
+    $categoryNames = array_map(function($category) {
+        return '<div class="category"><a href="./category.php?id=' . $category['id'] . '">' . $category['name'] . '</a></div>';
+    }, $categories);
+    echo implode(' / ', $categoryNames);
+    ?>
+</div>
 
-        <div class="container_article">
-            <div class="img wrapper">
-                <a class="link_article" href="./article/article.html"><img class="cover_img" src="../assets/img/tree_black_white.jpg" alt="Photo d'un arbre photographié en noir et blanc"></a>
-                <span class="tag_article">Lieux</span>
-            </div>
-            <h2 class="titre_article"> 
-Apprendre à jouer avec 
-la lumière </h2>
-        </div>
-        
-        <div class="container_article">
-            <div class="img wrapper">
-                <a class="link_article" href=""><img class="cover_img" src="../assets/img/flou_people.jpg" alt="Photo flou d'un groupement de personne"></a>
-                <span class="tag_article">Lieux</span>
-        </div>
-            <h2 class="titre_article"> 
-Comment photographier 
-les gens ? </h2>
-        </div>
 
-        
-        <div class="container_article">
-            <div class="img wrapper">
-                <a class="link_article" href=""><img class="cover_img" src="../assets/img/equipment_studio.jpg" alt="Photo d'un équipement de studio de photographie"></a>
-                <span class="tag_article">Équipement</span>
-        </div>
-            <h2 class="titre_article">
-Mon équipement</h2>
-        </div>
-
-        <div class="container_article">
-        <div class="img wrapper">
-                <img class="cover_img" src="../assets/img/museum_blog.jpg" alt="Photo en noir et blanc d'une personne au musée d'Orsay">
-                <span class="tag_article">Inspirations</span>
-        </div>
-            <h2 class="titre_article"> 
-Les musées, une source 
-d'inspiration </h2>
-        </div>
-
+        <?php foreach ($articles as $article): ?>
+            <div class="container_article">
+    <div class="img wrapper">
+        <a class="link_article" href="./article/article.php?id=<?php echo $article->article_id; ?>">
+            <img class="cover_img" src="<?php echo substr($article->imageCover, 3); ?>" alt="">        
+        </a>
+        <span class="tag_article"><?php echo $article->name; ?></span>
     </div>
+    <h2 class="titre_article"><?php echo $article->titleCover; ?></h2>
+</div>
+<?php endforeach; ?>
 
     <div class="container_btn_more_article">
         <button class="btn_more_article">

@@ -1,10 +1,12 @@
 <?php
 
 require_once __DIR__ . '/../App/models/Article.php';
+require_once __DIR__ . '/../App/models/Categories.php';
 
-$articles = Article::getArticlesWithCoverAndCategory();
+$category_id = $_GET['id'];
 
-$articles = array_slice($articles, 0, 5);
+$articlesByCategory = Article::findArticlesByCategory($categoryName);
+
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +59,19 @@ $articles = array_slice($articles, 0, 5);
                 <img src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
         </div>
 
-        <div class="container_separation">
-            <div class="separation_main"></div>
-        </div>
+<div class="container_separation">
+    <div class="separation_main"></div>
+</div>
+
+<div class="container-categories">
+    <?php 
+    $categoryNames = array_map(function($category) {
+        return '<div class="category"><a href="./category.php?id=' . $category['id'] . '">' . $category['name'] . '</a></div>';
+    }, $categories);
+    echo implode(' / ', $categoryNames);
+    ?>
+</div>
+
 
         <?php foreach ($articles as $article): ?>
             <div class="container_article">

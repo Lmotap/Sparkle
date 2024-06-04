@@ -75,7 +75,7 @@ nav ul {
     align-items: flex-end;
     justify-content: space-between;
     margin-top: auto;
-    padding: 5%;
+    padding: 0 5%;
 }
 
 .container_icon {
@@ -229,6 +229,12 @@ nav ul {
 
 .tag_article {
     margin-top: 3.5%;
+}
+
+.container-categories{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
 }
 
 

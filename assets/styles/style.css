@@ -188,6 +188,12 @@ nav a {
     width: 80%;
 }
 
+.category {
+    font-family: "Libre Baskerville";
+    font-style: italic;
+    font-size: 1em;
+}
+
 .separation_main {
     width: 80%;
     height: 0.1rem;
@@ -351,6 +357,7 @@ to {
     transform: translateX(var(--end));
     }
 }
+
 
 
                                     /*******************************************************************************
