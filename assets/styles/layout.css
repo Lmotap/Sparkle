@@ -125,28 +125,12 @@ nav ul {
     right: 0;
     text-align: center;
     color: #fff;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease-in-out;
     width: 60%; 
     margin: auto;
 }
 
-.container_categories .img_category {
-    filter: brightness(1);
-    transition: filter 0.3s ease-in-out;
-}
-
-.container_categories a:hover .img_category {
-    filter: brightness(50%);
-}
-
-.container_categories .img_category:hover + .title_category {
-    opacity: 1;
-}
-
-.container_categories .title_category:hover {
-    opacity: 1;
-}
 
 .img_category {
     padding: 0;
@@ -206,6 +190,10 @@ nav ul {
     align-items: center;
 }
 
+.box_bio_article img {
+    margin-bottom: 10%;
+}
+
 .container_blog {
     display: flex;
     flex-direction: column;
@@ -246,9 +234,6 @@ nav ul {
 .footer-category {
     margin-top: 10%;
 }
-
-
-
 
                                     /*******************************************************************************
                                                                     ARTICLE
@@ -378,238 +363,6 @@ input, label {
     justify-content: center;
     align-items: center;
 } 
-
-
-
-
-                                    /*******************************************************************************
-                                                                    MEDIA QUERIES
-                                    ********************************************************************************/
-
-
-@media screen and (min-width: 820px) {
-
-    /* INDEX.HTML */
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 2rem;
-    }
-
-    nav {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    ul {
-        display: flex;
-        gap: 2rem;
-    }
-
-    .container-nav {
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-    }
-
-    .collapse {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container-nav , .collapse {
-        margin: 0;
-        padding: 0;
-    } 
-
-    .footer {
-        padding: 0 10px;
-    }
-
-
-     /* Photos Page */
-
-    .img_wdth {
-        width: 70%;
-        margin-bottom: 5%;
-    }
-
-    .icon_dyslexic {
-        width: 5.5rem;
-        position: relative;
-        top: -0px;
-        right: -65px;
-    }
-
-    /* ARTICLE */
-
-    .title_article {
-        font-size: 5em;
-    }
-
-    .img_article {
-        width: 80%;
-    }
-
-    .wrapper_category_date {
-        font-size: 1.2em;
-    }
-
-    .container_icon_article
-    {
-        padding-left: 10%;
-    }   
-
-    .return_arrow {
-        width: 90%;
-    }
-    
-
-    /* Contact */
-
-    .container_form {
-        margin-bottom: 5%;
-    }
-
-    .wraper_content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    
-    .content_article {
-        font-family: "Libre Baskerville";
-        font-weight: 400;
-        font-size: 1.5em;
-        padding: 0 5%;
-        text-align: left;
-        max-width: 80%;
-    }
-
-    .header {
-        justify-content: flex-start;
-    }
-
-
-    #dyslexic {
-        margin-left: auto;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-
-    /* INDEX */
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 2rem;
-    }
-
-    nav {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    ul {
-        display: flex;
-        gap: 2rem;
-    }
-
-    .container-nav {
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-    }
-
-    .collapse {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container-nav , .collapse {
-        margin: 0;
-        padding: 0;
-    }
-
-
-    #logo-img {
-        padding-left: 2rem;
-    }
-    
-
-    .icon_dyslexic {
-        width: 6rem;
-        position: relative;
-        top: -0px;
-        right: -50px;
-    }
-
-    /* Photos Page */
-
-    .img_wdth {
-        width: 40%;
-        margin-bottom: 5%;
-    }
-
-    /* Blog */
-
-
-}
-
-@media screen and (min-width: 1400px) {
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 2rem;
-    }
-
-    nav {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    ul {
-        display: flex;
-        gap: 2rem;
-    }
-
-    .container-nav {
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-    }
-
-    .collapse {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container-nav , .collapse {
-        margin: 0;
-        padding: 0;
-    }
-
-    .herocard {
-        margin-top: 5rem; 
-    }
-    }
-
 
                                     /*******************************************************************************
                                                                     ADMIN
@@ -827,4 +580,249 @@ input[type="file"]::file-selector-button {
     max-width: 100%;
     max-height: 100%;
     cursor: pointer;
+}
+
+                                    /*******************************************************************************
+                                                                    MEDIA QUERIES
+                                    ********************************************************************************/
+
+
+@media screen and (min-width: 820px) {
+
+    /* INDEX.HTML */
+
+    .titre_page {
+        margin-top: 10%;
+        margin-bottom: 3%;
+    }
+
+    /* HEADER */
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .container-nav {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .collapse {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-nav , .collapse {
+        margin: 0;
+        padding: 0;
+    } 
+
+    .footer {
+        padding: 0 10px;
+    }
+
+
+        /* Photos Page */
+
+    .img_wdth {
+        width: 70%;
+        margin-bottom: 5%;
+    }
+
+    .icon_dyslexic {
+        width: 5.5rem;
+        position: relative;
+        top: -0px;
+        right: -65px;
+    }
+
+    /* ARTICLE */
+
+    .title_article {
+        font-size: 5em;
+    }
+
+    .img_article {
+        width: 80%;
+    }
+
+    .wrapper_category_date {
+        font-size: 1.2em;
+    }
+
+    .container_icon_article
+    {
+        padding-left: 10%;
+    }   
+
+    .return_arrow {
+        width: 90%;
+    }
+    
+
+    /* Contact */
+
+    .container_form {
+        margin-bottom: 5%;
+    }
+
+    .wraper_content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .content_article {
+        font-family: "Libre Baskerville";
+        font-weight: 400;
+        font-size: 1.5em;
+        padding: 0 5%;
+        text-align: left;
+        max-width: 80%;
+    }
+
+    .header {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    /* INDEX */
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .container-nav {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .collapse {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-nav , .collapse {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    #logo-img {
+        padding-left: 2rem;
+    }
+    
+
+    .icon_dyslexic {
+        width: 6rem;
+        position: relative;
+        top: -0px;
+        right: -50px;
+    }
+
+    /* Category Page */
+
+    .container_categories .img_category {
+        filter: brightness(1);
+        transition: filter 0.3s ease-in-out;
+    }
+    
+    .container_categories a:hover .img_category {
+        filter: brightness(50%);
+    }
+    
+    .container_categories .img_category:hover + .title_category {
+        opacity: 1;
+    }
+    
+    .container_categories .title_category:hover {
+        opacity: 1;
+    }
+    
+    /* Photos Page */
+
+    .img_wdth {
+        width: 40%;
+        margin-bottom: 5%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .container-nav {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .collapse {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-nav , .collapse {
+        margin: 0;
+        padding: 0;
+    }
+
+    .herocard {
+        margin-top: 5rem; 
+    }
 }

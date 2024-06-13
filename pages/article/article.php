@@ -115,7 +115,7 @@ while (!empty($paragraphs) || !empty($medias)) {
 <?php endforeach; ?>
 
     <div class="container_icon_article">
-        <a href="../TEST-BLOG.php"><img class="return_arrow" src="../../assets/icons/arrow-circle-left-light.svg" alt=""></a>
+        <a href="../blog.php"><img class="return_arrow" src="../../assets/icons/arrow-circle-left-light.svg" alt=""></a>
     </div>
 
     <div class="container_separation">

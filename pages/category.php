@@ -63,7 +63,7 @@ $articlesByCategory = Article::findArticlesByCategory($category_id);
 
         <div class="box_bio_article">
             <h1 class="titre_page"> Qui suis-je ?</h1>
-                <img src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
+            <img class="cover_img" src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
         </div>
 
 <div class="container_separation">

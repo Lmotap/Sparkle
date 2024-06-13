@@ -57,7 +57,7 @@ $categories = Category::findAllCategories();
 
         <div class="box_bio_article">
             <h1 class="titre_page"> Qui suis-je ?</h1>
-                <img src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
+                <img class="cover_img" src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
         </div>
 
 <div class="container_separation">
@@ -74,18 +74,18 @@ $categories = Category::findAllCategories();
 </div>
 
 
-        <?php foreach ($articles as $article): ?>
-            <div class="container_article">
-    <div class="img wrapper">
-        <a class="link_article" href="./article/article.php?id=<?php echo $article->article_id; ?>">
-            <img class="cover_img" src="<?php echo substr($article->imageCover, 3); ?>" alt="">        
-        </a>
-        <span class="tag_article"><?php echo $article->name; ?></span>
-    </div>
-    <h2 class="titre_article"><?php echo $article->titleCover; ?></h2>
-</div>
-<?php endforeach; ?>
-
+    <?php foreach ($articles as $article): ?>
+        <div class="container_article">
+            <div class="img wrapper">
+                <a class="link_article" href="./article/article.php?id=<?php echo $article->article_id; ?>">
+                    <img class="cover_img" src="<?php echo substr($article->imageCover, 3); ?>" alt="">        
+                </a>
+                <span class="tag_article"><?php echo $article->name; ?></span>
+            </div>
+            <h2 class="titre_article"><?php echo $article->titleCover; ?></h2>
+        </div>
+    <?php endforeach; ?>
+    
     <div class="container_btn_more_article">
         <button class="btn_more_article">
             <span class="text">Plus d'articles</span>
