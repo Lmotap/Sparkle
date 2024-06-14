@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__. ('../../Utiltary/Log.php');
-
 
 class Cover {
     private ?int $coverId = 0;

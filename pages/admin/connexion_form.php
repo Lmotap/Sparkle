@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . ('../../../App/Utiltary/Log.php');
-
 session_name("admin");
 session_start();
 

@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__. ('../../Utiltary/Log.php');
 require_once __DIR__. ('../../models/Cover.php');
 require_once __DIR__. ('../../models/Paragraph.php');
 require_once __DIR__. ('../../models/Media.php');   

@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . ('../../../App/Utiltary/Log.php');
 require_once __DIR__. ('../../../App/models/Admin.php');
 require_once __DIR__. ('../../../App/models/Article.php');
 require_once __DIR__. ('../../../App/models/Categories.php');

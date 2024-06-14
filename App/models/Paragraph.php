@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__. ('../../Utiltary/Log.php');
-
 class Paragraph {
     private ?int $paraph_id = 0;
     private ?string $content = "";
