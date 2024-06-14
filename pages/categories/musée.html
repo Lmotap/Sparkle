@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lucas Mota - Musée</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- CSS !-->
+    <link rel="stylesheet" href="../../assets/styles/reset.css">
+    <link rel="stylesheet" href="../../assets/styles/layout.css">
+    <link rel="stylesheet" href="../../assets/styles/style.css">
+
+    </head>
+    <body>
+
+        <!-- Début du header -->
+
+        <header>
+            <a href="../../index.html"><img id="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+            <nav>
+                <ul>
+                    <li id="show_hamburger">
+                        <span id="nav-show" data-target=".collapse"><img id="icon_hamburger" src="../../assets/icons/burger-list.svg" alt="Icône de burger"></span>
+                    </li>
+                    <li id="close_hamburger">
+                    <span id="nav-hide" data-target=".collapse" class="hide"><img id="icon_cross_ham" src="../../assets/icons/cross-burger.svg" alt="Icône de fermeture"></span>
+                    </li>
+                    <div class="collapse hide">
+                        
+                    <div class="container-nav">
+                        <li class="link_nav"><a href="../blog.php">Blog</a></li>
+                        <li class="link_nav"><a href="../contact.html">Contact</a></li>
+                    </div>
+                    
+                    </div>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+        <div class="box_description">
+            <h1 class="titre_page">Musée</h1>
+            <div class="description_container">
+                <p class="texteDescriptifPhotos" id="description">
+                    Murmures d'histoire, Dans la lumière tamisée, Trésors silencieux.
+                </p>
+            </div>
+
+                <div class="container_icon_arrow">
+                        <a href="./paris.html"><img class="icon_arrow" src="../../assets/icons/arrow-circle-left-light.svg" alt="Icône d'une flèche qui pointe vers la gauche"></a>
+                        <a href="./fleurs.html"><img class="icon_arrow" src="../../assets/icons/arrow-circle-right-light.svg" alt="Icône d'une flèche qui pointe vers la droite"></a>
+                </div>
+        </div>
+
+            <div class="container_photos">
+                <img class="img_wdth" src="../../assets/img/Musée/café-campana-silhouette-noir-et-blanc.webp" alt="Paris - Photo d'une silhouette de serveuse du café Campana au musée d'Orsay" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Musée/groupe-de-silhouettes-regardant-photographies.webp" alt="Arles - Photo d'un groupe de silhouette regardant des photographies au festival d'Arles" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Musée/homme-chapeau-escalier-musée.webp" alt="Paris - Photo d'un homme descendant les escaliers du musée d'Orsay" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Musée/personne-passant-une-porte-arles.webp" alt="Arles - Photo d'un homme passant les portes du festival d'Arles" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Musée/personne-se-tenant-devant-horloge-musée-orsay.webp" alt="Paris - Photo d'une personne se tenant devant la grande horloge du Musée d'Orsay" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Musée/personne-photographié-depuis-un-trou-mur.webp" alt="Arles - Personne photographié depuis un trou d'un mur pendant le festival d'Arles" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Musée/groupe-personne-regardant-tableaux-musée.webp" alt="Paris - Groupe de personne regardant les tableaux dans le musée d'Orsay" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/silhouette_musée.jpg" alt="Château de Chantilly - Photo d'une silhouette d'un garçon dans un musée" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/lille_chevalier.jpg" alt="Lille - Photo d'une silhouette d'une personne se tenant devant une armure de chevalier" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/silhouette_vitraux.jpg" alt="Lille - Photo prise dans un musée de trois silhouettes de personnes devant un vitrail" onClick="FullView(this.src)" />
+
+                <img class="img_wdth" src="" alt="">
+            </div>
+
+            <div id="FullImageView">
+                <img id="FullImage" />
+            </div>
+
+        </main>
+
+        
+    <script src="../../js/app.js"></script>
+    </body>
+</html>

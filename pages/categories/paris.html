@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lucas Mota - Paris</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- CSS !-->
+    <link rel="stylesheet" href="../../assets/styles/reset.css">
+    <link rel="stylesheet" href="../../assets/styles/layout.css">
+    <link rel="stylesheet" href="../../assets/styles/style.css">
+
+    </head>
+    <body>
+
+        <!-- Début du header -->
+
+        <header>
+            <a href="../../index.html"><img id="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+            <nav>
+                <ul>
+                    <li id="show_hamburger">
+                        <span id="nav-show" data-target=".collapse"><img id="icon_hamburger" src="../../assets/icons/burger-list.svg" alt="Icône de burger"></span>
+                    </li>
+                    <li id="close_hamburger">
+                    <span id="nav-hide" data-target=".collapse" class="hide"><img id="icon_cross_ham" src="../../assets/icons/cross-burger.svg" alt="Icône de fermeture"></span>
+                    </li>
+                    <div class="collapse hide">
+                        
+                    <div class="container-nav">
+                        <li class="link_nav"><a href="../blog.php">Blog</a></li>
+                        <li class="link_nav"><a href="../contact.html">Contact</a></li>
+                    </div>
+                    
+                    </div>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+        <div class="box_description">
+            <h1 class="titre_page">Paris</h1>
+            <div class="description_container">
+                <p class="texteDescriptifPhotos" id="description">
+                    Ville lumière, Seine murmure sous la lune, Tour veille en silence.
+                </p>
+            </div>
+
+                <div class="container_icon_arrow">
+                        <a href="../category_photos.html"><img class="icon_arrow" src="../../assets/icons/arrow-circle-left-light.svg" alt="Icône d'une flèche qui pointe vers la gauche"></a>
+                        <a href="./musée.html"><img class="icon_arrow" src="../../assets/icons/arrow-circle-right-light.svg" alt="Icône d'une flèche qui pointe vers la droite"></a>
+                </div>
+        </div>
+
+            <div class="container_photos">
+                <img class="img_wdth" src="../../assets/img/Paris/groupe-personne-passage-piéton-paris.webp" alt="Paris - Photo de plusieurs silhouette de personnes avec le Louvre en arrière plan" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Paris/homme-accoudé-café-lumière.webp" alt="Paris - Photo d'un homme qui s'accoude contre un café avec un rayon de lumière" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Paris/homme-marchant-rue-paris.webp" alt="Paris - Photo d'un homme qui marche sur le trottoir avec quelques rayons de lumières" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Paris/personne-passage-pont-bier-hakeim.webp" alt="Paris - Photo d'un homme traversant le passage piéton à côté du pont Bier Hakeim" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Paris/personne-rose-rouge-jardin-paris.webp" alt="Paris - Photo d'un homme qui regard l'objectif dans un jardin" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Paris/silhouette-route-lumière-paris.webp" alt="Paris - Photo d'une silhouette d'homme marchant sur le trottoir " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Paris/reflet-maman-fils-passage-piéton-paris.webp" alt="Paris - Photo d'un reflet d'eau d'une maman et son fils qui se tiennent la main" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Paris/serveur-terrasse-café-paris.webp" alt="Paris - Photo d'un serveur étant sur la terasse dessiné par la lumière" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="" alt="">
+            </div>
+
+            <div id="FullImageView">
+                <img id="FullImage" />
+            </div>
+
+        </main>
+
+        
+    <script src="../../js/app.js"></script>
+    </body>
+</html>

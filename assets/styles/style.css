@@ -109,7 +109,7 @@ nav a {
     filter:alpha(opacity=40);
 }
 
-.titre_page {
+.titre_page, .titre_main {
     font-family: "League Spartan";
     font-weight: 300;
     font-size: 3em;
@@ -539,7 +539,7 @@ body {
     /* INDEX.HTML */
 
     .link_nav {
-        font: 300 2em League Spartan;
+        font: 300 2.5em League Spartan;
     }
 
     .link_footer, .diese {
@@ -550,8 +550,16 @@ body {
         width: 28rem;
     }
 
-    .titre_page {
+    .titre_main {
         font-size: 6em;
+    }
+
+    .titre_page {
+        font-size: 5em;
+    }
+
+    #logo-img {
+        width: 6rem;
     }
 
     /* PHOTOS */
@@ -561,12 +569,26 @@ body {
 }
 
 .texteDescriptifPhotos {
-    font-size: 1em;
+    font-size: 1.5em;
     padding: 0 10%;
     }
 
+    .icon_arrow {
+        width: 3.5rem;
+    } 
+
+    /* CATEGORY PAGE */
+
+    .title_category {
+        font-size: 5em;
+    }
+    
 
     /* BLOG */
+
+    .category {
+        font-size: 1.5em;
+    }
 
     .separation_main {
         width: 40rem;
@@ -580,12 +602,12 @@ body {
     }
 
     .cover_img {
-        width: 30rem;
+        width: 40rem;
     }
 
     .tag_article {
-    margin-top: 3%;
-    font-size: 1em;
+    margin-top: 4%;
+    font-size: 1.5em;
 }
 
 .container_article > .tag_article {
@@ -605,6 +627,24 @@ body {
     width: 17rem;
     font-size: 1.5em;
     height: 3rem;
+}
+
+/* ARTICLE */
+
+.title_article {
+    font-size: 5em;
+}
+
+.img_article {
+    width: 50%;
+}
+
+.wrapper_category_date {
+    font-size: 1.2em;
+}
+
+.return_arrow {
+    width: 100%;
 }
 
 /* Contact */
@@ -639,26 +679,43 @@ body {
 
 @media screen and (min-width: 1200px) {
 
-    #main_img {
-        width: 26rem;
-    }
-
     #logo-img {
-        width: 5rem;
+        width: 6rem;
     }
 
     .titre_page {
-        font-size: 4em;
+        font-size: 5em;
     }
 
-    /* Categorie Photo */
+    /* CATEGORY */
 
     .img_category {
-        width: 35%;
+        width: 45%;
     }
 
     .title_category {
         font-size: 4em;
+    }
+
+    .title_category {
+        opacity: 0;
+    }
+
+    .container_categories .img_category {
+        filter: brightness(1);
+        transition: filter 0.3s ease-in-out;
+    }
+    
+    .container_categories a:hover .img_category {
+        filter: brightness(50%);
+    }
+    
+    .container_categories .img_category:hover + .title_category {
+        opacity: 1;
+    }
+    
+    .container_categories .title_category:hover {
+        opacity: 1;
     }
 
     /* Blog */
@@ -673,61 +730,34 @@ body {
     }
 
     .cover_img {
-        width: 35rem;
+        width: 45rem;
     }
 
     .titre_article {
         font-size: 3em;
     }
+
+
+    /* ARTICLE */
+
+    .separateur_text {
+        font-size: 1.5em;
+    }
+
+    .date_created {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        font-size: 1.1em;
+    }
+
+    /* CATEGORY */
+
+    
     
 }
 
-@media screen and (min-width: 1400px) {
 
-    #main_img {
-        width: 30rem;
-    }
-
-    .img_category {
-        width: 40%;
-    }
-
-    .title_category {
-        font-size: 5em;
-    }
-
-    .img_wdth {
-        width: 40rem;
-    }
-
-    .texteDescriptifPhotos {
-        font-size: 1.5em;
-    }
-    /* Blog */
-
-    .box_bio_article img {
-        width: 50rem;
-    }
-
-    .separation_main {
-        width: 50rem;
-    }
-
-    .tag_article {
-        font-size: 1.5em;
-        margin-top: 4%;
-    }
-
-    .cover_img {
-        width: 35rem;
-    }
-
-    .titre_article {
-        font-size: 4em;
-    }
-
-    /* Article */
-}
 
 
 

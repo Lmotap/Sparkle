@@ -23,6 +23,7 @@ nav ul {
     flex-direction: column;
     text-align: center;
     gap: 3rem;
+    margin-bottom: 5rem;
 }
 
 #logo-img {
@@ -55,7 +56,10 @@ nav ul {
     margin-bottom: 4rem;
 }
 
-
+.titre_main {
+    margin-top: 8%;
+    margin-bottom: 3%;
+}
 
 .herocard h2 {
     margin-bottom: 1rem;
@@ -255,8 +259,8 @@ nav ul {
     font-family: "League Spartan";
     font-weight: 300;
     font-size: 3em;
-    margin: 0;
     margin-top: 10%;
+    margin-bottom: 1%;
 }
 
 .wrapper_category_date {
@@ -335,6 +339,7 @@ input, label {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 15%;
 }
 
 .form-example {
@@ -591,9 +596,14 @@ input[type="file"]::file-selector-button {
 
     /* INDEX.HTML */
 
-    .titre_page {
+    .titre_main {
         margin-top: 10%;
         margin-bottom: 3%;
+    }
+
+    .titre_page {
+        margin-top: 10%;
+        margin-bottom: 5%;
     }
 
     /* HEADER */
@@ -639,48 +649,35 @@ input[type="file"]::file-selector-button {
     }
 
 
-        /* Photos Page */
+        /* PHOTOS */
 
     .img_wdth {
         width: 70%;
         margin-bottom: 5%;
     }
 
-    .icon_dyslexic {
-        width: 5.5rem;
-        position: relative;
-        top: -0px;
-        right: -65px;
+    /* BLOG */ 
+
+    .tag_article {
+        margin-top: 4%;
+    }
+
+    .container-categories {
+        margin-bottom: 5%;
     }
 
     /* ARTICLE */
-
-    .title_article {
-        font-size: 5em;
-    }
-
-    .img_article {
-        width: 80%;
-    }
-
-    .wrapper_category_date {
-        font-size: 1.2em;
-    }
 
     .container_icon_article
     {
         padding-left: 10%;
     }   
-
-    .return_arrow {
-        width: 90%;
-    }
     
 
     /* Contact */
 
     .container_form {
-        margin-bottom: 5%;
+        margin-bottom: 10%;
     }
 
     .wraper_content {
@@ -749,31 +746,10 @@ input[type="file"]::file-selector-button {
         padding-left: 2rem;
     }
     
+    /* INDEX */
 
-    .icon_dyslexic {
-        width: 6rem;
-        position: relative;
-        top: -0px;
-        right: -50px;
-    }
-
-    /* Category Page */
-
-    .container_categories .img_category {
-        filter: brightness(1);
-        transition: filter 0.3s ease-in-out;
-    }
-    
-    .container_categories a:hover .img_category {
-        filter: brightness(50%);
-    }
-    
-    .container_categories .img_category:hover + .title_category {
-        opacity: 1;
-    }
-    
-    .container_categories .title_category:hover {
-        opacity: 1;
+    .titre_main {
+        margin-top: 3%;
     }
     
     /* Photos Page */
@@ -781,48 +757,5 @@ input[type="file"]::file-selector-button {
     .img_wdth {
         width: 40%;
         margin-bottom: 5%;
-    }
-}
-
-@media screen and (min-width: 1400px) {
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 2rem;
-    }
-
-    nav {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    ul {
-        display: flex;
-        gap: 2rem;
-    }
-
-    .container-nav {
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-    }
-
-    .collapse {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container-nav , .collapse {
-        margin: 0;
-        padding: 0;
-    }
-
-    .herocard {
-        margin-top: 5rem; 
     }
 }
