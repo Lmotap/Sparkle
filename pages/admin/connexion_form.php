@@ -1,17 +1,18 @@
 <?php
 
+require_once __DIR__ . '/../../App/config/config.php';
+
 session_name("admin");
 session_start();
 
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $username = $_POST["pseudo"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+    $username = htmlspecialchars($_POST["pseudo"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
 
-        //Connexion à la base de donnée
-        $connexion = new PDO ("mysql:host=localhost; dbname=blog_portfolio", "lmotap", "Te9B1cp!L3aV+iD!");
+        $connexion = new PDO("mysql:host=" . Database::HOST . ";dbname=" . Database::DBNAME . ";charset=" . Database::CHARSET . ";port=" . Database::PORT, Database::DBUSER, Database::DBPASS);
         $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "SELECT * FROM admin WHERE pseudo=:pseudo AND email=:email;";
