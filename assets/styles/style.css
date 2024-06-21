@@ -109,10 +109,10 @@ nav a {
     filter:alpha(opacity=40);
 }
 
-.titre_page {
+.titre_page, .titre_main {
     font-family: "League Spartan";
     font-weight: 300;
-    font-size: clamp(2.5em, 10vw,4em);
+    font-size: 3em;
 }
 
                                     /*******************************************************************************
@@ -134,13 +134,13 @@ nav a {
                                     ********************************************************************************/
 
 .img_category {
-    width: 90%;
+    width: 70%;
 }
 
 .title_category {
     font-family: 'League Spartan';
     font-weight: 300;
-    font-size: 4em;
+    font-size: 3em;
     color: white;
 }
 
@@ -183,9 +183,10 @@ nav a {
                                                                     BLOG
                                     ********************************************************************************/
 
-.box_bio_article img {
-    margin-bottom: 10%;
-    width: 80%;
+.category {
+    font-family: "Libre Baskerville";
+    font-style: italic;
+    font-size: 1em;
 }
 
 .separation_main {
@@ -219,7 +220,11 @@ nav a {
 }
 
 .cover_img {
+<<<<<<< HEAD
     width: 21rem;
+=======
+    width: 20rem;
+>>>>>>> nouvelle-branche
     transition: transform .4s; 
 }
 
@@ -353,6 +358,7 @@ to {
 }
 
 
+
                                     /*******************************************************************************
                                                                     CONTACT
                                     ********************************************************************************/
@@ -414,218 +420,6 @@ textarea {
 
 .title_neswletters {
     margin-top: 5%;
-}
-
-                                    /*******************************************************************************
-                                                                    MEDIA QUERIES
-                                    ********************************************************************************/
-
-    @media screen and (min-width: 820px) {
-
-    /* INDEX.HTML */
-
-    .link_nav {
-        font: 300 2em League Spartan;
-    }
-
-    .link_footer, .diese {
-        font-size: 1.5em;
-    }
-
-    #main_img {
-        width: 36rem;
-    }
-
-
-        /* CATEGORIES */
-
-        .img_category {
-            width: 80%;
-        }
-
-        .title_category {
-            font-size: 6em;
-        }
-        
-
-
-        /* PHOTOS */
-    
-    .icon_arrow {
-        width: 3rem;
-    }
-
-    .box_description h4 {
-    font-size: 2em;
-}
-
-.texteDescriptifPhotos {
-    font-size: 1em;
-    padding: 0 10%;
-    }
-
-
-    /* BLOG */
-
-    .separation_main {
-        width: 40rem;
-        height: 0.1rem;
-        background-color: #262521;
-        transform: translateY(-2rem);
-    }
-
-    .container_categories_article a {
-        font-size: 1.5em;
-    }
-
-    .cover_img {
-        width: 40rem;
-    }
-
-    .tag_article {
-    margin-top: 3%;
-    font-size: 1em;
-}
-
-.container_article > .tag_article {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 77%;
-}
-
-.btn_more_article {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem 1rem;
-    left: 30rem;
-    bottom: 0;
-    width: 17rem;
-    font-size: 1.5em;
-    height: 3rem;
-}
-
-/* Contact */
-
-.container_form button {
-    height: 3rem;
-    font-size: 1em;
-}
-
-.container_form label {
-    font-size: 2em;
-}
-
-.container_form input {
-    height: 3rem;
-}
-
-.container_form input::placeholder,
-.container_form textarea::placeholder {
-    font-size: 1.2em;
-}
-
-.asterik_symbol, .required_field {
-    font-size: 1em;
-}
-
-.input_email_neswletter {
-    width: 20rem;
-}
-
-}
-
-@media screen and (min-width: 1200px) {
-
-    #main_img {
-        width: 22rem;
-    }
-
-    /* Categorie Photo */
-
-    .img_category {
-        width: 35%;
-    }
-
-    .title_category {
-        font-size: 4em;
-    }
-
-    /* Blog */
-
-    .box_bio_article img {
-        width: 50rem;
-    }
-
-    .separation_main {
-        width: 50rem;
-    }
-
-    .tag_article {
-        font-size: 1.5em;
-        margin-top: 4%;
-    }
-
-    .cover_img {
-        width: 50rem;
-    }
-
-    .titre_article {
-        font-size: 4em;
-    }
-
-    /* Article */
-    
-
-    
-}
-
-@media screen and (min-width: 1400px) {
-
-    #main_img {
-        width: 30rem;
-    }
-
-    .img_category {
-        width: 40%;
-    }
-
-    .title_category {
-        font-size: 5em;
-    }
-
-    .img_wdth {
-        width: 40rem;
-    }
-
-    .texteDescriptifPhotos {
-        font-size: 1.5em;
-    }
-    /* Blog */
-
-    .box_bio_article img {
-        width: 50rem;
-    }
-
-    .separation_main {
-        width: 50rem;
-    }
-
-    .tag_article {
-        font-size: 1.5em;
-        margin-top: 4%;
-    }
-
-    .cover_img {
-        width: 50rem;
-    }
-
-    .titre_article {
-        font-size: 4em;
-    }
-
-    /* Article */
 }
 
                                     /*******************************************************************************
@@ -740,7 +534,232 @@ body {
 }
 }
 
+                                    /*******************************************************************************
+                                                                    MEDIA QUERIES
+                                    ********************************************************************************/
 
+@media screen and (min-width: 820px) {
+
+    /* INDEX.HTML */
+
+    .link_nav {
+        font: 300 2.5em League Spartan;
+    }
+
+    .link_footer, .diese {
+        font-size: 1.3em;
+    }
+
+    #main_img {
+        width: 28rem;
+    }
+
+    .titre_main {
+        font-size: 6em;
+    }
+
+    .titre_page {
+        font-size: 5em;
+    }
+
+    #logo-img {
+        width: 6rem;
+    }
+
+    /* PHOTOS */
+
+    .box_description h4 {
+    font-size: 2em;
+}
+
+.texteDescriptifPhotos {
+    font-size: 1.5em;
+    padding: 0 10%;
+    }
+
+    .icon_arrow {
+        width: 3.5rem;
+    } 
+
+    /* CATEGORY PAGE */
+
+    .title_category {
+        font-size: 5em;
+    }
+    
+
+    /* BLOG */
+
+    .category {
+        font-size: 1.5em;
+    }
+
+    .separation_main {
+        width: 40rem;
+        height: 0.1rem;
+        background-color: #262521;
+        transform: translateY(-2rem);
+    }
+
+    .container_categories_article a {
+        font-size: 1.5em;
+    }
+
+    .cover_img {
+        width: 40rem;
+    }
+
+    .tag_article {
+    margin-top: 4%;
+    font-size: 1.5em;
+}
+
+.container_article > .tag_article {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 77%;
+}
+
+.btn_more_article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    left: 30rem;
+    bottom: 0;
+    width: 17rem;
+    font-size: 1.5em;
+    height: 3rem;
+}
+
+/* ARTICLE */
+
+.title_article {
+    font-size: 5em;
+}
+
+.img_article {
+    width: 50%;
+}
+
+.wrapper_category_date {
+    font-size: 1.2em;
+}
+
+.return_arrow {
+    width: 100%;
+}
+
+/* Contact */
+
+.container_form button {
+    height: 3rem;
+    font-size: 1em;
+}
+
+.container_form label {
+    font-size: 2em;
+}
+
+.container_form input {
+    height: 3rem;
+}
+
+.container_form input::placeholder,
+.container_form textarea::placeholder {
+    font-size: 1.2em;
+}
+
+.asterik_symbol, .required_field {
+    font-size: 1em;
+}
+
+.input_email_neswletter {
+    width: 20rem;
+}
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    #logo-img {
+        width: 6rem;
+    }
+
+    .titre_page {
+        font-size: 5em;
+    }
+
+    /* CATEGORY */
+
+    .img_category {
+        width: 45%;
+    }
+
+    .title_category {
+        font-size: 4em;
+    }
+
+    .title_category {
+        opacity: 0;
+    }
+
+    .container_categories .img_category {
+        filter: brightness(1);
+        transition: filter 0.3s ease-in-out;
+    }
+    
+    .container_categories a:hover .img_category {
+        filter: brightness(50%);
+    }
+    
+    .container_categories .img_category:hover + .title_category {
+        opacity: 1;
+    }
+    
+    .container_categories .title_category:hover {
+        opacity: 1;
+    }
+
+    /* Blog */
+
+    .separation_main {
+        width: 50rem;
+    }
+
+    .tag_article {
+        font-size: 1.5em;
+        margin-top: 4%;
+    }
+
+    .cover_img {
+        width: 45rem;
+    }
+
+    .titre_article {
+        font-size: 3em;
+    }
+
+
+    /* ARTICLE */
+
+    .separateur_text {
+        font-size: 1.5em;
+    }
+
+    .date_created {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        font-size: 1.1em;
+    }
+
+    /* CATEGORY */
+
+    
+    
+}
 
 
 

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photographies de rue et de nature par Lucas Mota | Une exploration visuelle de la vie urbaine et sauvage</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Photographies de rue et de nature par Lucas Mota | Une exploration visuelle de la vie urbaine et sauvage</title>
 
-    <meta name="description" content="Découvrez les différentes catégories de photographie de rue et de nature de Lucas Mota, photographe passionné par la capture de moments authentiques de la vie urbaine et sauvage.">
+        <meta name="description" content="Découvrez les différentes catégories de photographie de rue et de nature de Lucas Mota, photographe passionné par la capture de moments authentiques de la vie urbaine et sauvage.">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
 
+<<<<<<< HEAD
     <!-- CSS !-->
     <link rel="stylesheet" href="../assets/styles/reset.css">
     <link rel="stylesheet" href="../assets/styles/layout.css">
@@ -40,65 +41,97 @@
             </ul>
         </nav>
     </header>
+=======
+        <!-- CSS !-->
+        <link rel="stylesheet" href="../assets/styles/reset.css">
+        <link rel="stylesheet" href="../assets/styles/layout.css">
+        <link rel="stylesheet" href="../assets/styles/style.css">
 
-    <main>
+    </head>
+    <body>
+    <!-- Début du header -->
 
-        <h1 class="titre_page">Mes catégories</h1>
+        <header>
+            <a href="../index.html"><img id="logo-img" src="../assets/img/logo_black.png" alt="Logo du projet"></a>
+            <nav>
+                <ul>
+                    <li id="show_hamburger">
+                        <span id="nav-show" data-target=".collapse"><img id="icon_hamburger" src="../assets/icons/burger-list.svg" alt="Icône de burger"></span>
+                    </li>
+                    <li id="close_hamburger">
+                    <span id="nav-hide" data-target=".collapse" class="hide"><img id="icon_cross_ham" src="../assets/icons/cross-burger.svg" alt="Icône de fermeture"></span>
+                    </li>
+                    <div class="collapse hide">
+                        
+                    <div class="container-nav">
+                        <li class="link_nav"><a href="./blog.php">Blog</a></li>
+                        <li class="link_nav"><a href="./contact.html">Contact</a></li>
+                    </div>
+                    
+                    </div>
+                </ul>
+            </nav>
+        </header>
+>>>>>>> nouvelle-branche
 
-            <div class="container_categories">
+        <main>
+
+            <h1 class="titre_page">Mes catégories</h1>
+
+                <div class="container_categories">
 
                     <div class="container_paris">
                         <img class="img_category" src="../assets/img/Paris/silhouette-route-lumière-paris.webp" alt="Paris - Photo d'un groupe de silhouettes avec en arrière plan Le Louvre">
-                        <a class="title_category" href="./categories/photos.html">Paris</a>
+                        <a class="title_category" href="./categories/paris.html">Paris</a>
                     </div>
                     
 
                     <div class="container_musee">
                         <img class="img_category" src="../assets/img/Musée/groupe-de-silhouettes-regardant-photographies.webp" alt="Arles - Photo d'un groupe de silhouettes regardant des tableaux de photographies au festival d'Arles">
-                        <a class="title_category" href="./categories/photos.html">Musée</a>
+                        <a class="title_category" href="./categories/musée.html">Musée</a>
                     </div>
                     
                     <div class="container_fleurs">
                         <img class="img_category" src="../assets/img/Fleurs/groupe-fleurs-flou-lyon.webp" alt="Lyon - Photo flou de plusieurs types de roses au jardin de la tête d'or">
-                        <a class="title_category" href="./categories/photos.html">Fleurs</a>
+                        <a class="title_category" href="./categories/fleurs.html">Fleurs</a>
                     </div>
 
                     <div class="container_mont_saint_michel">
                         <img class="img_category" src="../assets/img/Saint-Michel/soeur-église-montée-des-marches.webp" alt="Mont Saint-Michel - Photo d'une soeur qui se dirige à l'abbaye du Mont Saint-Michel">
-                        <a class="title_category" href="./categories/photos.html">Mont <br>Saint-Michel</br></a>
+                        <a class="title_category" href="./categories/saint-michel.html">Mont Saint-Michel</a>
                     </div>
 
                     <div class="container_haute_savoie">
                         <img class="img_category" src="../assets/img/Haute-Savoie/pointe-anday-panorama.webp" alt="Annecy - Photo d'un rivage au lac d'Annecy à côté d'un">
-                        <a class="title_category" href="./categories/photos.html">Haute-Savoie</a>
+                        <a class="title_category" href="./categories/haute-savoie.html">Haute-Savoie</a>
                     </div>
 
                     <div class="container_la_defense">
                         <img class="img_category" src="../assets/img/La Défense/homme-portant-une-echelle.webp" alt="La Défense - Photo de deux personnes marchant que j'ai prise à côté d'un escalier">
-                        <a class="title_category" href="./categories/photos.html">La Défense</a>
+                        <a class="title_category" href="./categories/la-défense.html">La Défense</a>
                     </div>
-            </div>
-    </main>
+                </div>
+        </main>
 
     <!-- Début du Footer -->
 
-    <footer class="footer">
-        <ul class="container_icon">
-            <img src="../assets/icons/instagram_icon.svg" alt="Icône d'instagram">
-            <img src="../assets/icons/twitter-x.svg" alt="Icône X">
-        </ul>
+        <footer class="footer">
+            <ul class="container_icon">
+                <img src="../assets/icons/instagram_icon.svg" alt="Icône d'instagram">
+                <img src="../assets/icons/twitter-x.svg" alt="Icône X">
+            </ul>
 
-        <ul class="nav_footer_center">
-            <li class="link_footer">Lucas Mota</li>
-        </ul>
+            <ul class="nav_footer_center">
+                <li class="link_footer">Lucas Mota</li>
+            </ul>
 
-        <ul class="nav_footer_right">
-            <li class="link_footer wth_link">Mentions <br>légales</li>
-            <div class="diese">&</div>
-            <li class="link_footer wth_link">Politique de <br>confidentialités</li>
-        </ul>
-</footer>
+            <ul class="nav_footer_right">
+                <li class="link_footer wth_link">Mentions <br>légales</li>
+                <div class="diese">&</div>
+                <li class="link_footer wth_link">Politique de <br>confidentialités</li>
+            </ul>
+        </footer>
 
         <script src="../js/app.js"></script>
-</body>
+    </body>
 </html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lucas Mota - Mont-Saint-Michel</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- CSS !-->
+    <link rel="stylesheet" href="../../assets/styles/reset.css">
+    <link rel="stylesheet" href="../../assets/styles/layout.css">
+    <link rel="stylesheet" href="../../assets/styles/style.css">
+
+    </head>
+    <body>
+
+        <!-- Début du header -->
+
+        <header>
+            <a href="../../index.html"><img id="logo-img" src="../../assets/img/logo_black.png" alt="Logo du projet"></a>
+            <nav>
+                <ul>
+                    <li id="show_hamburger">
+                        <span id="nav-show" data-target=".collapse"><img id="icon_hamburger" src="../../assets/icons/burger-list.svg" alt="Icône de burger"></span>
+                    </li>
+                    <li id="close_hamburger">
+                    <span id="nav-hide" data-target=".collapse" class="hide"><img id="icon_cross_ham" src="../../assets/icons/cross-burger.svg" alt="Icône de fermeture"></span>
+                    </li>
+                    <div class="collapse hide">
+                        
+                    <div class="container-nav">
+                        <li class="link_nav"><a href="../blog.php">Blog</a></li>
+                        <li class="link_nav"><a href="../contact.html">Contact</a></li>
+                    </div>
+                    
+                    </div>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+        <div class="box_description">
+            <h1 class="titre_page">Mont-Saint-Michel</h1>
+            <div class="description_container">
+                <p class="texteDescriptifPhotos" id="description">
+                    Merveille surgit, Marée enlace l'îlot, Silence mystique.
+                </p>
+            </div>
+
+                <div class="container_icon_arrow">
+                        <a href="./fleurs.html"><img class="icon_arrow" src="../../assets/icons/arrow-circle-left-light.svg" alt="Icône d'une flèche qui pointe vers la gauche"></a>
+                        <a href="./haute-savoie.html"><img class="icon_arrow" src="../../assets/icons/arrow-circle-right-light.svg" alt="Icône d'une flèche qui pointe vers la droite"></a>
+                </div>
+        </div>
+
+            <div class="container_photos">
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/abbaye-saint-michel-lumière-architecture.webp" alt="Mont-Saint-Michel - Photo d'architecture de l'abbaye et de la lumière qui l'entourait " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/arbre-pigeon-noir-blanc.webp" alt="Mont-Saint-Michel - Photo d'un pigeon suspendu à un arbre" onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/fenêtre-mer-personnes-mont-saint-michel.webp" alt="Mont-Saint-Michel - Photo d'une fênetre affichant la mer " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/groupe-silhouettes-mur-bleu-blanc.webp" alt="Mont-Saint-Michel - Groupe de silhouette dans l'enceinte du Mont-Saint-Michel " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/homme-chapeau-vitrail-lumière.webp" alt="Mont-Saint-Michel - Photo dd'un homme chapeau mise en évidence par la lumière que reflète les vitraux " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/restaurant-mont-saint-michel-silhouettes.webp" alt="Mont-Saint-Michel - Photo de plusieurs personnes mangeant dans un restaurant dans l'enceinte du Mont-Saint-Michel " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/silhouette-homme-chapeau-abbaye-mont-saint-michel.webp" alt="Mont-Saint-Michel - Photo d'un homme chapeau mis en évidence par la lumière du vitrail " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/silhouettes-vitrail-fille-femme.webp" alt="Mont-Saint-Michel - Photo de silhouette d'une femme et sa fille mis en évidence par des vitraux " onClick="FullView(this.src)" />
+                <img class="img_wdth" src="../../assets/img/Saint-Michel/soeur-église-montée-des-marches.webp" alt="Mont-Saint-Michel - Photo d'une soeur montant les marches de l'abbaye" onClick="FullView(this.src)" />
+            </div>
+
+            <div id="FullImageView">
+                <img id="FullImage" />
+            </div>
+
+        </main>
+
+        
+    <script src="../../js/app.js"></script>
+    </body>
+</html>

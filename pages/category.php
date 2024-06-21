@@ -1,10 +1,19 @@
 <?php
 
 require_once __DIR__ . '/../App/models/Article.php';
+require_once __DIR__ . '/../App/models/Categories.php';
+
+
+$category_id = $_GET['id'];
 
 $articles = Article::getArticlesWithCoverAndCategory();
 
-$articles = array_slice($articles, 0, 5);
+$articles = array_slice($articles, 0, 10);
+
+$categories = Category::findAllCategories();
+
+$articlesByCategory = Article::findArticlesByCategory($category_id);
+
 ?>
 
 <!DOCTYPE html>
@@ -54,14 +63,24 @@ $articles = array_slice($articles, 0, 5);
 
         <div class="box_bio_article">
             <h1 class="titre_page"> Qui suis-je ?</h1>
-                <img src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
+            <img class="cover_img" src="../assets/img/bio_img.jpg" alt="Photo d'un équipement de photographie posé sur une carte">
         </div>
 
-        <div class="container_separation">
-            <div class="separation_main"></div>
-        </div>
+<div class="container_separation">
+    <div class="separation_main"></div>
+</div>
 
-        <?php foreach ($articles as $article): ?>
+<div class="container-categories">
+    <?php 
+    $categoryNames = array_map(function($category) {
+        return '<div class="category"><a href="category.php?id=' . $category['category_id'] . '">' . $category['name'] . '</a></div>';
+    }, $categories);
+    echo implode(' / ', $categoryNames);
+    ?>
+</div>
+
+
+<?php foreach ($articlesByCategory as $article): ?>
             <div class="container_article">
     <div class="img wrapper">
         <a class="link_article" href="./article/article.php?id=<?php echo $article->article_id; ?>">
@@ -73,16 +92,10 @@ $articles = array_slice($articles, 0, 5);
 </div>
 <?php endforeach; ?>
 
-    <div class="container_btn_more_article">
-        <button class="btn_more_article">
-            <span class="text">Plus d'articles</span>
-            <span aria-hidden="" class="marquee">Plus d'articles</span>
-        </button>
-    </div>
 
 <!-- Début du Footer -->
 
-<footer class="footer">
+<footer class="footer footer-category">
     <ul class="container_icon">
         <img src="../assets/icons/instagram_icon.svg" alt="Icône d'instagram">
         <img src="../assets/icons/twitter-x.svg" alt="Icône X">

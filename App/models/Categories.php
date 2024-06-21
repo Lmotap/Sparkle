@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__. ('../../Utiltary/Log.php');
 
 class Category {
     private int $categoryId = 0;

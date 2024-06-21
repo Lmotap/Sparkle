@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__. ('../../Utiltary/Log.php');
-
 class Media {
     private ?int $media_id = 0;
     private ?string $url = "";
